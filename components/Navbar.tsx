@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Navbar,
@@ -10,6 +12,8 @@ import {
   Link,
   Button,
 } from "@heroui/react";
+import { useTranslation } from "@/contexts/LocaleContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export const AcmeLogo = () => {
   return (
@@ -26,63 +30,67 @@ export const AcmeLogo = () => {
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const t = useTranslation();
 
   const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
+    { key: "profile", label: t.menu.profile },
+    { key: "dashboard", label: t.menu.dashboard },
+    { key: "activity", label: t.menu.activity },
+    { key: "analytics", label: t.menu.analytics },
+    { key: "system", label: t.menu.system },
+    { key: "deployments", label: t.menu.deployments },
+    { key: "mySettings", label: t.menu.mySettings },
+    { key: "teamSettings", label: t.menu.teamSettings },
+    { key: "helpFeedback", label: t.menu.helpFeedback },
+    { key: "logout", label: t.menu.logout },
   ];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={isMenuOpen ? t.menu.closeMenu : t.menu.openMenu}
           className="sm:hidden"
         />
         <NavbarBrand>
           <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">{t.navbar.brand}</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
-            Features
+            {t.navbar.features}
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
           <Link aria-current="page" href="#">
-            Customers
+            {t.navbar.customers}
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#">
-            Integrations
+            {t.navbar.integrations}
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
+        <NavbarItem>
+          <LanguageSwitcher />
+        </NavbarItem>
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <Link href="#">{t.navbar.login}</Link>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
+            {t.navbar.signup}
           </Button>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem key={`${item.key}-${index}`}>
             <Link
               className="w-full"
               color={
@@ -91,7 +99,7 @@ export default function App() {
               href="#"
               size="lg"
             >
-              {item}
+              {item.label}
             </Link>
           </NavbarMenuItem>
         ))}
