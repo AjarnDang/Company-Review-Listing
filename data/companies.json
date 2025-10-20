@@ -1,0 +1,56 @@
+[
+    {
+      "id": "1",
+      "name": "Alpha Finance",
+      "logo": "https://via.placeholder.com/100x50?text=Alpha",
+      "category": "Fintech",
+      "averageScore": 4.5,
+      "description": "Alpha Finance is a global financial platform that offers digital banking and investment services.",
+      "website": "https://alphafin.com"
+    },
+    {
+      "id": "2",
+      "name": "Beta Brokers",
+      "logo": "https://via.placeholder.com/100x50?text=Beta",
+      "category": "Broker",
+      "averageScore": 3.9,
+      "description": "Beta Brokers provides competitive forex trading platforms and analytics tools.",
+      "website": "https://betabrokers.com"
+    },
+    {
+      "id": "3",
+      "name": "GammaPay",
+      "logo": "https://via.placeholder.com/100x50?text=Gamma",
+      "category": "Payment",
+      "averageScore": 4.7,
+      "description": "GammaPay is a trusted online payment solution in Southeast Asia.",
+      "website": "https://gammapay.co"
+    },
+    {
+      "id": "4",
+      "name": "ZetaFX",
+      "logo": "https://via.placeholder.com/100x50?text=Zeta",
+      "category": "Broker",
+      "averageScore": 2.8,
+      "description": "ZetaFX specializes in CFD and crypto trading platforms.",
+      "website": "https://zetafx.trade"
+    },
+    {
+      "id": "5",
+      "name": "ThetaBank",
+      "logo": "https://via.placeholder.com/100x50?text=Theta",
+      "category": "Fintech",
+      "averageScore": 4.0,
+      "description": "ThetaBank offers next-generation personal and business banking solutions.",
+      "website": "https://thetabank.io"
+    },
+    {
+      "id": "6",
+      "name": "OmegaPay",
+      "logo": "https://via.placeholder.com/100x50?text=Omega",
+      "category": "Payment",
+      "averageScore": 3.5,
+      "description": "OmegaPay provides secure digital payments and remittance services globally.",
+      "website": "https://omegapay.app"
+    }
+  ]

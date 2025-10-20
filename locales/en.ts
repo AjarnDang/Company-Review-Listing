@@ -58,5 +58,39 @@ export const en: TranslationKeys = {
     error: "Error",
     success: "Success",
   },
+
+  // States
+  states: {
+    loading: {
+      title: "Loading...",
+      message: "Please wait a moment",
+      companies: "Loading companies...",
+      reviews: "Loading reviews...",
+      data: "Loading data...",
+    },
+    empty: {
+      title: "No Data Found",
+      message: "No data matches your search",
+      companies: "No companies match your criteria",
+      reviews: "No reviews yet",
+      noResults: "No results found",
+      tryAdjusting: "Try adjusting your search criteria",
+      clearFilters: "Clear Filters",
+      resetSearch: "Reset Search",
+      goBack: "Go Back",
+    },
+    error: {
+      title: "Error Occurred",
+      message: "Sorry, something went wrong",
+      loadFailed: "Failed to load data",
+      networkError: "Network connection failed",
+      serverError: "Server error",
+      notFound: "Page not found",
+      tryAgain: "Try Again",
+      retry: "Retry",
+      goHome: "Go Home",
+      contactSupport: "Contact Support",
+    },
+  },
 };
 

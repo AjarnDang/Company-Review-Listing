@@ -56,6 +56,40 @@ export const th = {
     error: "เกิดข้อผิดพลาด",
     success: "สำเร็จ",
   },
+
+  // States
+  states: {
+    loading: {
+      title: "กำลังโหลด...",
+      message: "กรุณารอสักครู่",
+      companies: "กำลังโหลดรายการบริษัท...",
+      reviews: "กำลังโหลดรีวิว...",
+      data: "กำลังโหลดข้อมูล...",
+    },
+    empty: {
+      title: "ไม่พบข้อมูล",
+      message: "ไม่พบข้อมูลที่คุณค้นหา",
+      companies: "ไม่พบบริษัทที่ตรงเงื่อนไข",
+      reviews: "ยังไม่มีรีวิว",
+      noResults: "ไม่พบผลลัพธ์",
+      tryAdjusting: "ลองปรับเงื่อนไขการค้นหาใหม่",
+      clearFilters: "ล้างตัวกรอง",
+      resetSearch: "ล้างการค้นหา",
+      goBack: "กลับหน้าแรก",
+    },
+    error: {
+      title: "เกิดข้อผิดพลาด",
+      message: "ขออภัย เกิดข้อผิดพลาดบางอย่าง",
+      loadFailed: "โหลดข้อมูลไม่สำเร็จ",
+      networkError: "เชื่อมต่อเครือข่ายล้มเหลว",
+      serverError: "เซิร์ฟเวอร์มีปัญหา",
+      notFound: "ไม่พบหน้าที่ต้องการ",
+      tryAgain: "ลองอีกครั้ง",
+      retry: "โหลดใหม่",
+      goHome: "กลับหน้าแรก",
+      contactSupport: "ติดต่อฝ่ายสนับสนุน",
+    },
+  },
 };
 
 export type TranslationKeys = typeof th;

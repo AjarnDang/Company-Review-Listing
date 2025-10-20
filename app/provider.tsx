@@ -2,6 +2,7 @@
 
 import {HeroUIProvider} from '@heroui/react'
 import type { Locale } from '@/i18n.config'
+import { AppStateProvider } from '@/contexts/AppStateContext'
 
 export function Providers({
   children,
@@ -12,7 +13,9 @@ export function Providers({
 }) {
   return (
     <HeroUIProvider>
-      {children}
+      <AppStateProvider>
+        {children}
+      </AppStateProvider>
     </HeroUIProvider>
   )
 }
