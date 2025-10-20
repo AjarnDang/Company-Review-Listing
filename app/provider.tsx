@@ -1,15 +1,18 @@
-// app/providers.tsx
 'use client'
 
 import {HeroUIProvider} from '@heroui/react'
-import { LocaleProvider } from '@/contexts/LocaleContext'
+import type { Locale } from '@/i18n.config'
 
-export function Providers({children}: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  lang
+}: { 
+  children: React.ReactNode;
+  lang: Locale;
+}) {
   return (
     <HeroUIProvider>
-      <LocaleProvider>
-        {children}
-      </LocaleProvider>
+      {children}
     </HeroUIProvider>
   )
 }

@@ -12,7 +12,8 @@ import {
   Link,
   Button,
 } from "@heroui/react";
-import { useTranslation } from "@/contexts/LocaleContext";
+import type { Locale } from "@/i18n.config";
+import { getDictionary } from "@/lib/get-dictionary";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export const AcmeLogo = () => {
@@ -28,9 +29,13 @@ export const AcmeLogo = () => {
   );
 };
 
-export default function App() {
+interface NavbarProps {
+  lang: Locale;
+}
+
+export default function App({ lang }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const t = useTranslation();
+  const t = getDictionary(lang);
 
   const menuItems = [
     { key: "profile", label: t.menu.profile },
@@ -60,30 +65,30 @@ export default function App() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href={`/${lang}`}>
             {t.navbar.features}
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link aria-current="page" href="#">
+          <Link aria-current="page" href={`/${lang}`}>
             {t.navbar.customers}
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href={`/${lang}`}>
             {t.navbar.integrations}
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <LanguageSwitcher />
+          <LanguageSwitcher currentLang={lang} />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">{t.navbar.login}</Link>
+          <Link href={`/${lang}`}>{t.navbar.login}</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+          <Button as={Link} color="primary" href={`/${lang}`} variant="flat">
             {t.navbar.signup}
           </Button>
         </NavbarItem>
@@ -96,7 +101,7 @@ export default function App() {
               color={
                 index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
               }
-              href="#"
+              href={`/${lang}`}
               size="lg"
             >
               {item.label}

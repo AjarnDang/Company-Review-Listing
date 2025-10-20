@@ -1,11 +1,16 @@
 "use client";
 
 import React from 'react'
-import { useTranslation } from '@/contexts/LocaleContext'
+import type { Locale } from '@/i18n.config'
+import { getDictionary } from '@/lib/get-dictionary'
 import { Link } from '@heroui/react'
 
-function Footer() {
-  const t = useTranslation();
+interface FooterProps {
+  lang: Locale;
+}
+
+export default function Footer({ lang }: FooterProps) {
+  const t = getDictionary(lang);
 
   return (
     <footer className="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -24,12 +29,12 @@ function Footer() {
             <h3 className="font-bold text-lg mb-4">{t.navbar.companies}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" size="sm" color="foreground">
+                <Link href={`/${lang}`} size="sm" color="foreground">
                   {t.navbar.features}
                 </Link>
               </li>
               <li>
-                <Link href="#" size="sm" color="foreground">
+                <Link href={`/${lang}`} size="sm" color="foreground">
                   {t.navbar.reviews}
                 </Link>
               </li>
@@ -41,12 +46,12 @@ function Footer() {
             <h3 className="font-bold text-lg mb-4">{t.menu.helpFeedback}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" size="sm" color="foreground">
+                <Link href={`/${lang}`} size="sm" color="foreground">
                   {t.footer.contact}
                 </Link>
               </li>
               <li>
-                <Link href="#" size="sm" color="foreground">
+                <Link href={`/${lang}`} size="sm" color="foreground">
                   {t.navbar.about}
                 </Link>
               </li>
@@ -58,12 +63,12 @@ function Footer() {
             <h3 className="font-bold text-lg mb-4">{t.footer.privacy}</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" size="sm" color="foreground">
+                <Link href={`/${lang}`} size="sm" color="foreground">
                   {t.footer.privacy}
                 </Link>
               </li>
               <li>
-                <Link href="#" size="sm" color="foreground">
+                <Link href={`/${lang}`} size="sm" color="foreground">
                   {t.footer.terms}
                 </Link>
               </li>
@@ -79,5 +84,3 @@ function Footer() {
     </footer>
   )
 }
-
-export default Footer

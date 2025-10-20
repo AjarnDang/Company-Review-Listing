@@ -2,26 +2,37 @@
 
 import React from "react";
 import { Button } from "@heroui/react";
-import { useLocale } from "@/contexts/LocaleContext";
-import type { Locale } from "@/locales";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import type { Locale } from "@/i18n.config";
+import { i18n } from "@/i18n.config";
 
-export default function LanguageSwitcher() {
-  const { locale, setLocale, t } = useLocale();
+interface LanguageSwitcherProps {
+  currentLang: Locale;
+}
 
-  const toggleLocale = () => {
-    const newLocale: Locale = locale === "th" ? "en" : "th";
-    setLocale(newLocale);
+export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps) {
+  const pathname = usePathname();
+
+  const switchLocale = () => {
+    if (!pathname) return '/';
+    
+    const segments = pathname.split('/');
+    const newLang = currentLang === 'th' ? 'en' : 'th';
+    segments[1] = newLang;
+    
+    return segments.join('/');
   };
 
   return (
     <Button
+      as={Link}
+      href={switchLocale()}
       variant="light"
       size="sm"
-      onClick={toggleLocale}
       className="min-w-16"
     >
-      {locale === "th" ? "EN" : "TH"}
+      {currentLang === "th" ? "EN" : "TH"}
     </Button>
   );
 }
-
