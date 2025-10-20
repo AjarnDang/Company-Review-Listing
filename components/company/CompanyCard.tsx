@@ -68,11 +68,14 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
   };
 
   return (
-    <Card 
-      className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-      isPressable
-    >
-      <CardBody className="p-6 space-y-4">
+    <article>
+      <Card 
+        className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        isPressable
+        role="article"
+        aria-label={`${company.name} - ${t.companies.rating} ${company.averageScore.toFixed(1)}`}
+      >
+        <CardBody className="p-6 space-y-4">
         {/* Logo and Category */}
         <div className="flex items-start justify-between gap-4">
           <div className="w-24 h-12 relative flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
@@ -103,13 +106,20 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
         {/* Rating */}
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            {renderStars(company.averageScore)}
+            <div 
+              role="img" 
+              aria-label={`${t.companies.rating}: ${company.averageScore.toFixed(1)} ${t.pagination.of} 5`}
+            >
+              {renderStars(company.averageScore)}
+            </div>
             <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
               {company.averageScore.toFixed(1)}
             </span>
           </div>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            {company.reviewCount} {t.companies.reviews}
+            <span aria-label={`${company.reviewCount} ${t.companies.reviews}`}>
+              {company.reviewCount} {t.companies.reviews}
+            </span>
           </p>
         </div>
 
@@ -126,8 +136,9 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
           color="primary"
           variant="flat"
           className="w-full"
+          aria-label={`${t.companies.readMore} ${company.name}`}
           endContent={
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           }
@@ -136,6 +147,7 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
         </Button>
       </CardFooter>
     </Card>
+    </article>
   );
 }
 

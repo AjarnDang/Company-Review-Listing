@@ -11,9 +11,12 @@ interface HeroSectionProps {
 
 export default function HeroSection({ translations: t, onScrollToCompanies }: HeroSectionProps) {
   return (
-    <section className="relative py-20 px-4 md:py-32 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section 
+      className="relative py-20 px-4 md:py-32 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+      aria-label="Hero section"
+    >
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      <div className="absolute inset-0 bg-grid-pattern opacity-5" aria-hidden="true"></div>
       
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center space-y-6">
@@ -47,9 +50,16 @@ export default function HeroSection({ translations: t, onScrollToCompanies }: He
               color="primary"
               className="text-lg px-8 py-6 font-semibold shadow-lg hover:shadow-xl transition-shadow"
               onPress={onScrollToCompanies}
+              aria-label={t.home.viewReviews}
             >
               {t.home.viewReviews}
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg 
+                className="w-5 h-5 ml-2" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Button>
@@ -59,31 +69,45 @@ export default function HeroSection({ translations: t, onScrollToCompanies }: He
               variant="bordered"
               className="text-lg px-8 py-6 font-semibold"
               onPress={onScrollToCompanies}
+              aria-label={t.home.scrollToCompanies}
             >
               {t.home.scrollToCompanies}
             </Button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-12 max-w-3xl mx-auto">
-            <div className="p-4">
-              <div className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400">
+          <div 
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-12 max-w-3xl mx-auto"
+            role="list"
+            aria-label="Platform statistics"
+          >
+            <div className="p-4" role="listitem">
+              <div 
+                className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400"
+                aria-label="15 plus companies"
+              >
                 15+
               </div>
               <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
                 {t.navbar.companies}
               </div>
             </div>
-            <div className="p-4">
-              <div className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400">
+            <div className="p-4" role="listitem">
+              <div 
+                className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400"
+                aria-label="2000 plus reviews"
+              >
                 2,000+
               </div>
               <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
                 {t.companies.reviews}
               </div>
             </div>
-            <div className="p-4">
-              <div className="text-3xl md:text-4xl font-bold text-pink-600 dark:text-pink-400">
+            <div className="p-4" role="listitem">
+              <div 
+                className="text-3xl md:text-4xl font-bold text-pink-600 dark:text-pink-400"
+                aria-label="Average rating 4.2 out of 5"
+              >
                 4.2
               </div>
               <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
@@ -95,7 +119,7 @@ export default function HeroSection({ translations: t, onScrollToCompanies }: He
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" aria-hidden="true">
         <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>

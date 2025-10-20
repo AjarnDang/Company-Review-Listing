@@ -39,18 +39,19 @@ export default function CompanyFilters({
   const hasActiveFilters = searchTerm.length > 0 || selectedCategories.length > 0;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" role="search" aria-label={t.companies.searchCompanies}>
       {/* Search Bar */}
       <div className="flex flex-col md:flex-row gap-4">
         <div className="flex-1">
           <Input
-            type="text"
+            type="search"
             placeholder={t.home.searchPlaceholder}
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             size="lg"
+            aria-label={t.companies.searchCompanies}
             startContent={
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             }
@@ -77,11 +78,11 @@ export default function CompanyFilters({
       </div>
 
       {/* Category Filter */}
-      <div>
-        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+      <div role="group" aria-label={t.companies.filterByCategory}>
+        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3" id="category-filter-label">
           {t.companies.filterByCategory}
         </h3>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2" role="group" aria-labelledby="category-filter-label">
           {CATEGORIES.map((category) => {
             const isSelected = selectedCategories.includes(category);
             return (
@@ -91,6 +92,16 @@ export default function CompanyFilters({
                 color={isSelected ? "primary" : "default"}
                 className="cursor-pointer"
                 onClick={() => toggleCategory(category)}
+                role="checkbox"
+                aria-checked={isSelected}
+                aria-label={`${isSelected ? 'Deselect' : 'Select'} ${category}`}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleCategory(category);
+                  }
+                }}
               >
                 {category}
               </Chip>
@@ -101,7 +112,7 @@ export default function CompanyFilters({
 
       {/* Results Count */}
       <div className="flex items-center justify-between py-4 border-t border-gray-200 dark:border-gray-700">
-        <p className="text-sm text-gray-600 dark:text-gray-400">
+        <p className="text-sm text-gray-600 dark:text-gray-400" role="status" aria-live="polite">
           {t.pagination.showing} <span className="font-semibold text-gray-900 dark:text-gray-100">{filteredResults}</span> {t.pagination.of} <span className="font-semibold text-gray-900 dark:text-gray-100">{totalResults}</span> {t.companies.title.toLowerCase()}
         </p>
         

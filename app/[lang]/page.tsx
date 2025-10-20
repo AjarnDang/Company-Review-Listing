@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useRef, use } from 'react';
+import React, { useRef, use, useEffect } from 'react';
 import type { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/get-dictionary';
+import { generateCompanyListSchema } from '@/lib/seo';
 import HeroSection from '@/components/landing/HeroSection';
 import CompanyCard from '@/components/company/CompanyCard';
 import CompanyFilters from '@/components/company/CompanyFilters';
@@ -61,6 +62,24 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
     });
   };
 
+  // Add structured data for company list
+  useEffect(() => {
+    if (companies && companies.length > 0) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(generateCompanyListSchema(lang, companies));
+      script.id = 'company-list-schema';
+      document.head.appendChild(script);
+
+      return () => {
+        const existingScript = document.getElementById('company-list-schema');
+        if (existingScript) {
+          document.head.removeChild(existingScript);
+        }
+      };
+    }
+  }, [companies, lang]);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -73,11 +92,12 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       <section 
         ref={companiesRef}
         className="py-16 px-4 bg-gray-50 dark:bg-gray-900"
+        aria-labelledby="companies-heading"
       >
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 id="companies-heading" className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               {t.companies.title}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -121,14 +141,19 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
           >
             <>
               {/* Company Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
+                role="list"
+                aria-label={t.companies.title}
+              >
                 {displayedCompanies.map((company) => (
-                  <CompanyCard
-                    key={company.id}
-                    company={company}
-                    translations={t}
-                    lang={lang}
-                  />
+                  <div key={company.id} role="listitem">
+                    <CompanyCard
+                      company={company}
+                      translations={t}
+                      lang={lang}
+                    />
+                  </div>
                 ))}
               </div>
 
