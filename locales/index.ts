@@ -7,4 +7,3 @@ export const translations = {
 } as const;
 
 export { th, en };
-

@@ -66,17 +66,17 @@ export default function App({ lang }: NavbarProps) {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href={`/${lang}`}>
-            {t.navbar.features}
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link aria-current="page" href={`/${lang}`}>
-            {t.navbar.customers}
+            {t.navbar.home}
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href={`/${lang}`}>
-            {t.navbar.integrations}
+            {t.navbar.companies}
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href={`/${lang}/about`}>
+            {t.navbar.about}
           </Link>
         </NavbarItem>
       </NavbarContent>

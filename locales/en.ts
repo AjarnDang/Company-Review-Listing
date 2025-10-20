@@ -4,6 +4,7 @@ export const en: TranslationKeys = {
   // Navbar
   navbar: {
     brand: "Company Review",
+    home: "Home",
     features: "Features",
     customers: "Customers",
     integrations: "Integrations",
@@ -32,12 +33,17 @@ export const en: TranslationKeys = {
   
   // Home Page
   home: {
-    title: "Find the Best Company for You",
-    subtitle: "Read reviews from real employees, discover company culture, salaries, and benefits",
+    title: "Find Financial Companies You Can Trust",
+    subtitle: "Read real user reviews and find the best Fintech, Broker, and Payment companies for you",
     searchPlaceholder: "Search company name...",
     searchButton: "Search",
     featuredCompanies: "Featured Companies",
     latestReviews: "Latest Reviews",
+    viewReviews: "View Company Reviews",
+    scrollToCompanies: "Browse Companies",
+    heroTitle: "Financial Company Review Platform",
+    heroSubtitle: "Find the right company for you from real user reviews",
+    heroDescription: "We help you make confident decisions when choosing financial companies through authentic reviews and ratings from users across the country",
   },
   
   // Footer
@@ -57,6 +63,38 @@ export const en: TranslationKeys = {
     loading: "Loading...",
     error: "Error",
     success: "Success",
+  },
+
+  // Companies
+  companies: {
+    title: "All Companies",
+    subtitle: "Browse and read reviews of companies you're interested in",
+    readMore: "Read Reviews",
+    viewDetails: "View Details",
+    reviews: "reviews",
+    rating: "rating",
+    category: "Category",
+    allCategories: "All Categories",
+    filterByCategory: "Filter by Category",
+    searchCompanies: "Search Companies",
+    showingResults: "Showing {{count}} companies of {{total}} total",
+    noCompaniesFound: "No companies match your criteria",
+    categories: {
+      fintech: "Fintech",
+      broker: "Broker",
+      payment: "Payment",
+    },
+  },
+
+  // Pagination
+  pagination: {
+    previous: "Previous",
+    next: "Next",
+    page: "Page",
+    of: "of",
+    showing: "Showing",
+    to: "to",
+    results: "results",
   },
 
   // States
@@ -93,4 +131,3 @@ export const en: TranslationKeys = {
     },
   },
 };
-

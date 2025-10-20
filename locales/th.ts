@@ -2,6 +2,7 @@ export const th = {
   // Navbar
   navbar: {
     brand: "บริษัทรีวิว",
+    home: "หน้าหลัก",
     features: "คุณสมบัติ",
     customers: "ลูกค้า",
     integrations: "การผลิตภัณฑ์",
@@ -30,12 +31,17 @@ export const th = {
   
   // Home Page
   home: {
-    title: "ค้นหาบริษัทที่ดีที่สุดสำหรับคุณ",
-    subtitle: "อ่านรีวิวจากพนักงานจริง ค้นหาวัฒนธรรมองค์กร เงินเดือน และสวัสดิการ",
+    title: "ค้นหาบริษัทการเงินที่คุณวางใจได้",
+    subtitle: "อ่านรีวิวจากผู้ใช้งานจริง ค้นหาบริษัทการเงิน Fintech Broker และ Payment ที่เหมาะกับคุณ",
     searchPlaceholder: "ค้นหาชื่อบริษัท...",
     searchButton: "ค้นหา",
     featuredCompanies: "บริษัทแนะนำ",
     latestReviews: "รีวิวล่าสุด",
+    viewReviews: "ดูรีวิวบริษัท",
+    scrollToCompanies: "ดูรายชื่อบริษัท",
+    heroTitle: "แพลตฟอร์มรีวิวบริษัทการเงิน",
+    heroSubtitle: "ค้นหาบริษัทที่เหมาะสมกับคุณ จากรีวิวผู้ใช้งานจริง",
+    heroDescription: "เราช่วยให้คุณตัดสินใจเลือกบริษัทการเงินได้อย่างมั่นใจ ด้วยรีวิวและคะแนนจากผู้ใช้งานจริงทั่วประเทศ",
   },
   
   // Footer
@@ -55,6 +61,38 @@ export const th = {
     loading: "กำลังโหลด...",
     error: "เกิดข้อผิดพลาด",
     success: "สำเร็จ",
+  },
+
+  // Companies
+  companies: {
+    title: "รายชื่อบริษัททั้งหมด",
+    subtitle: "เลือกดูรีวิวบริษัทที่คุณสนใจ",
+    readMore: "อ่านรีวิว",
+    viewDetails: "ดูรายละเอียด",
+    reviews: "รีวิว",
+    rating: "คะแนน",
+    category: "หมวดหมู่",
+    allCategories: "ทุกหมวดหมู่",
+    filterByCategory: "กรองตามหมวดหมู่",
+    searchCompanies: "ค้นหาบริษัท",
+    showingResults: "แสดง {{count}} บริษัทจากทั้งหมด {{total}} บริษัท",
+    noCompaniesFound: "ไม่พบบริษัทที่ตรงกับเงื่อนไข",
+    categories: {
+      fintech: "Fintech",
+      broker: "Broker", 
+      payment: "Payment",
+    },
+  },
+
+  // Pagination
+  pagination: {
+    previous: "ก่อนหน้า",
+    next: "ถัดไป",
+    page: "หน้า",
+    of: "จาก",
+    showing: "แสดง",
+    to: "ถึง",
+    results: "รายการ",
   },
 
   // States
@@ -93,4 +131,3 @@ export const th = {
 };
 
 export type TranslationKeys = typeof th;
-

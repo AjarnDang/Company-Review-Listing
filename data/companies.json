@@ -1,56 +1,152 @@
 [
-    {
-      "id": "1",
-      "name": "Alpha Finance",
-      "logo": "https://via.placeholder.com/100x50?text=Alpha",
-      "category": "Fintech",
-      "averageScore": 4.5,
-      "description": "Alpha Finance is a global financial platform that offers digital banking and investment services.",
-      "website": "https://alphafin.com"
-    },
-    {
-      "id": "2",
-      "name": "Beta Brokers",
-      "logo": "https://via.placeholder.com/100x50?text=Beta",
-      "category": "Broker",
-      "averageScore": 3.9,
-      "description": "Beta Brokers provides competitive forex trading platforms and analytics tools.",
-      "website": "https://betabrokers.com"
-    },
-    {
-      "id": "3",
-      "name": "GammaPay",
-      "logo": "https://via.placeholder.com/100x50?text=Gamma",
-      "category": "Payment",
-      "averageScore": 4.7,
-      "description": "GammaPay is a trusted online payment solution in Southeast Asia.",
-      "website": "https://gammapay.co"
-    },
-    {
-      "id": "4",
-      "name": "ZetaFX",
-      "logo": "https://via.placeholder.com/100x50?text=Zeta",
-      "category": "Broker",
-      "averageScore": 2.8,
-      "description": "ZetaFX specializes in CFD and crypto trading platforms.",
-      "website": "https://zetafx.trade"
-    },
-    {
-      "id": "5",
-      "name": "ThetaBank",
-      "logo": "https://via.placeholder.com/100x50?text=Theta",
-      "category": "Fintech",
-      "averageScore": 4.0,
-      "description": "ThetaBank offers next-generation personal and business banking solutions.",
-      "website": "https://thetabank.io"
-    },
-    {
-      "id": "6",
-      "name": "OmegaPay",
-      "logo": "https://via.placeholder.com/100x50?text=Omega",
-      "category": "Payment",
-      "averageScore": 3.5,
-      "description": "OmegaPay provides secure digital payments and remittance services globally.",
-      "website": "https://omegapay.app"
-    }
-  ]
+  {
+    "id": "1",
+    "name": "Alpha Finance",
+    "logo": "https://via.placeholder.com/100x50?text=Alpha",
+    "category": "Fintech",
+    "averageScore": 4.5,
+    "description": "Alpha Finance is a global financial platform that offers digital banking and investment services.",
+    "website": "https://alphafin.com",
+    "reviewCount": 128
+  },
+  {
+    "id": "2",
+    "name": "Beta Brokers",
+    "logo": "https://via.placeholder.com/100x50?text=Beta",
+    "category": "Broker",
+    "averageScore": 3.9,
+    "description": "Beta Brokers provides competitive forex trading platforms and analytics tools.",
+    "website": "https://betabrokers.com",
+    "reviewCount": 95
+  },
+  {
+    "id": "3",
+    "name": "GammaPay",
+    "logo": "https://via.placeholder.com/100x50?text=Gamma",
+    "category": "Payment",
+    "averageScore": 4.7,
+    "description": "GammaPay is a trusted online payment solution in Southeast Asia.",
+    "website": "https://gammapay.co",
+    "reviewCount": 203
+  },
+  {
+    "id": "4",
+    "name": "ZetaFX",
+    "logo": "https://via.placeholder.com/100x50?text=Zeta",
+    "category": "Broker",
+    "averageScore": 2.8,
+    "description": "ZetaFX specializes in CFD and crypto trading platforms.",
+    "website": "https://zetafx.trade",
+    "reviewCount": 67
+  },
+  {
+    "id": "5",
+    "name": "ThetaBank",
+    "logo": "https://via.placeholder.com/100x50?text=Theta",
+    "category": "Fintech",
+    "averageScore": 4.0,
+    "description": "ThetaBank offers next-generation personal and business banking solutions.",
+    "website": "https://thetabank.io",
+    "reviewCount": 156
+  },
+  {
+    "id": "6",
+    "name": "OmegaPay",
+    "logo": "https://via.placeholder.com/100x50?text=Omega",
+    "category": "Payment",
+    "averageScore": 3.5,
+    "description": "OmegaPay provides secure digital payments and remittance services globally.",
+    "website": "https://omegapay.app",
+    "reviewCount": 89
+  },
+  {
+    "id": "7",
+    "name": "DeltaCapital",
+    "logo": "https://via.placeholder.com/100x50?text=Delta",
+    "category": "Fintech",
+    "averageScore": 4.3,
+    "description": "DeltaCapital is a leading investment and wealth management platform.",
+    "website": "https://deltacapital.io",
+    "reviewCount": 142
+  },
+  {
+    "id": "8",
+    "name": "EpsilonTrade",
+    "logo": "https://via.placeholder.com/100x50?text=Epsilon",
+    "category": "Broker",
+    "averageScore": 4.1,
+    "description": "EpsilonTrade offers advanced trading tools and market analysis.",
+    "website": "https://epsilontrade.com",
+    "reviewCount": 178
+  },
+  {
+    "id": "9",
+    "name": "KappaPay",
+    "logo": "https://via.placeholder.com/100x50?text=Kappa",
+    "category": "Payment",
+    "averageScore": 4.6,
+    "description": "KappaPay delivers fast and secure international payment solutions.",
+    "website": "https://kappapay.com",
+    "reviewCount": 234
+  },
+  {
+    "id": "10",
+    "name": "LambdaInvest",
+    "logo": "https://via.placeholder.com/100x50?text=Lambda",
+    "category": "Fintech",
+    "averageScore": 3.8,
+    "description": "LambdaInvest provides automated investment and robo-advisory services.",
+    "website": "https://lambdainvest.co",
+    "reviewCount": 112
+  },
+  {
+    "id": "11",
+    "name": "SigmaFX",
+    "logo": "https://via.placeholder.com/100x50?text=Sigma",
+    "category": "Broker",
+    "averageScore": 3.2,
+    "description": "SigmaFX is a forex and commodities trading platform.",
+    "website": "https://sigmafx.net",
+    "reviewCount": 73
+  },
+  {
+    "id": "12",
+    "name": "PhiFinance",
+    "logo": "https://via.placeholder.com/100x50?text=Phi",
+    "category": "Fintech",
+    "averageScore": 4.4,
+    "description": "PhiFinance offers comprehensive digital banking and lending services.",
+    "website": "https://phifinance.io",
+    "reviewCount": 167
+  },
+  {
+    "id": "13",
+    "name": "PsiPayments",
+    "logo": "https://via.placeholder.com/100x50?text=Psi",
+    "category": "Payment",
+    "averageScore": 4.2,
+    "description": "PsiPayments specializes in merchant payment processing solutions.",
+    "website": "https://psipayments.com",
+    "reviewCount": 145
+  },
+  {
+    "id": "14",
+    "name": "OmicronTrade",
+    "logo": "https://via.placeholder.com/100x50?text=Omicron",
+    "category": "Broker",
+    "averageScore": 3.6,
+    "description": "OmicronTrade provides stock and cryptocurrency trading services.",
+    "website": "https://omicrontrade.com",
+    "reviewCount": 98
+  },
+  {
+    "id": "15",
+    "name": "RhoBank",
+    "logo": "https://via.placeholder.com/100x50?text=Rho",
+    "category": "Fintech",
+    "averageScore": 4.8,
+    "description": "RhoBank is an award-winning neobank with innovative financial products.",
+    "website": "https://rhobank.io",
+    "reviewCount": 289
+  }
+]
