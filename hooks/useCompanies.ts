@@ -7,6 +7,7 @@ interface UseCompaniesOptions {
   companies: Company[];
   itemsPerPage?: number;
   initialSearchTerm?: string;
+  initialCategories?: CompanyCategory[];
 }
 
 interface UseCompaniesReturn {
@@ -40,9 +41,10 @@ export function useCompanies({
   companies,
   itemsPerPage = 9,
   initialSearchTerm = "",
+  initialCategories = [],
 }: UseCompaniesOptions): UseCompaniesReturn {
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
-  const [selectedCategories, setSelectedCategories] = useState<CompanyCategory[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<CompanyCategory[]>(initialCategories);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Filter companies based on search and categories

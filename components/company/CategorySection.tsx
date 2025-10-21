@@ -35,7 +35,7 @@ export default function CategorySection({
   if (categoryCompanies.length === 0) return null;
 
   const handleSeeMore = () => {
-    router.push(`/${lang}/category/${category.toLowerCase()}`);
+    router.push(`/${lang}/companies?category=${category.toLowerCase()}`);
   };
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useMemo } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import type { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/get-dictionary';
 import CompanyCardHorizontal from '@/components/company/CompanyCardHorizontal';
@@ -10,8 +10,9 @@ import CompanyPagination from '@/components/company/CompanyPagination';
 import { StateWrapper } from '@/components/states';
 import { useAsyncData } from '@/hooks/useAsyncData';
 import { useCompanies } from '@/hooks/useCompanies';
-import type { Company } from '@/types/company';
-import { Button } from '@heroui/react';
+import type { Company, CompanyCategory } from '@/types/company';
+import { Button, Input } from '@heroui/react';
+import SearchModal from '@/components/search/SearchModal';
 
 // Fetch companies data
 async function fetchCompanies(): Promise<Company[]> {
@@ -29,6 +30,16 @@ export default function CompaniesPage({
   const { lang } = resolvedParams;
   const t = getDictionary(lang);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+
+  // Get category from query params
+  const categoryParam = searchParams.get('category');
+  const initialCategory = useMemo(() => {
+    if (!categoryParam) return [];
+    const normalized = categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1).toLowerCase();
+    return [normalized as CompanyCategory];
+  }, [categoryParam]);
 
   // Fetch companies data
   const { data: companies, isLoading, error, refetch } = useAsyncData({
@@ -52,10 +63,23 @@ export default function CompaniesPage({
   } = useCompanies({
     companies: companies || [],
     itemsPerPage: 12,
+    initialCategories: initialCategory,
   });
+
+  const categoryName = categoryParam ? 
+    categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1).toLowerCase() : 
+    null;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Search Modal */}
+      <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+        translations={t}
+        lang={lang}
+      />
+
       {/* Header */}
       <section className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-12">
@@ -79,7 +103,10 @@ export default function CompaniesPage({
                 {t.companies.title}
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                {t.companies.exploreAll}
+                {categoryName 
+                  ? t.category.exploreText.replace('{{category}}', categoryName.toLowerCase())
+                  : t.companies.exploreAll
+                }
               </p>
             </div>
           </div>
@@ -89,6 +116,27 @@ export default function CompaniesPage({
       {/* Results Section */}
       <section className="py-12 px-4">
         <div className="max-w-7xl mx-auto">
+          {/* Search Input */}
+          <div className="mb-6 w-full">
+            <Input
+              type="text"
+              placeholder={t.search.placeholder}
+              size="lg"
+              onClick={() => setIsSearchModalOpen(true)}
+              readOnly
+              classNames={{
+                base: "cursor-pointer w-full",
+                input: "cursor-pointer",
+                inputWrapper: "bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow"
+              }}
+              startContent={
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              }
+            />
+          </div>
+
           {/* Filters */}
           <div className="mb-8">
             <CompanyFilters
@@ -114,7 +162,9 @@ export default function CompaniesPage({
             emptyTitle={
               selectedCategories.length > 0
                 ? t.states.empty.noResults
-                : t.states.empty.companies
+                : categoryName
+                  ? `${t.states.empty.companies} in ${categoryName}`
+                  : t.states.empty.companies
             }
             emptyMessage={
               selectedCategories.length > 0

@@ -2,11 +2,13 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import type { TranslationKeys } from "@/locales/th";
+import type { Locale } from "@/i18n.config";
 
 interface CategoriesSectionProps {
   translations: TranslationKeys;
-  onCategoryClick: (category?: string) => void;
+  lang: Locale;
 }
 
 // Categories data
@@ -45,7 +47,13 @@ const categories = [
   },
 ];
 
-export default function CategoriesSection({ translations: t, onCategoryClick }: CategoriesSectionProps) {
+export default function CategoriesSection({ translations: t, lang }: CategoriesSectionProps) {
+  const router = useRouter();
+
+  const handleCategoryClick = (category: string) => {
+    router.push(`/${lang}/companies?category=${category.toLowerCase()}`);
+  };
+
   return (
     <section className="py-12 px-4 bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700">
       <div className="max-w-6xl mx-auto">
@@ -67,7 +75,7 @@ export default function CategoriesSection({ translations: t, onCategoryClick }: 
           {categories.map((category, index) => (
             <motion.button
               key={category.id}
-              onClick={() => onCategoryClick(category.id)}
+              onClick={() => handleCategoryClick(category.id)}
               className={`px-6 py-4 rounded-2xl ${category.bgColor} ${category.hoverBg}
                 border-2 border-transparent ${category.textColor}
                 shadow-md hover:shadow-xl transition-all`}

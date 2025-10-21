@@ -42,13 +42,6 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
     companiesRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  // Handle category click - navigate to category page
-  const handleCategoryClick = (category?: string) => {
-    if (category && (category === "Fintech" || category === "Broker" || category === "Payment" || category === "Bank")) {
-      window.location.href = `/${lang}/category/${category.toLowerCase()}`;
-    }
-  };
-
   // Keyboard shortcut for search (Cmd/Ctrl + K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -100,7 +93,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       {/* Categories Section */}
       <CategoriesSection 
         translations={t}
-        onCategoryClick={handleCategoryClick}
+        lang={lang}
       />
 
       {/* Business CTA Section */}

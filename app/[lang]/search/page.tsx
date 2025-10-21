@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use, useEffect, useMemo } from 'react';
+import React, { use, useEffect, useMemo, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import type { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/get-dictionary';
@@ -11,7 +11,8 @@ import { StateWrapper } from '@/components/states';
 import { useAsyncData } from '@/hooks/useAsyncData';
 import { useCompanies } from '@/hooks/useCompanies';
 import type { Company } from '@/types/company';
-import { Button } from '@heroui/react';
+import { Button, Input } from '@heroui/react';
+import SearchModal from '@/components/search/SearchModal';
 
 // Fetch companies data
 async function fetchCompanies(): Promise<Company[]> {
@@ -26,6 +27,7 @@ export default function SearchPage({ params }: { params: Promise<{ lang: Locale 
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get('query') || '';
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   // Fetch companies data
   const { data: companies, isLoading, error, refetch } = useAsyncData({
@@ -86,6 +88,14 @@ export default function SearchPage({ params }: { params: Promise<{ lang: Locale 
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Search Modal */}
+      <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+        translations={t}
+        lang={lang}
+      />
+
       {/* Header */}
       <section className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -127,6 +137,28 @@ export default function SearchPage({ params }: { params: Promise<{ lang: Locale 
       {/* Results Section */}
       <section className="py-12 px-4">
         <div className="max-w-7xl mx-auto">
+          {/* Search Input */}
+          <div className="mb-6 w-full">
+            <Input
+              type="text"
+              placeholder={t.search.placeholder}
+              size="lg"
+              value={query}
+              onClick={() => setIsSearchModalOpen(true)}
+              readOnly
+              classNames={{
+                base: "cursor-pointer w-full",
+                input: "cursor-pointer",
+                inputWrapper: "bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow"
+              }}
+              startContent={
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              }
+            />
+          </div>
+
           {/* Filters */}
           <div className="mb-8">
             <CompanyFilters
