@@ -1,0 +1,241 @@
+[
+  {
+    "id": "rev-001",
+    "companyId": "1",
+    "reviewerName": "Sarah Johnson",
+    "reviewerInitials": "SJ",
+    "rating": 5,
+    "title": "Excellent banking experience",
+    "content": {
+      "en": "I've been banking with Wells Fargo for over 5 years now and the service has been consistently excellent. Their mobile app is user-friendly and the customer service team is always helpful and responsive. Highly recommended!",
+      "th": "ฉันใช้บริการธนาคาร Wells Fargo มากกว่า 5 ปีแล้ว และบริการดีอย่างต่อเนื่อง แอปมือถือใช้งานง่าย และทีมบริการลูกค้าช่วยเหลือดีและตอบสนองรวดเร็ว แนะนำเลยค่ะ!"
+    },
+    "date": "2025-10-15",
+    "verified": true,
+    "helpful": 24
+  },
+  {
+    "id": "rev-002",
+    "companyId": "1",
+    "reviewerName": "Michael Chen",
+    "reviewerInitials": "MC",
+    "rating": 4,
+    "title": "Good service, minor issues",
+    "content": {
+      "en": "Overall good experience. The only issue I've had is occasionally long wait times at the branch, but the staff always makes up for it with their professionalism.",
+      "th": "โดยรวมประสบการณ์ดี ปัญหาเดียวคือบางครั้งต้องรอนานที่สาขา แต่พนักงานชดเชยด้วยความเป็นมืออาชีพเสมอ"
+    },
+    "date": "2025-10-12",
+    "verified": true,
+    "helpful": 12,
+    "companyReply": {
+      "content": {
+        "en": "Thank you for your feedback, Michael. We're working on improving our wait times and appreciate your patience. Your satisfaction is our priority!",
+        "th": "ขอบคุณสำหรับความคิดเห็นของคุณ Michael เรากำลังพัฒนาเรื่องเวลารอและขอบคุณสำหรับความอดทนของคุณ ความพึงพอใจของคุณคือสิ่งสำคัญที่สุดสำหรับเรา!"
+      },
+      "date": "2025-10-13"
+    }
+  },
+  {
+    "id": "rev-003",
+    "companyId": "1",
+    "reviewerName": "Emily Rodriguez",
+    "reviewerInitials": "ER",
+    "rating": 5,
+    "title": "Best mobile banking app",
+    "content": {
+      "en": "The mobile app is fantastic! I can do everything I need - from checking balances to transferring money and paying bills. The security features give me peace of mind.",
+      "th": "แอปมือถือยอดเยี่ยม! ฉันสามารถทำทุกอย่างที่ต้องการ - ตั้งแต่เช็คยอดเงินไปจนถึงโอนเงินและจ่ายบิล ฟีเจอร์ความปลอดภัยทำให้มั่นใจได้"
+    },
+    "date": "2025-10-10",
+    "verified": true,
+    "helpful": 18
+  },
+  {
+    "id": "rev-004",
+    "companyId": "2",
+    "reviewerName": "David Thompson",
+    "reviewerInitials": "DT",
+    "rating": 5,
+    "title": "Outstanding investment services",
+    "content": {
+      "en": "Goldman Sachs has provided excellent investment advice and their platform is very professional. My portfolio has grown significantly thanks to their expertise.",
+      "th": "Goldman Sachs ให้คำแนะนำการลงทุนที่ยอดเยี่ยม และแพลตฟอร์มของพวกเขาเป็นมืออาชีพมาก พอร์ตโฟลิโอของฉันเติบโตอย่างมากด้วยความเชี่ยวชาญของพวกเขา"
+    },
+    "date": "2025-10-14",
+    "verified": true,
+    "helpful": 31
+  },
+  {
+    "id": "rev-005",
+    "companyId": "2",
+    "reviewerName": "Jennifer Lee",
+    "reviewerInitials": "JL",
+    "rating": 4,
+    "title": "Professional and reliable",
+    "content": {
+      "en": "Very professional service. The team is knowledgeable and always available to answer questions. Would give 5 stars if the fees were a bit lower.",
+      "th": "บริการเป็นมืออาชีพมาก ทีมงานมีความรู้และพร้อมตอบคำถามเสมอ จะให้ 5 ดาวถ้าค่าธรรมเนียมต่ำกว่านี้หน่อย"
+    },
+    "date": "2025-10-08",
+    "verified": true,
+    "helpful": 15
+  },
+  {
+    "id": "rev-006",
+    "companyId": "6",
+    "reviewerName": "Robert Martinez",
+    "reviewerInitials": "RM",
+    "rating": 5,
+    "title": "Great rewards program",
+    "content": {
+      "en": "The credit card rewards program is amazing! I've earned so many points and the customer service is top-notch. Highly recommend Citigroup for anyone looking for great benefits.",
+      "th": "โปรแกรมรีวอร์ดบัตรเครดิตยอดเยี่ยม! ฉันได้แต้มเยอะมาก และบริการลูกค้าเป็นเลิศ แนะนำ Citigroup สำหรับทุกคนที่มองหาสิทธิประโยชน์ที่ดี"
+    },
+    "date": "2025-10-11",
+    "verified": true,
+    "helpful": 22
+  },
+  {
+    "id": "rev-007",
+    "companyId": "15",
+    "reviewerName": "สมชาย วงศ์สุวรรณ",
+    "reviewerInitials": "SW",
+    "rating": 5,
+    "title": "ธนาคารที่ดีที่สุด",
+    "content": {
+      "en": "K-Bank has the best service in Thailand. The K-Plus app is so convenient and the staff at branches are always helpful. I've been a customer for 10 years!",
+      "th": "ธนาคารกสิกรไทยมีบริการที่ดีที่สุดในไทย แอป K-Plus สะดวกมาก และพนักงานที่สาขาช่วยเหลือดีเสมอ ฉันเป็นลูกค้ามา 10 ปีแล้ว!"
+    },
+    "date": "2025-10-13",
+    "verified": true,
+    "helpful": 45
+  },
+  {
+    "id": "rev-008",
+    "companyId": "15",
+    "reviewerName": "วิภา สุขใจ",
+    "reviewerInitials": "VS",
+    "rating": 4,
+    "title": "บริการดี แต่ควรเพิ่มสาขา",
+    "content": {
+      "en": "Very good service and the mobile app is excellent. However, I wish there were more branches in my area. Overall, very satisfied!",
+      "th": "บริการดีมาก และแอปมือถือเยี่ยม แต่อยากให้มีสาขาในพื้นที่ฉันมากกว่านี้ โดยรวมพึงพอใจมาก!"
+    },
+    "date": "2025-10-09",
+    "verified": true,
+    "helpful": 18
+  },
+  {
+    "id": "rev-009",
+    "companyId": "13",
+    "reviewerName": "ประเสริฐ ชัยวัฒน์",
+    "reviewerInitials": "PC",
+    "rating": 5,
+    "title": "SCB Easy ใช้งานง่ายมาก",
+    "content": {
+      "en": "SCB Easy app is incredibly user-friendly! I can do all my banking transactions easily. The QR payment feature is especially convenient. Excellent bank!",
+      "th": "แอป SCB Easy ใช้งานง่ายมากจริงๆ! ฉันสามารถทำธุรกรรมธนาคารทั้งหมดได้ง่าย ฟีเจอร์ชำระเงิน QR สะดวกเป็นพิเศษ ธนาคารเยี่ยม!"
+    },
+    "date": "2025-10-12",
+    "verified": true,
+    "helpful": 38,
+    "companyReply": {
+      "content": {
+        "en": "Thank you for your wonderful review! We're thrilled that you're enjoying SCB Easy. We'll continue to improve our services for you.",
+        "th": "ขอบคุณสำหรับรีวิวที่ดีมาก! เรายินดีที่คุณชอบใช้ SCB Easy เราจะพัฒนาบริการต่อไปเพื่อคุณ"
+      },
+      "date": "2025-10-13"
+    }
+  },
+  {
+    "id": "rev-010",
+    "companyId": "13",
+    "reviewerName": "กนกวรรณ สมบูรณ์",
+    "reviewerInitials": "KS",
+    "rating": 5,
+    "title": "ประทับใจการบริการ",
+    "content": {
+      "en": "Impressed with the service! The staff are very professional and the digital banking services are excellent. SCB is my go-to bank.",
+      "th": "ประทับใจการบริการมาก! พนักงานเป็นมืออาชีพมาก และบริการธนาคารดิจิทัลเยี่ยม SCB เป็นธนาคารหลักของฉัน"
+    },
+    "date": "2025-10-07",
+    "verified": true,
+    "helpful": 29
+  },
+  {
+    "id": "rev-011",
+    "companyId": "14",
+    "reviewerName": "อนุชา พงษ์ศรี",
+    "reviewerInitials": "AP",
+    "rating": 4,
+    "title": "ธนาคารที่น่าเชื่อถือ",
+    "content": {
+      "en": "Bangkok Bank is very reliable. I've been using their services for business and personal banking for years. The Bualuang mBanking app works great!",
+      "th": "ธนาคารกรุงเทพน่าเชื่อถือมาก ฉันใช้บริการสำหรับธุรกิจและบัญชีส่วนตัวมาหลายปี แอป Bualuang mBanking ใช้งานได้ดีมาก!"
+    },
+    "date": "2025-10-10",
+    "verified": true,
+    "helpful": 27
+  },
+  {
+    "id": "rev-012",
+    "companyId": "2",
+    "reviewerName": "Alexander Wright",
+    "reviewerInitials": "AW",
+    "rating": 5,
+    "title": "Top-tier investment banking",
+    "content": {
+      "en": "Goldman Sachs provides exceptional investment banking services. Their market insights are invaluable and the team is incredibly knowledgeable. Best in the industry!",
+      "th": "Goldman Sachs ให้บริการธนาคารเพื่อการลงทุนที่ยอดเยี่ยม ข้อมูลเชิงลึกของตลาดมีค่ามาก และทีมงานมีความรู้สูงมาก ดีที่สุดในอุตสาหกรรม!"
+    },
+    "date": "2025-10-11",
+    "verified": true,
+    "helpful": 42
+  },
+  {
+    "id": "rev-013",
+    "companyId": "4",
+    "reviewerName": "Patricia Williams",
+    "reviewerInitials": "PW",
+    "rating": 4,
+    "title": "Solid banking experience",
+    "content": {
+      "en": "U.S. Bancorp has been my bank for years. Good online banking features and responsive customer service. Sometimes the fees can be a bit high though.",
+      "th": "U.S. Bancorp เป็นธนาคารของฉันมาหลายปี ฟีเจอร์ธนาคารออนไลน์ดีและบริการลูกค้าตอบสนองดี แต่บางครั้งค่าธรรมเนียมค่อนข้างสูง"
+    },
+    "date": "2025-10-09",
+    "verified": true,
+    "helpful": 15
+  },
+  {
+    "id": "rev-014",
+    "companyId": "5",
+    "reviewerName": "James Anderson",
+    "reviewerInitials": "JA",
+    "rating": 5,
+    "title": "Excellent wealth management",
+    "content": {
+      "en": "Morgan Stanley's wealth management services are outstanding. My financial advisor is knowledgeable and always available. Highly professional team!",
+      "th": "บริการการจัดการความมั่งคั่งของ Morgan Stanley ยอดเยี่ยม ที่ปรึกษาทางการเงินของฉันมีความรู้และพร้อมให้บริการเสมอ ทีมที่เป็นมืออาชีพมาก!"
+    },
+    "date": "2025-10-14",
+    "verified": true,
+    "helpful": 33
+  },
+  {
+    "id": "rev-015",
+    "companyId": "7",
+    "reviewerName": "Linda Martinez",
+    "reviewerInitials": "LM",
+    "rating": 5,
+    "title": "Great customer service",
+    "content": {
+      "en": "Bank of America has excellent customer service. The mobile app is intuitive and I can easily manage all my accounts. Very satisfied customer!",
+      "th": "Bank of America มีบริการลูกค้าที่ยอดเยี่ยม แอปมือถือใช้งานง่ายและฉันสามารถจัดการบัญชีทั้งหมดได้อย่างง่ายดาย ลูกค้าที่พึงพอใจมาก!"
+    },
+    "date": "2025-10-13",
+    "verified": true,
+    "helpful": 28
+  }
+]
