@@ -16,40 +16,14 @@ export default function CTASection({ lang, translations: t }: CTASectionProps) {
   const router = useRouter();
 
   return (
-    <section className="py-20 px-4  dark:bg-gray-900">
+    <section className="py-20 px-4 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto">
         {/* CTA Card */}
-        <div className="relative bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl overflow-hidden">
+        <div className="relative bg-primary-500 rounded-3xl shadow-2xl overflow-hidden">
           {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 opacity-5">
             <div className="absolute inset-0 bg-grid-pattern"></div>
           </div>
-
-          {/* Animated Gradient Orbs */}
-          <motion.div
-            className="absolute -top-32 -left-32 w-96 h-96 bg-white/20 rounded-full blur-3xl"
-            animate={{
-              x: [0, 100, 0],
-              y: [0, 50, 0],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div
-            className="absolute -bottom-32 -right-32 w-96 h-96 bg-white/10 rounded-full blur-3xl"
-            animate={{
-              x: [0, -100, 0],
-              y: [0, -50, 0],
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
 
           <div className="relative px-8 py-16 md:px-12 md:py-20 text-center">
         <motion.div
@@ -132,7 +106,7 @@ export default function CTASection({ lang, translations: t }: CTASectionProps) {
           >
             <Button
               size="lg"
-              className="bg-white text-purple-600 font-semibold hover:bg-gray-100 shadow-lg"
+              className="bg-white text-primary-600 font-semibold hover:bg-gray-50 shadow-lg"
               onPress={() => router.push(`/${lang}/companies`)}
               endContent={
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,7 +119,7 @@ export default function CTASection({ lang, translations: t }: CTASectionProps) {
             <Button
               size="lg"
               variant="bordered"
-              className="border-2 border-white text-white font-semibold hover:bg-white/10"
+              className="border-2 border-white text-white font-semibold hover:bg-white/10 backdrop-blur-sm"
               onPress={() => router.push(`/${lang}/about`)}
             >
               {t.cta.learnMore}

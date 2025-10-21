@@ -27,7 +27,7 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
       className="relative py-20 px-4 md:py-32 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Animated Light Rays Background */}
+      {/* Subtle Background Decoration */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         {/* Additional ambient light effects */}
         <motion.div
@@ -76,7 +76,7 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center space-y-6">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-sm font-medium">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-200 text-sm font-medium">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
@@ -84,8 +84,30 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 py-4 mb-2">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white py-4 mb-2">
             {t.home.title}
+            <span className="relative inline-block">
+              <span className="relative z-10 text-primary-600 dark:text-primary-400">
+                {t.home.titleHighlight}
+              </span>
+              {/* Hand-written underline */}
+              <svg 
+                className="absolute -bottom-2 left-0 w-full h-3 text-primary-600 dark:text-primary-400"
+                viewBox="0 0 200 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M2 9C25 3 50 1 75 3C100 5 125 8 150 6C165 5 180 4 198 7"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+              </svg>
+            </span>
           </h1>
 
           {/* Subtitle */}
@@ -127,7 +149,7 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
           >
             <div className="p-4" role="listitem">
               <div 
-                className="text-3xl md:text-4xl font-bold text-blue-600 dark:text-blue-400"
+                className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400"
                 aria-label="15 plus companies"
               >
                 15+
@@ -138,7 +160,7 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
             </div>
             <div className="p-4" role="listitem">
               <div 
-                className="text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400"
+                className="text-3xl md:text-4xl font-bold text-secondary-600 dark:text-secondary-400"
                 aria-label="2000 plus reviews"
               >
                 2,000+
@@ -149,7 +171,7 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
             </div>
             <div className="p-4" role="listitem">
               <div 
-                className="text-3xl md:text-4xl font-bold text-pink-600 dark:text-pink-400"
+                className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400"
                 aria-label="Average rating 4.2 out of 5"
               >
                 4.2
@@ -179,10 +201,10 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
           }}
           className="flex flex-col items-center gap-1"
         >
-          <span className="text-sm font-medium text-gray-400 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          <span className="text-sm font-medium text-gray-400 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
             {t.cta.exploreCompanies}
           </span>
-          <svg className="w-6 h-6 text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </motion.div>

@@ -15,25 +15,25 @@ const categories = [
     id: "Fintech", 
     translationKey: "fintech",
     icon: "💳", 
-    gradient: "from-blue-500 to-cyan-500",
-    bgColor: "bg-blue-100 dark:bg-blue-900/30",
-    textColor: "text-blue-600 dark:text-blue-400"
+    bgColor: "bg-primary-100 dark:bg-primary-900/30",
+    textColor: "text-primary-600 dark:text-primary-400",
+    hoverBg: "hover:bg-primary-200 dark:hover:bg-primary-800/40"
   },
   { 
     id: "Broker", 
     translationKey: "broker",
     icon: "📈", 
-    gradient: "from-purple-500 to-pink-500",
-    bgColor: "bg-purple-100 dark:bg-purple-900/30",
-    textColor: "text-purple-600 dark:text-purple-400"
+    bgColor: "bg-secondary-100 dark:bg-secondary-900/30",
+    textColor: "text-secondary-600 dark:text-secondary-400",
+    hoverBg: "hover:bg-secondary-200 dark:hover:bg-secondary-800/40"
   },
   { 
     id: "Payment", 
     translationKey: "payment",
     icon: "💰", 
-    gradient: "from-green-500 to-emerald-500",
-    bgColor: "bg-green-100 dark:bg-green-900/30",
-    textColor: "text-green-600 dark:text-green-400"
+    bgColor: "bg-success-100 dark:bg-success-900/30",
+    textColor: "text-success-600 dark:text-success-400",
+    hoverBg: "hover:bg-success-200 dark:hover:bg-success-800/40"
   },
 ];
 
@@ -60,9 +60,9 @@ export default function CategoriesSection({ translations: t, onCategoryClick }: 
             <motion.button
               key={category.id}
               onClick={() => onCategoryClick(category.id)}
-              className={`group relative px-6 py-4 rounded-2xl ${category.bgColor} 
-                border-2 border-transparent hover:border-current transition-all
-                shadow-md hover:shadow-xl`}
+              className={`px-6 py-4 rounded-2xl ${category.bgColor} ${category.hoverBg}
+                border-2 border-transparent ${category.textColor}
+                shadow-md hover:shadow-xl transition-all`}
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
@@ -79,21 +79,11 @@ export default function CategoriesSection({ translations: t, onCategoryClick }: 
                   {category.icon}
                 </motion.span>
                 <div className="text-left">
-                  <div className={`text-lg font-bold ${category.textColor}`}>
+                  <div className="text-lg font-bold">
                     {t.companies.categories[category.translationKey as keyof typeof t.companies.categories]}
                   </div>
-                  {/* <div className="text-xs text-gray-500 dark:text-gray-400">
-                    {t.home.viewReviews}
-                  </div> */}
                 </div>
               </div>
-              
-              {/* Gradient overlay on hover */}
-              <motion.div 
-                className={`absolute inset-0 rounded-2xl bg-linear-to-r ${category.gradient} opacity-0 
-                  group-hover:opacity-10 transition-opacity`}
-                aria-hidden="true"
-              />
             </motion.button>
           ))}
         </motion.div>

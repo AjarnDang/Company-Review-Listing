@@ -33,7 +33,8 @@ export const en: TranslationKeys = {
   
   // Home Page
   home: {
-    title: "Find Financial Companies You Can Trust",
+    title: "Find Financial Companies You Can ",
+    titleHighlight: "Trust",
     subtitle: "Read real user reviews and find the best Fintech, Broker, and Payment companies for you",
     searchPlaceholder: "Search company name...",
     searchButton: "Search",

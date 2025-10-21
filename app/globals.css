@@ -4,8 +4,31 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fefefe;
+  --foreground: #222222;
+  
+  /* Brand Colors */
+  --color-primary: #455ac9;
+  --color-secondary: #6f84fb;
+  --color-text: #222222;
+  --color-white: #fefefe;
+  
+  /* Derived Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  
+  /* Gray Scale */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
 }
 
 @theme inline {
@@ -13,12 +36,73 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-noto-sans);
   --font-mono: var(--font-noto-sans);
+  
+  /* Brand Colors */
+  --color-primary-*: initial;
+  --color-primary-50: #eef0fc;
+  --color-primary-100: #d9dff8;
+  --color-primary-200: #b3bff1;
+  --color-primary-300: #8c9eea;
+  --color-primary-400: #6678e3;
+  --color-primary-500: #455ac9;
+  --color-primary-600: #3748a1;
+  --color-primary-700: #293679;
+  --color-primary-800: #1c2450;
+  --color-primary-900: #0e1228;
+  
+  --color-secondary-*: initial;
+  --color-secondary-50: #f0f3fe;
+  --color-secondary-100: #dde4fd;
+  --color-secondary-200: #bbc9fb;
+  --color-secondary-300: #99aef9;
+  --color-secondary-400: #7793f7;
+  --color-secondary-500: #6f84fb;
+  --color-secondary-600: #5869c9;
+  --color-secondary-700: #414e97;
+  --color-secondary-800: #2a3464;
+  --color-secondary-900: #151a32;
+  
+  --color-success-*: initial;
+  --color-success-50: #ecfdf5;
+  --color-success-100: #d1fae5;
+  --color-success-200: #a7f3d0;
+  --color-success-300: #6ee7b7;
+  --color-success-400: #34d399;
+  --color-success-500: #10b981;
+  --color-success-600: #059669;
+  --color-success-700: #047857;
+  --color-success-800: #065f46;
+  --color-success-900: #064e3b;
+  
+  --color-warning-*: initial;
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-200: #fde68a;
+  --color-warning-300: #fcd34d;
+  --color-warning-400: #fbbf24;
+  --color-warning-500: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  --color-warning-800: #92400e;
+  --color-warning-900: #78350f;
+  
+  --color-danger-*: initial;
+  --color-danger-50: #fef2f2;
+  --color-danger-100: #fee2e2;
+  --color-danger-200: #fecaca;
+  --color-danger-300: #fca5a5;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-danger-800: #991b1b;
+  --color-danger-900: #7f1d1d;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #fefefe;
   }
 }
 
@@ -88,7 +172,7 @@ html {
 
 /* Focus Visible Styles - WCAG AA compliant */
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -96,18 +180,18 @@ html {
 /* High contrast focus for buttons and links */
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid #3b82f6;
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
 
 /* Focus styles for dark mode */
 .dark *:focus-visible {
-  outline-color: #60a5fa;
+  outline-color: var(--color-secondary);
 }
 
 .dark button:focus-visible,
 .dark a:focus-visible {
-  outline-color: #60a5fa;
+  outline-color: var(--color-secondary);
 }
 
 /* Reduced motion for accessibility */

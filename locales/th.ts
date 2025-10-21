@@ -31,7 +31,8 @@ export const th = {
   
   // Home Page
   home: {
-    title: "ค้นหาบริษัทการเงินที่คุณวางใจได้",
+    title: "ค้นหาบริษัทการเงินที่คุณ",
+    titleHighlight: "วางใจได้",
     subtitle: "อ่านรีวิวจากผู้ใช้งานจริง ค้นหาบริษัทการเงิน Fintech Broker และ Payment ที่เหมาะกับคุณ",
     searchPlaceholder: "ค้นหาชื่อบริษัท...",
     searchButton: "ค้นหา",
