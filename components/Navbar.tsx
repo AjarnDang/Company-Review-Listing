@@ -17,6 +17,7 @@ import { getDictionary } from "@/lib/get-dictionary";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
 import FinScopeLogo from "@/public/logo/FinScopeLogo.png";
+import { usePathname } from "next/navigation";
 
 interface NavbarProps {
   lang: Locale;
@@ -24,7 +25,15 @@ interface NavbarProps {
 
 export default function App({ lang }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const pathname = usePathname();
   const t = getDictionary(lang);
+
+  const isActive = (path: string) => {
+    if (path === `/${lang}`) {
+      return pathname === `/${lang}`;
+    }
+    return pathname?.startsWith(path);
+  };
 
   const menuItems = [
     { key: "profile", label: t.menu.profile },
@@ -53,24 +62,36 @@ export default function App({ lang }: NavbarProps) {
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href={`/${lang}`}>
+        <NavbarItem isActive={isActive(`/${lang}`)}>
+          <Link 
+            color={isActive(`/${lang}`) ? "primary" : "foreground"} 
+            href={`/${lang}`}
+            aria-current={isActive(`/${lang}`) ? "page" : undefined}
+          >
             {t.navbar.home}
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href={`/${lang}/companies`}>
+        <NavbarItem isActive={isActive(`/${lang}/companies`)}>
+          <Link 
+            color={isActive(`/${lang}/companies`) ? "primary" : "foreground"} 
+            href={`/${lang}/companies`}
+            aria-current={isActive(`/${lang}/companies`) ? "page" : undefined}
+          >
             {t.navbar.companies}
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href={`/${lang}/about`}>
+        <NavbarItem isActive={isActive(`/${lang}/about`)}>
+          <Link 
+            color={isActive(`/${lang}/about`) ? "primary" : "foreground"} 
+            href={`/${lang}/about`}
+            aria-current={isActive(`/${lang}/about`) ? "page" : undefined}
+          >
             {t.navbar.about}
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem>
+        <NavbarItem className="hidden md:flex">
           <LanguageSwitcher currentLang={lang} />
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">

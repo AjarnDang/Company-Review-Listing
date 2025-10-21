@@ -4,6 +4,7 @@ import React from 'react'
 import type { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/get-dictionary'
 import { Link } from '@heroui/react'
+import LanguageSwitcher from './LanguageSwitcher'
 
 interface FooterProps {
   lang: Locale;
@@ -77,8 +78,9 @@ export default function Footer({ lang }: FooterProps) {
         </div>
         
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-sm text-gray-600 dark:text-gray-400">
-          {t.footer.copyright}
+        <div className="mt-8 pt-8 border-t flex flex-wrap justify-between items-center gap-4 border-gray-200 dark:border-gray-800 text-center text-sm text-gray-600 dark:text-gray-400">
+          <LanguageSwitcher currentLang={lang} />
+          <p className="text-center">{t.footer.copyright}</p>
         </div>
       </div>
     </footer>

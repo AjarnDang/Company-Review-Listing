@@ -85,7 +85,7 @@ export default function CTASection({ lang, translations: t }: CTASectionProps) {
                   className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
                 >
                   {/* Left Side - Icon & Title */}
-                  <div className="flex items-start justify-end gap-4 col-span-1">
+                  <div className="flex items-start justify-start md:justify-end gap-4 col-span-1">
                     <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
                       {feature.title}
                     </h3>

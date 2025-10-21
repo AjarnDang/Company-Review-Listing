@@ -42,7 +42,7 @@ export default function CategorySection({
     <section className="py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center flex-wrap gap-4 justify-between mb-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}

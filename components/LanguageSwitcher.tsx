@@ -5,7 +5,6 @@ import { Button } from "@heroui/react";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import type { Locale } from "@/i18n.config";
-import { i18n } from "@/i18n.config";
 
 interface LanguageSwitcherProps {
   currentLang: Locale;

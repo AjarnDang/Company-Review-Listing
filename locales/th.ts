@@ -6,7 +6,7 @@ export const th = {
     features: "คุณสมบัติ",
     customers: "ลูกค้า",
     integrations: "การผลิตภัณฑ์",
-    companies: "บริษัททั้งหมด",
+    companies: "บริษัท",
     reviews: "รีวิว",
     about: "เกี่ยวกับ",
     login: "เข้าสู่ระบบ",
