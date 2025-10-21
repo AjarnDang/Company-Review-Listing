@@ -1,11 +1,13 @@
 "use client";
 
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useEffect, useState, useRef } from 'react';
 import type { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/get-dictionary';
 import { generateCompanyListSchema } from '@/lib/seo';
 import HeroSection from '@/components/landing/HeroSection';
 import CategoriesSection from '@/components/landing/CategoriesSection';
+import CTASection from '@/components/landing/CTASection';
+import ReviewsSection from '@/components/landing/ReviewsSection';
 import SearchModal from '@/components/search/SearchModal';
 import CategorySection from '@/components/company/CategorySection';
 import { StateWrapper } from '@/components/states';
@@ -26,12 +28,18 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
   const { lang } = use(params);
   const t = getDictionary(lang);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const companiesRef = useRef<HTMLDivElement>(null);
 
   // Fetch companies data
   const { data: companies, isLoading, error, refetch } = useAsyncData({
     fetchFn: fetchCompanies,
     dependencies: [],
   });
+
+  // Scroll to companies section
+  const scrollToCompanies = () => {
+    companiesRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   // Handle category click - navigate to category page
   const handleCategoryClick = (category?: string) => {
@@ -76,7 +84,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       {/* Hero Section */}
       <HeroSection 
         translations={t} 
-        onScrollToCompanies={() => {}}
+        onScrollToCompanies={scrollToCompanies}
         onSearchClick={() => setIsSearchModalOpen(true)}
       />
 
@@ -95,42 +103,43 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       />
 
       {/* Category Sections - Best in Each Category */}
-      <StateWrapper
-        translations={t}
-        lang={lang}
-        isLoading={isLoading}
-        error={error}
-        isEmpty={!companies || companies.length === 0}
-        loadingType="card"
-        loadingCount={12}
-        loadingMessage={t.states.loading.companies}
-        emptyTitle={t.states.empty.companies}
-        onRetry={refetch}
-      >
-        <>
-          <CategorySection
-            category="Fintech"
-            companies={companies || []}
-            translations={t}
-            lang={lang}
-            maxItems={4}
-          />
-          <CategorySection
-            category="Broker"
-            companies={companies || []}
-            translations={t}
-            lang={lang}
-            maxItems={4}
-          />
-          <CategorySection
-            category="Payment"
-            companies={companies || []}
-            translations={t}
-            lang={lang}
-            maxItems={4}
-          />
-        </>
-      </StateWrapper>
+      <div ref={companiesRef}>
+        <StateWrapper
+          translations={t}
+          lang={lang}
+          isLoading={isLoading}
+          error={error}
+          isEmpty={!companies || companies.length === 0}
+          loadingType="card"
+          loadingCount={12}
+          loadingMessage={t.states.loading.companies}
+          emptyTitle={t.states.empty.companies}
+          onRetry={refetch}
+        >
+          <>
+            <CategorySection
+              category="Broker"
+              companies={companies || []}
+              translations={t}
+              lang={lang}
+              maxItems={4}
+            />
+            <CategorySection
+              category="Payment"
+              companies={companies || []}
+              translations={t}
+              lang={lang}
+              maxItems={4}
+            />
+          </>
+        </StateWrapper>
+      </div>
+
+      {/* CTA Section */}
+      <CTASection lang={lang} />
+
+      {/* Reviews Section */}
+      <ReviewsSection lang={lang} />
     </div>
   );
 }
