@@ -5,48 +5,53 @@ import { Button } from "@heroui/react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import type { Locale } from "@/i18n.config";
+import type { TranslationKeys } from "@/locales/th";
 
 interface CTASectionProps {
   lang: Locale;
+  translations: TranslationKeys;
 }
 
-export default function CTASection({ lang }: CTASectionProps) {
+export default function CTASection({ lang, translations: t }: CTASectionProps) {
   const router = useRouter();
 
   return (
-    <section className="py-20 px-4 bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-grid-pattern"></div>
-      </div>
+    <section className="py-20 px-4  dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto">
+        {/* CTA Card */}
+        <div className="relative bg-linear-to-br from-blue-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 bg-grid-pattern"></div>
+          </div>
 
-      {/* Animated Gradient Orbs */}
-      <motion.div
-        className="absolute -top-32 -left-32 w-96 h-96 bg-white/20 rounded-full blur-3xl"
-        animate={{
-          x: [0, 100, 0],
-          y: [0, 50, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className="absolute -bottom-32 -right-32 w-96 h-96 bg-white/10 rounded-full blur-3xl"
-        animate={{
-          x: [0, -100, 0],
-          y: [0, -50, 0],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+          {/* Animated Gradient Orbs */}
+          <motion.div
+            className="absolute -top-32 -left-32 w-96 h-96 bg-white/20 rounded-full blur-3xl"
+            animate={{
+              x: [0, 100, 0],
+              y: [0, 50, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute -bottom-32 -right-32 w-96 h-96 bg-white/10 rounded-full blur-3xl"
+            animate={{
+              x: [0, -100, 0],
+              y: [0, -50, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
 
-      <div className="relative max-w-4xl mx-auto text-center">
+          <div className="relative px-8 py-16 md:px-12 md:py-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,17 +64,17 @@ export default function CTASection({ lang }: CTASectionProps) {
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
             </svg>
-            We&apos;re FinScope
+            {t.cta.badge}
           </div>
 
           {/* Heading */}
           <h2 className="text-3xl md:text-5xl font-bold text-white">
-            Empowering Trust in Financial Services
+            {t.cta.title}
           </h2>
 
           {/* Description */}
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-            We&apos;re a review platform that&apos;s open to everyone. Our vision is to become the universal symbol of trust — by empowering people to shop with confidence, and helping companies improve.
+            {t.cta.description}
           </p>
 
           {/* Features Grid */}
@@ -82,9 +87,9 @@ export default function CTASection({ lang }: CTASectionProps) {
               className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-left"
             >
               <div className="text-3xl mb-3">🎯</div>
-              <h3 className="text-lg font-semibold text-white mb-2">Transparent Reviews</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t.cta.features.transparent.title}</h3>
               <p className="text-sm text-white/80">
-                Honest feedback from real customers to help you make informed decisions
+                {t.cta.features.transparent.description}
               </p>
             </motion.div>
 
@@ -96,9 +101,9 @@ export default function CTASection({ lang }: CTASectionProps) {
               className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-left"
             >
               <div className="text-3xl mb-3">🤝</div>
-              <h3 className="text-lg font-semibold text-white mb-2">Community Driven</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t.cta.features.community.title}</h3>
               <p className="text-sm text-white/80">
-                Built by the community, for the community. Every voice matters
+                {t.cta.features.community.description}
               </p>
             </motion.div>
 
@@ -110,9 +115,9 @@ export default function CTASection({ lang }: CTASectionProps) {
               className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-left"
             >
               <div className="text-3xl mb-3">⚡</div>
-              <h3 className="text-lg font-semibold text-white mb-2">Always Improving</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t.cta.features.improving.title}</h3>
               <p className="text-sm text-white/80">
-                Continuously evolving to serve you better with new features
+                {t.cta.features.improving.description}
               </p>
             </motion.div>
           </div>
@@ -135,7 +140,7 @@ export default function CTASection({ lang }: CTASectionProps) {
                 </svg>
               }
             >
-              Explore Companies
+              {t.cta.exploreCompanies}
             </Button>
             <Button
               size="lg"
@@ -143,10 +148,12 @@ export default function CTASection({ lang }: CTASectionProps) {
               className="border-2 border-white text-white font-semibold hover:bg-white/10"
               onPress={() => router.push(`/${lang}/about`)}
             >
-              Learn More About Us
+              {t.cta.learnMore}
             </Button>
           </motion.div>
         </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

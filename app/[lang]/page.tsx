@@ -136,10 +136,10 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       </div>
 
       {/* CTA Section */}
-      <CTASection lang={lang} />
+      <CTASection lang={lang} translations={t} />
 
       {/* Reviews Section */}
-      <ReviewsSection lang={lang} />
+      <ReviewsSection lang={lang} translations={t} />
     </div>
   );
 }

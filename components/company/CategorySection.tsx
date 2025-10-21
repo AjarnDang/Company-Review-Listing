@@ -49,10 +49,10 @@ export default function CategorySection({
             viewport={{ once: true }}
           >
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-              Best in {category}
+              {t.category.bestIn.replace('{{category}}', category)}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mt-1">
-              Top rated {category.toLowerCase()} companies
+              {t.category.topRated.replace('{{category}}', category.toLowerCase())}
             </p>
           </motion.div>
 
@@ -71,7 +71,7 @@ export default function CategorySection({
                 </svg>
               }
             >
-              See More
+              {t.category.seeMore}
             </Button>
           </motion.div>
         </div>

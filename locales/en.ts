@@ -69,6 +69,7 @@ export const en: TranslationKeys = {
   companies: {
     title: "All Companies",
     subtitle: "Browse and read reviews of companies you're interested in",
+    exploreAll: "Explore all financial companies and find the best one for you",
     readMore: "Read Reviews",
     viewDetails: "View Details",
     reviews: "reviews",
@@ -148,5 +149,47 @@ export const en: TranslationKeys = {
       goHome: "Go Home",
       contactSupport: "Contact Support",
     },
+  },
+
+  // CTA Section
+  cta: {
+    badge: "We're FinScope",
+    title: "Empowering Trust in Financial Services",
+    description: "We're a review platform that's open to everyone. Our vision is to become the universal symbol of trust — by empowering people to shop with confidence, and helping companies improve.",
+    features: {
+      transparent: {
+        title: "Transparent Reviews",
+        description: "Honest feedback from real customers to help you make informed decisions",
+      },
+      community: {
+        title: "Community Driven",
+        description: "Built by the community, for the community. Every voice matters",
+      },
+      improving: {
+        title: "Always Improving",
+        description: "Continuously evolving to serve you better with new features",
+      },
+    },
+    exploreCompanies: "Explore Companies",
+    learnMore: "Learn More About Us",
+  },
+
+  // Testimonials
+  testimonials: {
+    badge: "Testimonials",
+    title: "What Our Users Say",
+    subtitle: "Join thousands of satisfied users who trust FinScope for honest, reliable financial service reviews",
+    shareExperience: "Want to share your experience?",
+    writeReview: "Write a Review",
+    browseCompanies: "Browse All Companies",
+    verifiedReview: "Verified Review",
+  },
+
+  // Category Pages
+  category: {
+    exploreText: "Explore the best {{category}} companies",
+    bestIn: "Best in {{category}}",
+    topRated: "Top rated {{category}} companies",
+    seeMore: "See More",
   },
 };

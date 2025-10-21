@@ -6,9 +6,11 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import ReviewCard from "./ReviewCard";
 import type { Locale } from "@/i18n.config";
+import type { TranslationKeys } from "@/locales/th";
 
 interface ReviewsSectionProps {
   lang: Locale;
+  translations: TranslationKeys;
 }
 
 const reviews = [
@@ -62,7 +64,7 @@ const reviews = [
   },
 ];
 
-export default function ReviewsSection({ lang }: ReviewsSectionProps) {
+export default function ReviewsSection({ lang, translations: t }: ReviewsSectionProps) {
   const router = useRouter();
 
   return (
@@ -80,13 +82,13 @@ export default function ReviewsSection({ lang }: ReviewsSectionProps) {
               <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
               <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
             </svg>
-            Testimonials
+            {t.testimonials.badge}
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-            What Our Users Say
+            {t.testimonials.title}
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Join thousands of satisfied users who trust FinScope for honest, reliable financial service reviews
+            {t.testimonials.subtitle}
           </p>
         </motion.div>
 
@@ -100,7 +102,7 @@ export default function ReviewsSection({ lang }: ReviewsSectionProps) {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <ReviewCard {...review} />
+              <ReviewCard {...review} translations={t} />
             </motion.div>
           ))}
         </div>
@@ -113,7 +115,7 @@ export default function ReviewsSection({ lang }: ReviewsSectionProps) {
           className="text-center"
         >
           <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Want to share your experience?
+            {t.testimonials.shareExperience}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -127,7 +129,7 @@ export default function ReviewsSection({ lang }: ReviewsSectionProps) {
                 </svg>
               }
             >
-              Write a Review
+              {t.testimonials.writeReview}
             </Button>
             <Button
               size="lg"
@@ -135,7 +137,7 @@ export default function ReviewsSection({ lang }: ReviewsSectionProps) {
               className="font-semibold"
               onPress={() => router.push(`/${lang}/companies`)}
             >
-              Browse All Companies
+              {t.testimonials.browseCompanies}
             </Button>
           </div>
         </motion.div>

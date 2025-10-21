@@ -84,7 +84,7 @@ export default function CategoryPage({
                 {categoryName} {t.companies.title}
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                Explore the best {categoryName.toLowerCase()} companies
+                {t.category.exploreText.replace('{{category}}', categoryName.toLowerCase())}
               </p>
             </div>
           </div>

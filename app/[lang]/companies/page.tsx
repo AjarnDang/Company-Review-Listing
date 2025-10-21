@@ -79,7 +79,7 @@ export default function CompaniesPage({
                 {t.companies.title}
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                Explore all financial companies and find the best one for you
+                {t.companies.exploreAll}
               </p>
             </div>
           </div>
