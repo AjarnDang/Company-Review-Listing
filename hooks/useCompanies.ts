@@ -6,6 +6,7 @@ import type { Company, CompanyCategory } from "@/types/company";
 interface UseCompaniesOptions {
   companies: Company[];
   itemsPerPage?: number;
+  initialSearchTerm?: string;
 }
 
 interface UseCompaniesReturn {
@@ -38,8 +39,9 @@ interface UseCompaniesReturn {
 export function useCompanies({
   companies,
   itemsPerPage = 9,
+  initialSearchTerm = "",
 }: UseCompaniesOptions): UseCompaniesReturn {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [selectedCategories, setSelectedCategories] = useState<CompanyCategory[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 

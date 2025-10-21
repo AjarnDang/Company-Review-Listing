@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { Modal, ModalContent, ModalHeader, ModalBody, Input, Button, Chip } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { TranslationKeys } from "@/locales/th";
@@ -11,7 +12,7 @@ interface SearchModalProps {
   isOpen: boolean;
   onClose: () => void;
   translations: TranslationKeys;
-  onSearch: (query: string) => void;
+  lang: string;
   companies?: Company[];
 }
 
@@ -19,12 +20,13 @@ export default function SearchModal({
   isOpen, 
   onClose, 
   translations: t,
-  onSearch,
+  lang,
   companies = []
 }: SearchModalProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const { recentSearches, addRecentSearch, clearRecentSearches, removeRecentSearch } = useSearch();
   const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   // Focus input when modal opens
   useEffect(() => {
@@ -60,7 +62,8 @@ export default function SearchModal({
     const trimmedQuery = query.trim();
     if (trimmedQuery) {
       addRecentSearch(trimmedQuery);
-      onSearch(trimmedQuery);
+      // Navigate to search page with query
+      router.push(`/${lang}/search?query=${encodeURIComponent(trimmedQuery)}`);
       onClose();
       setSearchQuery("");
     }

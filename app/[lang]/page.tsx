@@ -1,18 +1,15 @@
 "use client";
 
-import React, { useRef, use, useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import type { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/get-dictionary';
 import { generateCompanyListSchema } from '@/lib/seo';
 import HeroSection from '@/components/landing/HeroSection';
 import CategoriesSection from '@/components/landing/CategoriesSection';
 import SearchModal from '@/components/search/SearchModal';
-import CompanyCard from '@/components/company/CompanyCard';
-import CompanyFilters from '@/components/company/CompanyFilters';
-import CompanyPagination from '@/components/company/CompanyPagination';
+import CategorySection from '@/components/company/CategorySection';
 import { StateWrapper } from '@/components/states';
 import { useAsyncData } from '@/hooks/useAsyncData';
-import { useCompanies } from '@/hooks/useCompanies';
 import type { Company } from '@/types/company';
 
 // Fetch companies data
@@ -28,7 +25,6 @@ async function fetchCompanies(): Promise<Company[]> {
 export default function HomePage({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = use(params);
   const t = getDictionary(lang);
-  const companiesRef = useRef<HTMLDivElement>(null);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   // Fetch companies data
@@ -37,47 +33,11 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
     dependencies: [],
   });
 
-  // Manage filters and pagination
-  const {
-    displayedCompanies,
-    searchTerm,
-    setSearchTerm,
-    selectedCategories,
-    setSelectedCategories,
-    currentPage,
-    setCurrentPage,
-    totalPages,
-    startIndex,
-    endIndex,
-    totalCount,
-    filteredCount,
-    clearFilters,
-  } = useCompanies({
-    companies: companies || [],
-    itemsPerPage: 9,
-  });
-
-  // Scroll to companies section
-  const scrollToCompanies = () => {
-    companiesRef.current?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start',
-    });
-  };
-
-  // Handle category click
+  // Handle category click - navigate to category page
   const handleCategoryClick = (category?: string) => {
     if (category && (category === "Fintech" || category === "Broker" || category === "Payment")) {
-      // Set the selected category and scroll to companies
-      setSelectedCategories([category]);
+      window.location.href = `/${lang}/category/${category.toLowerCase()}`;
     }
-    scrollToCompanies();
-  };
-
-  // Handle search
-  const handleSearch = (query: string) => {
-    setSearchTerm(query);
-    scrollToCompanies();
   };
 
   // Keyboard shortcut for search (Cmd/Ctrl + K)
@@ -116,7 +76,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       {/* Hero Section */}
       <HeroSection 
         translations={t} 
-        onScrollToCompanies={scrollToCompanies}
+        onScrollToCompanies={() => {}}
         onSearchClick={() => setIsSearchModalOpen(true)}
       />
 
@@ -125,7 +85,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
         isOpen={isSearchModalOpen}
         onClose={() => setIsSearchModalOpen(false)}
         translations={t}
-        onSearch={handleSearch}
+        lang={lang}
         companies={companies}
       />
 
@@ -135,90 +95,43 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
         onCategoryClick={handleCategoryClick}
       />
 
-      {/* Companies Section */}
-      <section 
-        ref={companiesRef}
-        className="py-16 px-4 bg-gray-50 dark:bg-gray-900"
-        aria-labelledby="companies-heading"
+      {/* Category Sections - Best in Each Category */}
+      <StateWrapper
+        translations={t}
+        lang={lang}
+        isLoading={isLoading}
+        error={error}
+        isEmpty={!companies || companies.length === 0}
+        loadingType="card"
+        loadingCount={12}
+        loadingMessage={t.states.loading.companies}
+        emptyTitle={t.states.empty.companies}
+        onRetry={refetch}
       >
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <h2 id="companies-heading" className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-              {t.companies.title}
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              {t.companies.subtitle}
-            </p>
-          </div>
-
-          {/* Filters */}
-          <div className="mb-8">
-            <CompanyFilters
-              translations={t}
-              searchTerm={searchTerm}
-              onSearchChange={setSearchTerm}
-              selectedCategories={selectedCategories}
-              onCategoriesChange={setSelectedCategories}
-              onClear={clearFilters}
-              totalResults={totalCount}
-              filteredResults={filteredCount}
-            />
-          </div>
-
-          {/* Company Grid with State Management */}
-          <StateWrapper
+        <>
+          <CategorySection
+            category="Fintech"
+            companies={companies || []}
             translations={t}
             lang={lang}
-            isLoading={isLoading}
-            error={error}
-            isEmpty={filteredCount === 0}
-            loadingType="card"
-            loadingCount={9}
-            loadingMessage={t.states.loading.companies}
-            emptyTitle={t.states.empty.companies}
-            emptyMessage={
-              searchTerm || selectedCategories.length > 0
-                ? t.states.empty.tryAdjusting
-                : undefined
-            }
-            onClearFilters={clearFilters}
-            onRetry={refetch}
-            showClearButton={searchTerm.length > 0 || selectedCategories.length > 0}
-          >
-            <>
-              {/* Company Grid */}
-              <div 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
-                role="list"
-                aria-label={t.companies.title}
-              >
-                {displayedCompanies.map((company) => (
-                  <div key={company.id} role="listitem">
-                    <CompanyCard
-                      company={company}
-                      translations={t}
-                      lang={lang}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              {/* Pagination */}
-              <CompanyPagination
-                translations={t}
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-                itemsPerPage={9}
-                totalItems={filteredCount}
-                startIndex={startIndex}
-                endIndex={endIndex}
-              />
-            </>
-          </StateWrapper>
-        </div>
-      </section>
+            maxItems={4}
+          />
+          <CategorySection
+            category="Broker"
+            companies={companies || []}
+            translations={t}
+            lang={lang}
+            maxItems={4}
+          />
+          <CategorySection
+            category="Payment"
+            companies={companies || []}
+            translations={t}
+            lang={lang}
+            maxItems={4}
+          />
+        </>
+      </StateWrapper>
     </div>
   );
 }

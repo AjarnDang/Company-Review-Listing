@@ -1,14 +1,12 @@
 "use client";
 
 import React from "react";
-import { Input, Select, SelectItem, Button, Chip } from "@heroui/react";
-import type { CompanyCategory, COMPANY_CATEGORIES } from "@/types/company";
+import { Button, Chip } from "@heroui/react";
+import type { CompanyCategory } from "@/types/company";
 import type { TranslationKeys } from "@/locales/th";
 
 interface CompanyFiltersProps {
   translations: TranslationKeys;
-  searchTerm: string;
-  onSearchChange: (value: string) => void;
   selectedCategories: CompanyCategory[];
   onCategoriesChange: (categories: CompanyCategory[]) => void;
   onClear: () => void;
@@ -20,8 +18,6 @@ const CATEGORIES: CompanyCategory[] = ["Fintech", "Broker", "Payment"];
 
 export default function CompanyFilters({
   translations: t,
-  searchTerm,
-  onSearchChange,
   selectedCategories,
   onCategoriesChange,
   onClear,
@@ -36,52 +32,27 @@ export default function CompanyFilters({
     }
   };
 
-  const hasActiveFilters = searchTerm.length > 0 || selectedCategories.length > 0;
+  const hasActiveFilters = selectedCategories.length > 0;
 
   return (
-    <div className="space-y-6" role="search" aria-label={t.companies.searchCompanies}>
-      {/* Search Bar */}
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex-1">
-          <Input
-            type="search"
-            placeholder={t.home.searchPlaceholder}
-            value={searchTerm}
-            onChange={(e) => onSearchChange(e.target.value)}
-            size="lg"
-            aria-label={t.companies.searchCompanies}
-            startContent={
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            }
-            isClearable
-            onClear={() => onSearchChange("")}
-          />
-        </div>
-        
-        {hasActiveFilters && (
-          <Button
-            color="default"
-            variant="flat"
-            size="lg"
-            onPress={onClear}
-            startContent={
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            }
-          >
-            {t.states.empty.clearFilters}
-          </Button>
-        )}
-      </div>
-
+    <div className="space-y-6">
       {/* Category Filter */}
       <div role="group" aria-label={t.companies.filterByCategory}>
-        <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3" id="category-filter-label">
-          {t.companies.filterByCategory}
-        </h3>
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300" id="category-filter-label">
+            {t.companies.filterByCategory}
+          </h3>
+          {hasActiveFilters && (
+            <Button
+              size="sm"
+              variant="light"
+              onPress={onClear}
+              className="text-xs"
+            >
+              {t.states.empty.clearFilters}
+            </Button>
+          )}
+        </div>
         <div className="flex flex-wrap gap-2" role="group" aria-labelledby="category-filter-label">
           {CATEGORIES.map((category) => {
             const isSelected = selectedCategories.includes(category);

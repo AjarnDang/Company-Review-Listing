@@ -76,77 +76,77 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
         aria-label={`${company.name} - ${t.companies.rating} ${company.averageScore.toFixed(1)}`}
       >
         <CardBody className="p-6 space-y-4">
-        {/* Logo and Category */}
-        <div className="flex items-start justify-between gap-4">
-          <div className="w-24 h-12 relative flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
-            <Image
-              src={company.logo}
-              alt={`${company.name} logo`}
-              width={96}
-              height={48}
-              className="object-contain"
-            />
-          </div>
-          <Chip 
-            color={getCategoryColor(company.category)}
-            variant="flat"
-            size="sm"
-          >
-            {company.category}
-          </Chip>
-        </div>
-
-        {/* Company Name */}
-        <div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 line-clamp-1">
-            {company.name}
-          </h3>
-        </div>
-
-        {/* Rating */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <div 
-              role="img" 
-              aria-label={`${t.companies.rating}: ${company.averageScore.toFixed(1)} ${t.pagination.of} 5`}
-            >
-              {renderStars(company.averageScore)}
+          {/* Logo and Category */}
+          <div className="flex items-start justify-between gap-4">
+            <div className="w-24 h-12 relative flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
+              <Image
+                src={company.logo}
+                alt={`${company.name} logo`}
+                width={96}
+                height={48}
+                className="object-contain"
+              />
             </div>
-            <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-              {company.averageScore.toFixed(1)}
-            </span>
+            <Chip 
+              color={getCategoryColor(company.category)}
+              variant="flat"
+              size="sm"
+            >
+              {company.category}
+            </Chip>
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            <span aria-label={`${company.reviewCount} ${t.companies.reviews}`}>
-              {company.reviewCount} {t.companies.reviews}
-            </span>
+
+          {/* Company Name */}
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2 line-clamp-1">
+              {company.name}
+            </h3>
+          </div>
+
+          {/* Rating */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <div 
+                role="img" 
+                aria-label={`${t.companies.rating}: ${company.averageScore.toFixed(1)} ${t.pagination.of} 5`}
+              >
+                {renderStars(company.averageScore)}
+              </div>
+              <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {company.averageScore.toFixed(1)}
+              </span>
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              <span aria-label={`${company.reviewCount} ${t.companies.reviews}`}>
+                {company.reviewCount} {t.companies.reviews}
+              </span>
+            </p>
+          </div>
+
+          {/* Description */}
+          <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 min-h-[40px]">
+            {company.description}
           </p>
-        </div>
+        </CardBody>
 
-        {/* Description */}
-        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 min-h-[40px]">
-          {company.description}
-        </p>
-      </CardBody>
-
-      <CardFooter className="px-6 pb-6 pt-0">
-        <Button
-          as={Link}
-          href={`/${lang}/companies/${company.id}`}
-          color="primary"
-          variant="flat"
-          className="w-full"
-          aria-label={`${t.companies.readMore} ${company.name}`}
-          endContent={
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          }
-        >
-          {t.companies.readMore}
-        </Button>
-      </CardFooter>
-    </Card>
+        <CardFooter className="px-6 pb-6 pt-0">
+          <Button
+            as={Link}
+            href={`/${lang}/companies/${company.id}`}
+            color="primary"
+            variant="flat"
+            className="w-full"
+            aria-label={`${t.companies.readMore} ${company.name}`}
+            endContent={
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            }
+          >
+            {t.companies.readMore}
+          </Button>
+        </CardFooter>
+      </Card>
     </article>
   );
 }
