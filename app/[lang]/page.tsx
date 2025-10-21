@@ -107,7 +107,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       <BusinessCTASection lang={lang} translations={t} />
 
       {/* Category Sections - Best in Each Category */}
-      <div ref={companiesRef}>
+      <div ref={companiesRef} className="max-w-7xl mx-auto">
         <StateWrapper
           translations={t}
           lang={lang}
