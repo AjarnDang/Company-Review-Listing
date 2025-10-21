@@ -252,6 +252,7 @@ export const en: TranslationKeys = {
     yesterday: "Yesterday",
     overview: "Overview",
     reviewsTab: "Reviews",
+    similarCompanies: "Similar Companies",
   },
 
   // Business CTA Section

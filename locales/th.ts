@@ -250,6 +250,7 @@ export const th = {
     yesterday: "เมื่อวาน",
     overview: "ภาพรวม",
     reviewsTab: "รีวิว",
+    similarCompanies: "ธุรกิจที่คล้ายกัน",
   },
 
   // Business CTA Section

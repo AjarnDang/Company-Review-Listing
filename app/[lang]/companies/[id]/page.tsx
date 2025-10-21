@@ -21,6 +21,7 @@ import { CompanyDetailSkeleton } from "@/components/states";
 import { ReviewCard } from "@/components/review";
 import { StateWrapper } from "@/components/states";
 import CompanyPagination from "@/components/company/CompanyPagination";
+import CompanyCard from "@/components/company/CompanyCard";
 import Image from "next/image";
 
 // Fetch companies data
@@ -133,6 +134,20 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
     });
     return dist;
   }, [companyReviews]);
+
+  // Get similar companies (same category, random 4, excluding current company)
+  const similarCompanies = useMemo(() => {
+    if (!companies || !company) return [];
+    
+    // Filter companies in same category, excluding current company
+    const sameCategory = companies.filter(
+      (c) => c.category === company.category && c.id !== company.id
+    );
+    
+    // Shuffle array and take first 4
+    const shuffled = [...sameCategory].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 4);
+  }, [companies, company]);
 
   const isLoading = companiesLoading || reviewsLoading;
   const error = companiesError || reviewsError;
@@ -473,10 +488,29 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
                       </span>
                     </div>
                   </div>
-                </CardBody>
-              </Card>
-            </div>
-          </Tab>
+                 </CardBody>
+               </Card>
+              </div>
+
+              {/* Similar Companies Section */}
+              {similarCompanies.length > 0 && (
+                <div className="lg:mt-12 mt-8">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                    {t.reviews.similarCompanies}
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {similarCompanies.map((similarCompany) => (
+                      <CompanyCard
+                        key={similarCompany.id}
+                        company={similarCompany}
+                        translations={t}
+                        lang={lang}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </Tab>
 
           {/* Reviews Tab */}
           <Tab key="reviews" title={t.reviews.reviewsTab}>
