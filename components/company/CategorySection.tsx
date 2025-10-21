@@ -85,6 +85,7 @@ export default function CategorySection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
+              className="h-full"
             >
               <CompanyCard company={company} translations={t} lang={lang} />
             </motion.div>

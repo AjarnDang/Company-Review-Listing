@@ -70,9 +70,9 @@ export default function CompanyCardHorizontal({ company, translations: t, lang }
   };
 
   return (
-    <article>
+    <article className="h-full">
       <Card 
-        className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        className="min-h-[200px] min-w-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
         isPressable
         role="article"
         aria-label={`${company.name} - ${t.companies.rating} ${company.averageScore.toFixed(1)}`}
@@ -82,14 +82,13 @@ export default function CompanyCardHorizontal({ company, translations: t, lang }
           <div className="flex flex-col sm:flex-row gap-6">
             {/* Left Side - Logo */}
             <div className="shrink-0">
-              <div className="w-32 h-24 relative bg-gray-50 dark:bg-gray-900 rounded-lg flex items-center justify-center p-3">
+              <div className="w-[100px] h-[70px] flex items-center justify-center bg-gray-50 dark:bg-gray-800/50 rounded-lg p-2">
                 <LazyImage
                   src={company.logo}
                   alt={`${company.name} logo`}
-                  width={100}
-                  height={80}
-                  className="object-contain"
+                  className="object-cover w-full h-full"
                   quality={85}
+                  objectFit="cover"
                 />
               </div>
             </div>

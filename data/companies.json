@@ -301,7 +301,7 @@
   {
     "id": "24",
     "name": "SAWAD (Srisawad Corporation)",
-    "logo": "https://via.placeholder.com/100x50?text=SAWAD",
+    "logo": "/img/srisawad--600.png",
     "category": "Fintech",
     "averageScore": 3.7,
     "description": {
@@ -314,7 +314,7 @@
   {
     "id": "25",
     "name": "MTC (Muangthai Capital)",
-    "logo": "https://via.placeholder.com/100x50?text=MTC",
+    "logo": "/img/mtc.png",
     "category": "Fintech",
     "averageScore": 3.9,
     "description": {
@@ -327,7 +327,7 @@
   {
     "id": "26",
     "name": "KTC (Krungthai Card)",
-    "logo": "https://via.placeholder.com/100x50?text=KTC",
+    "logo": "/img/krungthai-card--600.png",
     "category": "Payment",
     "averageScore": 4.2,
     "description": {
@@ -340,7 +340,7 @@
   {
     "id": "27",
     "name": "AEONTS (AEON Thana Sinsap)",
-    "logo": "https://via.placeholder.com/100x50?text=AEONTS",
+    "logo": "/img/AEONTS.webp",
     "category": "Payment",
     "averageScore": 4.0,
     "description": {
@@ -353,7 +353,7 @@
   {
     "id": "28",
     "name": "TCAP (Thanachart Capital)",
-    "logo": "https://via.placeholder.com/100x50?text=TCAP",
+    "logo": "/img/thanachart-capital--600.png",
     "category": "Fintech",
     "averageScore": 3.8,
     "description": {
@@ -366,7 +366,7 @@
   {
     "id": "29",
     "name": "SCBX (SCB X)",
-    "logo": "https://via.placeholder.com/100x50?text=SCBX",
+    "logo": "/img/scbx-logo.jpg",
     "category": "Fintech",
     "averageScore": 4.6,
     "description": {
@@ -379,7 +379,7 @@
   {
     "id": "30",
     "name": "KFLT (Kasikorn Leasing)",
-    "logo": "https://via.placeholder.com/100x50?text=KFLT",
+    "logo": "/img/kasikornleasing_logo.jfif",
     "category": "Fintech",
     "averageScore": 3.9,
     "description": {
@@ -392,7 +392,7 @@
   {
     "id": "31",
     "name": "CIMBT (CIMB Thai Bank)",
-    "logo": "https://via.placeholder.com/100x50?text=CIMBT",
+    "logo": "/img/cimb-thai-bank-public-company-limited--600.png",
     "category": "Bank",
     "averageScore": 3.7,
     "description": {
@@ -405,7 +405,7 @@
   {
     "id": "32",
     "name": "LHFG (Land and Houses Financial Group)",
-    "logo": "https://via.placeholder.com/100x50?text=LHFG",
+    "logo": "/img/LHFG.jpeg",
     "category": "Fintech",
     "averageScore": 4.1,
     "description": {
@@ -418,7 +418,7 @@
   {
     "id": "33",
     "name": "UOBKH (United Overseas Bank)",
-    "logo": "https://via.placeholder.com/100x50?text=UOBKH",
+    "logo": "/img/UOB_LOGO_800x800.png",
     "category": "Bank",
     "averageScore": 4.0,
     "description": {
@@ -431,7 +431,7 @@
   {
     "id": "34",
     "name": "ASP (Asia Plus Securities)",
-    "logo": "https://via.placeholder.com/100x50?text=ASP",
+    "logo": "/img/ASP.png",
     "category": "Broker",
     "averageScore": 4.3,
     "description": {

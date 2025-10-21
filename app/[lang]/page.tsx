@@ -129,7 +129,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
               maxItems={4}
             />
             <CategorySection
-              category="Payment"
+              category="Bank"
               companies={companies || []}
               translations={t}
               lang={lang}

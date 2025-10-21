@@ -70,24 +70,25 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
   };
 
   return (
-    <article>
+    <article className="h-full">
       <Card 
-        className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full"
+        className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full flex flex-col"
         isPressable
         role="article"
         aria-label={`${company.name} - ${t.companies.rating} ${company.averageScore.toFixed(1)}`}
       >
-        <CardBody className="p-6 space-y-4">
+        <CardBody className="p-6 space-y-4 grow">
           {/* Logo and Category */}
           <div className="flex items-start justify-between gap-4">
-            <div className="w-full relative h-20 bg-gray-50 dark:bg-gray-900 rounded-lg flex items-center justify-center p-3">
+            <div className="w-[100px] h-[70px] flex items-center justify-center bg-gray-50 dark:bg-gray-800/50 rounded-lg p-2">
               <LazyImage
                 src={company.logo}
                 alt={`${company.name} logo`}
                 width={100}
-                height={80}
-                className="object-contain"
+                height={70}
+                className="object-cover"
                 quality={85}
+                objectFit="cover"
               />
             </div>
             <Chip 
