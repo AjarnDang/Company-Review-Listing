@@ -102,6 +102,11 @@ export const en: TranslationKeys = {
     shareExperience: "Share Your Experience",
     shareExperienceDescription: "Help others make informed decisions by sharing your experience with this company",
     writeReview: "Write a Review",
+    sortBy: "Sort by",
+    highestRated: "Highest Rated",
+    lowestRated: "Lowest Rated",
+    mostReviews: "Most Reviews",
+    alphabetical: "Alphabetical (A-Z)",
     categories: {
       fintech: "Fintech",
       broker: "Broker",

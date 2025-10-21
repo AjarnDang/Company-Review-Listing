@@ -100,6 +100,11 @@ export const th = {
     shareExperience: "แชร์ประสบการณ์ของคุณ",
     shareExperienceDescription: "ช่วยผู้อื่นตัดสินใจได้ดีขึ้น ด้วยการแบ่งปันประสบการณ์ของคุณกับบริษัทนี้",
     writeReview: "เขียนรีวิว",
+    sortBy: "เรียงตาม",
+    highestRated: "คะแนนสูงสุด",
+    lowestRated: "คะแนนต่ำสุด",
+    mostReviews: "รีวิวมากที่สุด",
+    alphabetical: "ตามตัวอักษร (ก-ฮ)",
     categories: {
       fintech: "Fintech",
       broker: "Broker", 

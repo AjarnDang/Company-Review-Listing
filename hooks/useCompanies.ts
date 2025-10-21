@@ -3,11 +3,14 @@
 import { useState, useMemo } from "react";
 import type { Company, CompanyCategory } from "@/types/company";
 
+export type SortOption = "highestRated" | "lowestRated" | "mostReviews" | "alphabetical";
+
 interface UseCompaniesOptions {
   companies: Company[];
   itemsPerPage?: number;
   initialSearchTerm?: string;
   initialCategories?: CompanyCategory[];
+  initialSortBy?: SortOption;
 }
 
 interface UseCompaniesReturn {
@@ -21,6 +24,10 @@ interface UseCompaniesReturn {
   // Category filter
   selectedCategories: CompanyCategory[];
   setSelectedCategories: (categories: CompanyCategory[]) => void;
+  
+  // Sort
+  sortBy: SortOption;
+  setSortBy: (sort: SortOption) => void;
   
   // Pagination
   currentPage: number;
@@ -39,15 +46,17 @@ interface UseCompaniesReturn {
 
 export function useCompanies({
   companies,
-  itemsPerPage = 9,
+  itemsPerPage = 10,
   initialSearchTerm = "",
   initialCategories = [],
+  initialSortBy = "highestRated",
 }: UseCompaniesOptions): UseCompaniesReturn {
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [selectedCategories, setSelectedCategories] = useState<CompanyCategory[]>(initialCategories);
+  const [sortBy, setSortBy] = useState<SortOption>(initialSortBy);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Filter companies based on search and categories
+  // Filter and sort companies
   const filteredCompanies = useMemo(() => {
     let filtered = companies;
 
@@ -69,8 +78,25 @@ export function useCompanies({
       );
     }
 
-    return filtered;
-  }, [companies, searchTerm, selectedCategories]);
+    // Sort companies
+    const sorted = [...filtered];
+    switch (sortBy) {
+      case "highestRated":
+        sorted.sort((a, b) => b.averageScore - a.averageScore);
+        break;
+      case "lowestRated":
+        sorted.sort((a, b) => a.averageScore - b.averageScore);
+        break;
+      case "mostReviews":
+        sorted.sort((a, b) => b.reviewCount - a.reviewCount);
+        break;
+      case "alphabetical":
+        sorted.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+    }
+
+    return sorted;
+  }, [companies, searchTerm, selectedCategories, sortBy]);
 
   // Calculate pagination
   const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
@@ -93,10 +119,16 @@ export function useCompanies({
     setCurrentPage(1);
   };
 
+  const handleSortChange = (sort: SortOption) => {
+    setSortBy(sort);
+    setCurrentPage(1);
+  };
+
   // Clear all filters
   const clearFilters = () => {
     setSearchTerm("");
     setSelectedCategories([]);
+    setSortBy("highestRated");
     setCurrentPage(1);
   };
 
@@ -106,6 +138,8 @@ export function useCompanies({
     setSearchTerm: handleSearchChange,
     selectedCategories,
     setSelectedCategories: handleCategoriesChange,
+    sortBy,
+    setSortBy: handleSortChange,
     currentPage,
     setCurrentPage,
     totalPages,

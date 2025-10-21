@@ -56,6 +56,8 @@ export default function CompaniesPage({
     setSearchTerm,
     selectedCategories,
     setSelectedCategories,
+    sortBy,
+    setSortBy,
     currentPage,
     setCurrentPage,
     totalPages,
@@ -100,7 +102,7 @@ export default function CompaniesPage({
 
       {/* Header */}
       <section className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 py-12">
+        <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center gap-4 mb-6">
             <Button
               variant="light"
@@ -140,7 +142,7 @@ export default function CompaniesPage({
       </section>
 
       {/* Results Section */}
-      <section className="py-12 px-4">
+      <section className="py-8 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Search Input */}
           <div className="mb-6 w-full">
@@ -224,6 +226,8 @@ export default function CompaniesPage({
               translations={t}
               selectedCategories={selectedCategories}
               onCategoriesChange={setSelectedCategories}
+              sortBy={sortBy}
+              onSortChange={setSortBy}
               onClear={handleClearFilters}
               totalResults={totalCount}
               filteredResults={filteredCount}
@@ -319,4 +323,3 @@ export default function CompaniesPage({
     </div>
   );
 }
-
