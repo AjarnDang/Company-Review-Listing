@@ -1,7 +1,7 @@
 export const th = {
   // Navbar
   navbar: {
-    brand: "บริษัทรีวิว",
+    brand: "FinScope",
     home: "หน้าหลัก",
     features: "คุณสมบัติ",
     customers: "ลูกค้า",
@@ -50,7 +50,7 @@ export const th = {
     contact: "ติดต่อ",
     privacy: "นโยบายความเป็นส่วนตัว",
     terms: "เงื่อนไขการใช้งาน",
-    copyright: "© 2024 บริษัทรีวิว สงวนลิขสิทธิ์",
+    copyright: "© 2024 FinScope สงวนลิขสิทธิ์",
   },
   
   // Common

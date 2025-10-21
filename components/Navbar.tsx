@@ -15,19 +15,8 @@ import {
 import type { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/get-dictionary";
 import LanguageSwitcher from "./LanguageSwitcher";
-
-export const AcmeLogo = () => {
-  return (
-    <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
-      <path
-        clipRule="evenodd"
-        d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-        fill="currentColor"
-        fillRule="evenodd"
-      />
-    </svg>
-  );
-};
+import Image from "next/image";
+import FinScopeLogo from "@/assets/logo/FinScopeLogo.png";
 
 interface NavbarProps {
   lang: Locale;
@@ -51,15 +40,15 @@ export default function App({ lang }: NavbarProps) {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar onMenuOpenChange={setIsMenuOpen} className="h-20">
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? t.menu.closeMenu : t.menu.openMenu}
           className="sm:hidden"
         />
-        <NavbarBrand>
-          <AcmeLogo />
-          <p className="font-bold text-inherit">{t.navbar.brand}</p>
+        <NavbarBrand className="flex items-center gap-2">
+          <Image src={FinScopeLogo} alt="FinScope" className="w-12 h-12 max-w-full max-h-full object-contain" />
+          <p className="font-bold text-xl text-inherit">{t.navbar.brand}</p>
         </NavbarBrand>
       </NavbarContent>
 

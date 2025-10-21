@@ -13,8 +13,8 @@ interface SEOProps {
 
 const siteConfig = {
   name: {
-    th: "บริษัทรีวิว - แพลตฟอร์มรีวิวบริษัทการเงิน",
-    en: "Company Review - Financial Company Review Platform",
+    th: "FinScope - แพลตฟอร์มรีวิวบริษัทการเงิน",
+    en: "FinScope - Financial Company Review Platform",
   },
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   ogImage: "/og-image.jpg",

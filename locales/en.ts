@@ -3,7 +3,7 @@ import type { TranslationKeys } from "./th";
 export const en: TranslationKeys = {
   // Navbar
   navbar: {
-    brand: "Company Review",
+    brand: "FinScope",
     home: "Home",
     features: "Features",
     customers: "Customers",
@@ -52,7 +52,7 @@ export const en: TranslationKeys = {
     contact: "Contact",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
-    copyright: "© 2024 Company Review. All rights reserved.",
+    copyright: "© 2024 FinScope. All rights reserved.",
   },
   
   // Common

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_Thai } from "next/font/google";
 import { Providers } from "../provider";
 import "../globals.css";
 import Navbar from "@/components/Navbar";
@@ -8,14 +8,10 @@ import type { Locale } from "@/i18n.config";
 import { i18n } from "@/i18n.config";
 import { generateSEOMetadata, generateOrganizationSchema } from "@/lib/seo";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const notoSansThai = Noto_Sans_Thai({
+  variable: "--font-noto-sans",
+  subsets: ["latin", "thai"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export async function generateMetadata({
@@ -53,7 +49,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${notoSansThai.variable} antialiased`}
       >
         {/* Skip to main content link for accessibility */}
         <a
