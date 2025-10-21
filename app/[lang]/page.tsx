@@ -86,7 +86,6 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
         onClose={() => setIsSearchModalOpen(false)}
         translations={t}
         lang={lang}
-        companies={companies}
       />
 
       {/* Categories Section */}

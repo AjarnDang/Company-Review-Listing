@@ -82,9 +82,9 @@ export default function CategoriesSection({ translations: t, onCategoryClick }: 
                   <div className={`text-lg font-bold ${category.textColor}`}>
                     {t.companies.categories[category.translationKey as keyof typeof t.companies.categories]}
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400">
+                  {/* <div className="text-xs text-gray-500 dark:text-gray-400">
                     {t.home.viewReviews}
-                  </div>
+                  </div> */}
                 </div>
               </div>
               

@@ -17,24 +17,6 @@ interface CategorySectionProps {
   maxItems?: number;
 }
 
-const categoryConfig = {
-  Fintech: {
-    icon: "💳",
-    gradient: "from-blue-500 to-cyan-500",
-    bgColor: "bg-blue-50 dark:bg-blue-900/10",
-  },
-  Broker: {
-    icon: "📈",
-    gradient: "from-purple-500 to-pink-500",
-    bgColor: "bg-purple-50 dark:bg-purple-900/10",
-  },
-  Payment: {
-    icon: "💰",
-    gradient: "from-green-500 to-emerald-500",
-    bgColor: "bg-green-50 dark:bg-green-900/10",
-  },
-};
-
 export default function CategorySection({
   category,
   companies,
@@ -43,7 +25,6 @@ export default function CategorySection({
   maxItems = 4,
 }: CategorySectionProps) {
   const router = useRouter();
-  const config = categoryConfig[category];
   
   // Filter and limit companies by category
   const categoryCompanies = companies
@@ -58,7 +39,7 @@ export default function CategorySection({
   };
 
   return (
-    <section className={`py-12 px-4 ${config.bgColor}`}>
+    <section className="py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex items-center justify-between mb-8">
@@ -66,17 +47,13 @@ export default function CategorySection({
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="flex items-center gap-4"
           >
-            <div className={`text-5xl`}>{config.icon}</div>
-            <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-                Best in {category}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-400 mt-1">
-                Top rated {category.toLowerCase()} companies
-              </p>
-            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
+              Best in {category}
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 mt-1">
+              Top rated {category.toLowerCase()} companies
+            </p>
           </motion.div>
 
           <motion.div
@@ -87,7 +64,7 @@ export default function CategorySection({
             <Button
               onPress={handleSeeMore}
               variant="flat"
-              className={`bg-linear-to-r ${config.gradient} text-white font-semibold`}
+              className="font-semibold"
               endContent={
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -59,7 +59,7 @@ export default function App({ lang }: NavbarProps) {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href={`/${lang}`}>
+          <Link color="foreground" href={`/${lang}/companies`}>
             {t.navbar.companies}
           </Link>
         </NavbarItem>

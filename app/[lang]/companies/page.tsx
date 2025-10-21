@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 import type { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/get-dictionary';
@@ -20,26 +20,21 @@ async function fetchCompanies(): Promise<Company[]> {
   return companies.default as Company[];
 }
 
-export default function CategoryPage({ 
+export default function CompaniesPage({ 
   params 
 }: { 
-  params: Promise<{ lang: Locale; category: string }> 
+  params: Promise<{ lang: Locale }> 
 }) {
-  const { lang, category } = use(params);
+  const resolvedParams = React.use(params);
+  const { lang } = resolvedParams;
   const t = getDictionary(lang);
   const router = useRouter();
-  
-  // Capitalize first letter for filtering
-  const categoryName = (category.charAt(0).toUpperCase() + category.slice(1));
 
   // Fetch companies data
   const { data: companies, isLoading, error, refetch } = useAsyncData({
     fetchFn: fetchCompanies,
     dependencies: [],
   });
-
-  // Filter companies by category
-  const categoryCompanies = companies?.filter(c => c.category === categoryName) || [];
 
   // Manage filters and pagination
   const {
@@ -55,7 +50,7 @@ export default function CategoryPage({
     filteredCount,
     clearFilters,
   } = useCompanies({
-    companies: categoryCompanies,
+    companies: companies || [],
     itemsPerPage: 12,
   });
 
@@ -81,10 +76,10 @@ export default function CategoryPage({
           <div className="flex items-center gap-4">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                {categoryName} {t.companies.title}
+                {t.companies.title}
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                Explore the best {categoryName.toLowerCase()} companies
+                Explore all financial companies and find the best one for you
               </p>
             </div>
           </div>
@@ -116,7 +111,11 @@ export default function CategoryPage({
             loadingType="card"
             loadingCount={12}
             loadingMessage={t.states.loading.companies}
-            emptyTitle={`${t.states.empty.companies} in ${categoryName}`}
+            emptyTitle={
+              selectedCategories.length > 0
+                ? t.states.empty.noResults
+                : t.states.empty.companies
+            }
             emptyMessage={
               selectedCategories.length > 0
                 ? t.states.empty.tryAdjusting
@@ -131,7 +130,7 @@ export default function CategoryPage({
               <div 
                 className="space-y-6 mb-8"
                 role="list"
-                aria-label={`${categoryName} ${t.companies.title}`}
+                aria-label={t.companies.title}
               >
                 {displayedCompanies.map((company) => (
                   <div key={company.id} role="listitem">
