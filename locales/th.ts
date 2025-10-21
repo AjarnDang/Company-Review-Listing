@@ -84,6 +84,25 @@ export const th = {
     },
   },
 
+  // Search
+  search: {
+    placeholder: "ค้นหาบริษัท หมวดหมู่ หรือคำค้นหา...",
+    recentSearches: "ค้นหาล่าสุด",
+    suggestions: "คำค้นหายอดนิยม",
+    noRecentSearches: "ยังไม่มีประวัติการค้นหา",
+    clearAll: "ล้างทั้งหมด",
+    searchSuggestions: {
+      bestTradingPlatforms: "แพลตฟอร์มเทรดที่ดีที่สุด",
+      personalLoans: "สินเชื่อส่วนบุคคล",
+      bestSavingsAccounts: "บัญชีออมทรัพย์ที่ดีที่สุด",
+      cryptoExchange: "ซื้อขายคริปโต",
+      stockBrokers: "โบรกเกอร์หุ้น",
+      digitalWallet: "กระเป๋าเงินดิจิทัล",
+      investmentApps: "แอปลงทุน",
+      paymentGateway: "ระบบชำระเงิน",
+    },
+  },
+
   // Pagination
   pagination: {
     previous: "ก่อนหน้า",

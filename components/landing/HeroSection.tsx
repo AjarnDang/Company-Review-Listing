@@ -1,20 +1,75 @@
 "use client";
 
 import React from "react";
-import { Button } from "@heroui/react";
+import { Button, Input } from "@heroui/react";
+import { motion } from "framer-motion";
 import type { TranslationKeys } from "@/locales/th";
 
 interface HeroSectionProps {
   translations: TranslationKeys;
   onScrollToCompanies: () => void;
+  onSearchClick: () => void;
 }
 
-export default function HeroSection({ translations: t, onScrollToCompanies }: HeroSectionProps) {
+// Light rays for animated background
+const lightRays = [
+  { angle: 0, gradient: "from-blue-400/30 via-cyan-400/20 to-transparent", delay: 0, duration: 20 },
+  { angle: 45, gradient: "from-purple-400/30 via-pink-400/20 to-transparent", delay: 2, duration: 25 },
+  { angle: 90, gradient: "from-green-400/30 via-emerald-400/20 to-transparent", delay: 4, duration: 22 },
+  { angle: 135, gradient: "from-yellow-400/30 via-orange-400/20 to-transparent", delay: 6, duration: 28 },
+  { angle: 180, gradient: "from-pink-400/30 via-rose-400/20 to-transparent", delay: 8, duration: 24 },
+  { angle: 225, gradient: "from-indigo-400/30 via-violet-400/20 to-transparent", delay: 10, duration: 26 },
+];
+
+export default function HeroSection({ translations: t, onScrollToCompanies, onSearchClick }: HeroSectionProps) {
   return (
     <section 
-      className="relative py-20 px-4 md:py-32 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+      className="relative py-20 px-4 md:py-32 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
       aria-label="Hero section"
     >
+      {/* Animated Light Rays Background */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        {/* Additional ambient light effects */}
+        <motion.div
+          className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, 50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-32 -right-32 w-[700px] h-[700px] bg-pink-500/5 rounded-full blur-2xl"
+          animate={{
+            x: [0, -70, 0],
+            y: [0, -60, 0],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        {/* <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-500/15 rounded-full blur-xl"
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        /> */}
+      </div>
+
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5" aria-hidden="true"></div>
       
@@ -29,7 +84,7 @@ export default function HeroSection({ translations: t, onScrollToCompanies }: He
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-600 via-purple-600 to-pink-600">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold bg-clip-text text-transparent bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 py-4 mb-2">
             {t.home.title}
           </h1>
 
@@ -38,42 +93,31 @@ export default function HeroSection({ translations: t, onScrollToCompanies }: He
             {t.home.heroSubtitle}
           </p>
 
-          {/* Description */}
-          <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
-            {t.home.heroDescription}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-            <Button
+          {/* Search Input */}
+          <motion.div 
+            className="pt-8 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <Input
+              type="text"
+              placeholder={t.search.placeholder}
               size="lg"
-              color="primary"
-              className="text-lg px-8 py-6 font-semibold shadow-lg hover:shadow-xl transition-shadow"
-              onPress={onScrollToCompanies}
-              aria-label={t.home.viewReviews}
-            >
-              {t.home.viewReviews}
-              <svg 
-                className="w-5 h-5 ml-2" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </Button>
-
-            <Button
-              size="lg"
-              variant="bordered"
-              className="text-lg px-8 py-6 font-semibold"
-              onPress={onScrollToCompanies}
-              aria-label={t.home.scrollToCompanies}
-            >
-              {t.home.scrollToCompanies}
-            </Button>
-          </div>
+              onClick={onSearchClick}
+              readOnly
+              classNames={{
+                base: "cursor-pointer",
+                input: "cursor-pointer text-base border-none",
+                inputWrapper: "h-14 bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow border-2 border-transparent"
+              }}
+              startContent={
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              }
+            />
+          </motion.div>
 
           {/* Stats */}
           <div 

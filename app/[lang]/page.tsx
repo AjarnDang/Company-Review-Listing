@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useRef, use, useEffect } from 'react';
+import React, { useRef, use, useEffect, useState } from 'react';
 import type { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/get-dictionary';
 import { generateCompanyListSchema } from '@/lib/seo';
 import HeroSection from '@/components/landing/HeroSection';
+import CategoriesSection from '@/components/landing/CategoriesSection';
+import SearchModal from '@/components/search/SearchModal';
 import CompanyCard from '@/components/company/CompanyCard';
 import CompanyFilters from '@/components/company/CompanyFilters';
 import CompanyPagination from '@/components/company/CompanyPagination';
@@ -27,6 +29,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
   const { lang } = use(params);
   const t = getDictionary(lang);
   const companiesRef = useRef<HTMLDivElement>(null);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   // Fetch companies data
   const { data: companies, isLoading, error, refetch } = useAsyncData({
@@ -62,6 +65,34 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
     });
   };
 
+  // Handle category click
+  const handleCategoryClick = (category?: string) => {
+    if (category && (category === "Fintech" || category === "Broker" || category === "Payment")) {
+      // Set the selected category and scroll to companies
+      setSelectedCategories([category]);
+    }
+    scrollToCompanies();
+  };
+
+  // Handle search
+  const handleSearch = (query: string) => {
+    setSearchTerm(query);
+    scrollToCompanies();
+  };
+
+  // Keyboard shortcut for search (Cmd/Ctrl + K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchModalOpen(true);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   // Add structured data for company list
   useEffect(() => {
     if (companies && companies.length > 0) {
@@ -86,6 +117,22 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       <HeroSection 
         translations={t} 
         onScrollToCompanies={scrollToCompanies}
+        onSearchClick={() => setIsSearchModalOpen(true)}
+      />
+
+      {/* Search Modal */}
+      <SearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+        translations={t}
+        onSearch={handleSearch}
+        companies={companies}
+      />
+
+      {/* Categories Section */}
+      <CategoriesSection 
+        translations={t}
+        onCategoryClick={handleCategoryClick}
       />
 
       {/* Companies Section */}

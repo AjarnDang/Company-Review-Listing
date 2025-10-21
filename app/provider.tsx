@@ -3,6 +3,7 @@
 import {HeroUIProvider} from '@heroui/react'
 import type { Locale } from '@/i18n.config'
 import { AppStateProvider } from '@/contexts/AppStateContext'
+import { SearchProvider } from '@/contexts/SearchContext'
 
 export function Providers({
   children,
@@ -14,7 +15,9 @@ export function Providers({
   return (
     <HeroUIProvider>
       <AppStateProvider>
-        {children}
+        <SearchProvider>
+          {children}
+        </SearchProvider>
       </AppStateProvider>
     </HeroUIProvider>
   )

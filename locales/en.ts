@@ -86,6 +86,25 @@ export const en: TranslationKeys = {
     },
   },
 
+  // Search
+  search: {
+    placeholder: "Search companies, categories, or keywords...",
+    recentSearches: "Recent Searches",
+    suggestions: "Popular Searches",
+    noRecentSearches: "No recent searches",
+    clearAll: "Clear All",
+    searchSuggestions: {
+      bestTradingPlatforms: "Best trading platforms",
+      personalLoans: "Personal loans",
+      bestSavingsAccounts: "Best savings accounts",
+      cryptoExchange: "Cryptocurrency exchange",
+      stockBrokers: "Stock brokers",
+      digitalWallet: "Digital wallet",
+      investmentApps: "Investment apps",
+      paymentGateway: "Payment gateway",
+    },
+  },
+
   // Pagination
   pagination: {
     previous: "Previous",
