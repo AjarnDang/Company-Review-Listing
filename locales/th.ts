@@ -214,6 +214,7 @@ export const th = {
     bestIn: "ดีที่สุดใน {{category}}",
     topRated: "บริษัท {{category}} ที่ได้คะแนนสูงสุด",
     seeMore: "ดูเพิ่มเติม",
+    noCategoriesFound: "ไม่พบบริษัทในหมวดหมู่นี้",
   },
 
   // Business CTA Section

@@ -7,7 +7,7 @@ import { getDictionary } from '@/lib/get-dictionary';
 import { useAsyncData } from '@/hooks/useAsyncData';
 import type { Company } from '@/types/company';
 import { Button, Card, CardBody, Chip } from '@heroui/react';
-import { StateWrapper } from '@/components/states';
+import { StateWrapper, CompanyDetailSkeleton } from '@/components/states';
 import Image from 'next/image';
 
 // Fetch companies data
@@ -40,23 +40,44 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <StateWrapper
-        translations={t}
-        lang={lang}
-        isLoading={isLoading}
-        error={error}
-        isEmpty={isEmpty}
-        loadingType="card"
-        loadingCount={1}
-        loadingMessage={t.states.loading.companies}
-        emptyTitle={t.states.empty.companyNotFound}
-        emptyMessage={t.states.empty.companyNotFoundMessage}
-        onRetry={refetch}
-        onClearFilters={() => router.push(`/${lang}/companies`)}
-        showClearButton={true}
-      >
-        {company && (
-          <div className="max-w-5xl mx-auto px-4 py-12">
+      {isLoading ? (
+        <CompanyDetailSkeleton />
+      ) : error ? (
+        <StateWrapper
+          translations={t}
+          lang={lang}
+          isLoading={false}
+          error={error}
+          isEmpty={false}
+          loadingType="card"
+          loadingCount={1}
+          loadingMessage={t.states.loading.companies}
+          emptyTitle={t.states.empty.companies}
+          onRetry={refetch}
+          showClearButton={false}
+        >
+          <></>
+        </StateWrapper>
+      ) : isEmpty ? (
+        <StateWrapper
+          translations={t}
+          lang={lang}
+          isLoading={false}
+          error={null}
+          isEmpty={true}
+          loadingType="card"
+          loadingCount={1}
+          loadingMessage={t.states.loading.companies}
+          emptyTitle={t.states.empty.companyNotFound}
+          emptyMessage={t.states.empty.companyNotFoundMessage}
+          onRetry={refetch}
+          onClearFilters={() => router.push(`/${lang}/companies`)}
+          showClearButton={true}
+        >
+          <></>
+        </StateWrapper>
+      ) : company ? (
+        <div className="max-w-5xl mx-auto px-4 py-12">
             {/* Back Button */}
             <div className="mb-6">
               <Button
@@ -215,8 +236,7 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
               </CardBody>
             </Card>
           </div>
-        )}
-      </StateWrapper>
+      ) : null}
     </div>
   );
 }

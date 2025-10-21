@@ -7,7 +7,7 @@ import { getDictionary } from '@/lib/get-dictionary';
 import CompanyCardHorizontal from '@/components/company/CompanyCardHorizontal';
 import CompanyFilters from '@/components/company/CompanyFilters';
 import CompanyPagination from '@/components/company/CompanyPagination';
-import { StateWrapper } from '@/components/states';
+import { StateWrapper, CompanyCardHorizontalSkeleton } from '@/components/states';
 import { useAsyncData } from '@/hooks/useAsyncData';
 import { useCompanies } from '@/hooks/useCompanies';
 import type { Company, CompanyCategory } from '@/types/company';
@@ -231,33 +231,58 @@ export default function CompaniesPage({
           </div>
 
           {/* Company Grid with State Management */}
-          <StateWrapper
-            translations={t}
-            lang={lang}
-            isLoading={isLoading}
-            error={error}
-            isEmpty={filteredCount === 0}
-            loadingType="card"
-            loadingCount={12}
-            loadingMessage={t.states.loading.companies}
-            emptyTitle={
-              query 
-                ? `${t.states.empty.noResults}: "${query}"`
-                : selectedCategories.length > 0
-                  ? t.states.empty.noResults
-                  : categoryName
-                    ? `${t.states.empty.companies} in ${categoryName}`
-                    : t.states.empty.companies
-            }
-            emptyMessage={
-              selectedCategories.length > 0 || query
-                ? t.states.empty.tryAdjusting
-                : undefined
-            }
-            onClearFilters={handleClearFilters}
-            onRetry={refetch}
-            showClearButton={selectedCategories.length > 0 || query.length > 0}
-          >
+          {isLoading ? (
+            <div className="space-y-6">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <CompanyCardHorizontalSkeleton key={index} />
+              ))}
+            </div>
+          ) : error ? (
+            <StateWrapper
+              translations={t}
+              lang={lang}
+              isLoading={false}
+              error={error}
+              isEmpty={false}
+              loadingType="card"
+              loadingCount={12}
+              loadingMessage={t.states.loading.companies}
+              emptyTitle={t.states.empty.companies}
+              onRetry={refetch}
+            >
+              <></>
+            </StateWrapper>
+          ) : filteredCount === 0 ? (
+            <StateWrapper
+              translations={t}
+              lang={lang}
+              isLoading={false}
+              error={null}
+              isEmpty={true}
+              loadingType="card"
+              loadingCount={12}
+              loadingMessage={t.states.loading.companies}
+              emptyTitle={
+                query 
+                  ? `${t.states.empty.noResults}: "${query}"`
+                  : selectedCategories.length > 0
+                    ? t.states.empty.noResults
+                    : categoryName
+                      ? `${t.states.empty.companies} in ${categoryName}`
+                      : t.states.empty.companies
+              }
+              emptyMessage={
+                selectedCategories.length > 0 || query
+                  ? t.states.empty.tryAdjusting
+                  : undefined
+              }
+              onClearFilters={handleClearFilters}
+              onRetry={refetch}
+              showClearButton={selectedCategories.length > 0 || query.length > 0}
+            >
+              <></>
+            </StateWrapper>
+          ) : (
             <>
               {/* Company List - Horizontal Cards */}
               <div 
@@ -288,7 +313,7 @@ export default function CompaniesPage({
                 endIndex={endIndex}
               />
             </>
-          </StateWrapper>
+          )}
         </div>
       </section>
     </div>

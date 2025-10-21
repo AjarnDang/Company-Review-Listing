@@ -8,6 +8,7 @@ import CompanyCard from "./CompanyCard";
 import type { Company } from "@/types/company";
 import type { TranslationKeys } from "@/locales/th";
 import type { Locale } from "@/i18n.config";
+import { StateWrapper } from "@/components/states";
 
 interface CategorySectionProps {
   category: "Fintech" | "Broker" | "Payment" | "Bank";
@@ -32,7 +33,7 @@ export default function CategorySection({
     .sort((a, b) => b.averageScore - a.averageScore) // Sort by rating
     .slice(0, maxItems);
 
-  if (categoryCompanies.length === 0) return null;
+  const isEmpty = categoryCompanies.length === 0;
 
   const handleSeeMore = () => {
     router.push(`/${lang}/companies?category=${category.toLowerCase()}`);
@@ -76,21 +77,35 @@ export default function CategorySection({
           </motion.div>
         </div>
 
-        {/* Company Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categoryCompanies.map((company, index) => (
-            <motion.div
-              key={company.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="h-full"
-            >
-              <CompanyCard company={company} translations={t} lang={lang} />
-            </motion.div>
-          ))}
-        </div>
+        {/* Company Grid with StateWrapper */}
+        <StateWrapper
+          translations={t}
+          lang={lang}
+          isLoading={false}
+          error={null}
+          isEmpty={isEmpty}
+          loadingType="card"
+          loadingCount={4}
+          loadingMessage={t.states.loading.companies}
+          emptyTitle={`${t.states.empty.companies} in ${category}`}
+          emptyMessage={t.category.noCategoriesFound}
+          showClearButton={false}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {categoryCompanies.map((company, index) => (
+              <motion.div
+                key={company.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="h-full"
+              >
+                <CompanyCard company={company} translations={t} lang={lang} />
+              </motion.div>
+            ))}
+          </div>
+        </StateWrapper>
       </div>
     </section>
   );

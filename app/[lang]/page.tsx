@@ -11,7 +11,7 @@ import BusinessCTASection from '@/components/landing/BusinessCTASection';
 import ReviewsSection from '@/components/landing/ReviewsSection';
 import SearchModal from '@/components/search/SearchModal';
 import CategorySection from '@/components/company/CategorySection';
-import { StateWrapper } from '@/components/states';
+import { StateWrapper, CategoriesButtonsSkeleton, CategorySectionSkeleton } from '@/components/states';
 import { useAsyncData } from '@/hooks/useAsyncData';
 import type { Company } from '@/types/company';
 
@@ -91,45 +91,73 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
       />
 
       {/* Categories Section */}
-      <CategoriesSection 
-        translations={t}
-        lang={lang}
-      />
+      {isLoading ? (
+        <CategoriesButtonsSkeleton />
+      ) : (
+        <CategoriesSection 
+          translations={t}
+          lang={lang}
+        />
+      )}
 
       {/* Business CTA Section */}
       <BusinessCTASection lang={lang} translations={t} />
 
       {/* Category Sections - Best in Each Category */}
       <div ref={companiesRef} className="max-w-7xl mx-auto">
-        <StateWrapper
-          translations={t}
-          lang={lang}
-          isLoading={isLoading}
-          error={error}
-          isEmpty={!companies || companies.length === 0}
-          loadingType="card"
-          loadingCount={12}
-          loadingMessage={t.states.loading.companies}
-          emptyTitle={t.states.empty.companies}
-          onRetry={refetch}
-        >
+        {isLoading ? (
+          <>
+            <CategorySectionSkeleton />
+            <CategorySectionSkeleton />
+          </>
+        ) : error ? (
+          <StateWrapper
+            translations={t}
+            lang={lang}
+            isLoading={false}
+            error={error}
+            isEmpty={false}
+            loadingType="card"
+            loadingCount={12}
+            loadingMessage={t.states.loading.companies}
+            emptyTitle={t.states.empty.companies}
+            onRetry={refetch}
+          >
+            <></>
+          </StateWrapper>
+        ) : companies && companies.length > 0 ? (
           <>
             <CategorySection
               category="Broker"
-              companies={companies || []}
+              companies={companies}
               translations={t}
               lang={lang}
               maxItems={4}
             />
             <CategorySection
               category="Bank"
-              companies={companies || []}
+              companies={companies}
               translations={t}
               lang={lang}
               maxItems={4}
             />
           </>
-        </StateWrapper>
+        ) : (
+          <StateWrapper
+            translations={t}
+            lang={lang}
+            isLoading={false}
+            error={null}
+            isEmpty={true}
+            loadingType="card"
+            loadingCount={12}
+            loadingMessage={t.states.loading.companies}
+            emptyTitle={t.states.empty.companies}
+            onRetry={refetch}
+          >
+            <></>
+          </StateWrapper>
+        )}
       </div>
 
       {/* CTA Section */}

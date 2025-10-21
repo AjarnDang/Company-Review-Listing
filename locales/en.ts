@@ -216,6 +216,7 @@ export const en: TranslationKeys = {
     bestIn: "Best in {{category}}",
     topRated: "Top rated {{category}} companies",
     seeMore: "See More",
+    noCategoriesFound: "No companies found in this category",
   },
 
   // Business CTA Section

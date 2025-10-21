@@ -53,10 +53,8 @@ export default function EmptyState({
         <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-2">
           {title || t.states.empty.title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">
-          {message || t.states.empty.message}
-        </p>
-        <p className="text-sm text-gray-500 dark:text-gray-500 mb-6">
+        <p className="text-gray-600 dark:text-gray-400 mb-2">
+          {message || t.states.empty.message}. <br />
           {t.states.empty.tryAdjusting}
         </p>
       </div>

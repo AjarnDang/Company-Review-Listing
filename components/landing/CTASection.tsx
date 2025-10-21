@@ -31,7 +31,7 @@ export default function CTASection({ lang, translations: t }: CTASectionProps) {
   ];
 
   return (
-    <section className="py-20 px-4 bg-primary-500">
+    <section className="py-20 px-4 bg-primary-500 mt-6">
       <div className="max-w-7xl mx-auto">
         {/* Header - Outside Card */}
         <motion.div
