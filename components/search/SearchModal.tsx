@@ -25,6 +25,22 @@ async function fetchCompanies(): Promise<Company[]> {
   return companies.default as Company[];
 }
 
+// Helper function to highlight matched text
+function highlightText(text: string, query: string): React.ReactNode {
+  if (!query.trim()) return text;
+  
+  const parts = text.split(new RegExp(`(${query})`, 'gi'));
+  return parts.map((part, index) => 
+    part.toLowerCase() === query.toLowerCase() ? (
+      <mark key={index} className="bg-yellow-200 dark:bg-yellow-800/50 text-gray-900 dark:text-gray-100 rounded px-0.5">
+        {part}
+      </mark>
+    ) : (
+      part
+    )
+  );
+}
+
 export default function SearchModal({ 
   isOpen, 
   onClose, 
@@ -63,15 +79,53 @@ export default function SearchModal({
     { key: "paymentGateway", label: t.search.searchSuggestions.paymentGateway, icon: "💳" },
   ];
 
-  // Filter companies based on search query
-  const filteredCompanies = searchQuery.trim() && companies
-    ? companies.filter(company => 
-        company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        company.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        company.description.en.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        company.description.th.toLowerCase().includes(searchQuery.toLowerCase())
-      ).slice(0, 5)
-    : [];
+  // Filter companies based on search query with match info
+  const filteredCompanies = React.useMemo(() => {
+    if (!searchQuery.trim() || !companies) return [];
+    
+    const query = searchQuery.toLowerCase();
+    
+    return companies
+      .map(company => {
+        const nameMatch = company.name.toLowerCase().includes(query);
+        const categoryMatch = company.category.toLowerCase().includes(query);
+        const descEnMatch = company.description.en.toLowerCase().includes(query);
+        const descThMatch = company.description.th.toLowerCase().includes(query);
+        
+        // Get matched text snippet from description
+        let matchedSnippet = '';
+        let matchSource: 'name' | 'category' | 'description' = 'name';
+        
+        if (nameMatch) {
+          matchedSnippet = company.name;
+          matchSource = 'name';
+        } else if (categoryMatch) {
+          matchedSnippet = company.category;
+          matchSource = 'category';
+        } else if (descEnMatch || descThMatch) {
+          const description = lang === 'en' ? company.description.en : company.description.th;
+          const index = description.toLowerCase().indexOf(query);
+          if (index !== -1) {
+            // Extract snippet around the match
+            const start = Math.max(0, index - 30);
+            const end = Math.min(description.length, index + query.length + 30);
+            matchedSnippet = (start > 0 ? '...' : '') + 
+                            description.substring(start, end) + 
+                            (end < description.length ? '...' : '');
+            matchSource = 'description';
+          }
+        }
+        
+        return {
+          company,
+          matchedSnippet,
+          matchSource,
+          hasMatch: nameMatch || categoryMatch || descEnMatch || descThMatch
+        };
+      })
+      .filter(item => item.hasMatch)
+      .slice(0, 5);
+  }, [searchQuery, companies, lang]);
 
   const handleSearch = (query: string) => {
     const trimmedQuery = query.trim();
@@ -167,10 +221,10 @@ export default function SearchModal({
                         {t.companies.searchCompanies}
                       </h3>
                       <div className="space-y-2">
-                        {filteredCompanies.map((company) => (
+                        {filteredCompanies.map((item) => (
                           <button
-                            key={company.id}
-                            onClick={() => handleCompanyClick(company)}
+                            key={item.company.id}
+                            onClick={() => handleCompanyClick(item.company)}
                             className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-left"
                           >
                             <div className="shrink-0 w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center">
@@ -178,13 +232,24 @@ export default function SearchModal({
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className="font-medium text-gray-900 dark:text-gray-100 truncate">
-                                {company.name}
+                                {item.matchSource === 'name' 
+                                  ? highlightText(item.company.name, searchQuery)
+                                  : item.company.name
+                                }
                               </p>
-                              <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
-                                {company.category} • ⭐ {company.averageScore}
+                              <p className="text-sm text-gray-500 dark:text-gray-400">
+                                {item.matchSource === 'category'
+                                  ? highlightText(item.company.category, searchQuery)
+                                  : item.company.category
+                                } • ⭐ {item.company.averageScore}
                               </p>
+                              {item.matchSource === 'description' && (
+                                <p className="text-xs text-gray-600 dark:text-gray-500 mt-1 line-clamp-2">
+                                  {highlightText(item.matchedSnippet, searchQuery)}
+                                </p>
+                              )}
                             </div>
-                            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
                           </button>
