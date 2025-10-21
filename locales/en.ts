@@ -81,6 +81,8 @@ export const en: TranslationKeys = {
     searchCompanies: "Search Companies",
     showingResults: "Showing {{count}} companies of {{total}} total",
     noCompaniesFound: "No companies match your criteria",
+    activeFilters: "Active Filters",
+    clearAllFilters: "Clear All Filters",
     categories: {
       fintech: "Fintech",
       broker: "Broker",

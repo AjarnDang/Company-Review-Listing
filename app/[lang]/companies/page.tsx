@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import type { Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/get-dictionary';
@@ -33,8 +33,10 @@ export default function CompaniesPage({
   const searchParams = useSearchParams();
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
-  // Get category from query params
+  // Get query parameters
+  const query = searchParams.get('query') || '';
   const categoryParam = searchParams.get('category');
+  
   const initialCategory = useMemo(() => {
     if (!categoryParam) return [];
     const normalized = categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1).toLowerCase();
@@ -50,6 +52,8 @@ export default function CompaniesPage({
   // Manage filters and pagination
   const {
     displayedCompanies,
+    searchTerm,
+    setSearchTerm,
     selectedCategories,
     setSelectedCategories,
     currentPage,
@@ -64,7 +68,21 @@ export default function CompaniesPage({
     companies: companies || [],
     itemsPerPage: 12,
     initialCategories: initialCategory,
+    initialSearchTerm: query,
   });
+
+  // Update search term when query param changes
+  useEffect(() => {
+    if (query !== searchTerm) {
+      setSearchTerm(query);
+    }
+  }, [query]);
+
+  // Custom clear filters that also clears URL params
+  const handleClearFilters = () => {
+    clearFilters();
+    router.push(`/${lang}/companies`);
+  };
 
   const categoryName = categoryParam ? 
     categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1).toLowerCase() : 
@@ -100,12 +118,20 @@ export default function CompaniesPage({
           <div className="flex items-center gap-4">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-                {t.companies.title}
+                {query ? (
+                  <>
+                    {t.companies.searchCompanies}: <span className="text-blue-600 dark:text-blue-400">{query}</span>
+                  </>
+                ) : (
+                  t.companies.title
+                )}
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                {categoryName 
-                  ? t.category.exploreText.replace('{{category}}', categoryName.toLowerCase())
-                  : t.companies.exploreAll
+                {query 
+                  ? `${t.pagination.showing} ${filteredCount} ${t.pagination.results}`
+                  : categoryName 
+                    ? t.category.exploreText.replace('{{category}}', categoryName.toLowerCase())
+                    : t.companies.exploreAll
                 }
               </p>
             </div>
@@ -122,6 +148,7 @@ export default function CompaniesPage({
               type="text"
               placeholder={t.search.placeholder}
               size="lg"
+              value={query}
               onClick={() => setIsSearchModalOpen(true)}
               readOnly
               classNames={{
@@ -137,13 +164,67 @@ export default function CompaniesPage({
             />
           </div>
 
+          {/* Active Filters Display */}
+          {(query || selectedCategories.length > 0) && (
+            <div className="mb-4 flex flex-wrap items-center gap-2">
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                {t.companies.activeFilters}:
+              </span>
+              {query && (
+                <div className="flex items-center gap-1 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <span>{query}</span>
+                  <button
+                    onClick={() => router.push(`/${lang}/companies${categoryParam ? `?category=${categoryParam}` : ''}`)}
+                    className="ml-1 hover:bg-blue-200 dark:hover:bg-blue-800 rounded-full p-0.5"
+                    aria-label={`Remove search: ${query}`}
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              )}
+              {selectedCategories.map((category) => (
+                <div
+                  key={category}
+                  className="flex items-center gap-1 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200 rounded-full text-sm"
+                >
+                  <span>{category}</span>
+                  <button
+                    onClick={() => setSelectedCategories(selectedCategories.filter(c => c !== category))}
+                    className="ml-1 hover:bg-purple-200 dark:hover:bg-purple-800 rounded-full p-0.5"
+                    aria-label={`Remove category: ${category}`}
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+              {(query || selectedCategories.length > 0) && (
+                <Button
+                  size="sm"
+                  variant="light"
+                  color="danger"
+                  onPress={handleClearFilters}
+                  className="text-xs"
+                >
+                  {t.companies.clearAllFilters}
+                </Button>
+              )}
+            </div>
+          )}
+
           {/* Filters */}
           <div className="mb-8">
             <CompanyFilters
               translations={t}
               selectedCategories={selectedCategories}
               onCategoriesChange={setSelectedCategories}
-              onClear={clearFilters}
+              onClear={handleClearFilters}
               totalResults={totalCount}
               filteredResults={filteredCount}
             />
@@ -160,20 +241,22 @@ export default function CompaniesPage({
             loadingCount={12}
             loadingMessage={t.states.loading.companies}
             emptyTitle={
-              selectedCategories.length > 0
-                ? t.states.empty.noResults
-                : categoryName
-                  ? `${t.states.empty.companies} in ${categoryName}`
-                  : t.states.empty.companies
+              query 
+                ? `${t.states.empty.noResults}: "${query}"`
+                : selectedCategories.length > 0
+                  ? t.states.empty.noResults
+                  : categoryName
+                    ? `${t.states.empty.companies} in ${categoryName}`
+                    : t.states.empty.companies
             }
             emptyMessage={
-              selectedCategories.length > 0
+              selectedCategories.length > 0 || query
                 ? t.states.empty.tryAdjusting
                 : undefined
             }
-            onClearFilters={clearFilters}
+            onClearFilters={handleClearFilters}
             onRetry={refetch}
-            showClearButton={selectedCategories.length > 0}
+            showClearButton={selectedCategories.length > 0 || query.length > 0}
           >
             <>
               {/* Company List - Horizontal Cards */}

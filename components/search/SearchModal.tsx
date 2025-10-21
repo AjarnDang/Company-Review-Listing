@@ -131,8 +131,8 @@ export default function SearchModal({
     const trimmedQuery = query.trim();
     if (trimmedQuery) {
       addRecentSearch(trimmedQuery);
-      // Navigate to search page with query
-      router.push(`/${lang}/search?query=${encodeURIComponent(trimmedQuery)}`);
+      // Navigate to companies page with query
+      router.push(`/${lang}/companies?query=${encodeURIComponent(trimmedQuery)}`);
       onClose();
       setSearchQuery("");
     }

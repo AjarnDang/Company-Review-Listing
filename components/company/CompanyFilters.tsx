@@ -39,9 +39,9 @@ export default function CompanyFilters({
       {/* Category Filter */}
       <div role="group" aria-label={t.companies.filterByCategory}>
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300" id="category-filter-label">
+          {/* <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300" id="category-filter-label">
             {t.companies.filterByCategory}
-          </h3>
+          </h3> */}
           {hasActiveFilters && (
             <Button
               size="sm"

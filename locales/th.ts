@@ -79,6 +79,8 @@ export const th = {
     searchCompanies: "ค้นหาบริษัท",
     showingResults: "แสดง {{count}} บริษัทจากทั้งหมด {{total}} บริษัท",
     noCompaniesFound: "ไม่พบบริษัทที่ตรงกับเงื่อนไข",
+    activeFilters: "ตัวกรองที่เลือก",
+    clearAllFilters: "ล้างตัวกรองทั้งหมด",
     categories: {
       fintech: "Fintech",
       broker: "Broker", 
