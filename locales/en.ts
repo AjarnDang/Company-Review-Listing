@@ -56,6 +56,16 @@ export const en: TranslationKeys = {
     terms: "Terms of Service",
     copyright: "© 2024 FinScope. All rights reserved.",
   },
+
+  // 404 Not Found
+  notFound: {
+    title: "Page Not Found",
+    message: "Sorry, the page you're looking for doesn't exist or has been moved.",
+    goHome: "Go to Homepage",
+    browseCompanies: "Browse Companies",
+    needHelp: "Need help?",
+    contactSupport: "Contact Support",
+  },
   
   // Common
   common: {
@@ -84,6 +94,14 @@ export const en: TranslationKeys = {
     noCompaniesFound: "No companies match your criteria",
     activeFilters: "Active Filters",
     clearAllFilters: "Clear All Filters",
+    visitWebsite: "Visit Website",
+    statistics: "Statistics",
+    totalReviews: "Total Reviews",
+    recentReviews: "Recent Reviews",
+    reviewsComingSoon: "Reviews coming soon",
+    shareExperience: "Share Your Experience",
+    shareExperienceDescription: "Help others make informed decisions by sharing your experience with this company",
+    writeReview: "Write a Review",
     categories: {
       fintech: "Fintech",
       broker: "Broker",
@@ -141,6 +159,8 @@ export const en: TranslationKeys = {
       clearFilters: "Clear Filters",
       resetSearch: "Reset Search",
       goBack: "Go Back",
+      companyNotFound: "Company Not Found",
+      companyNotFoundMessage: "The company you're looking for doesn't exist or has been removed",
     },
     error: {
       title: "Error Occurred",

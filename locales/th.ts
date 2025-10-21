@@ -54,6 +54,16 @@ export const th = {
     terms: "เงื่อนไขการใช้งาน",
     copyright: "© 2024 FinScope สงวนลิขสิทธิ์",
   },
+
+  // 404 Not Found
+  notFound: {
+    title: "ไม่พบหน้าที่คุณค้นหา",
+    message: "ขออภัย หน้าที่คุณกำลังมองหาไม่มีอยู่ หรืออาจถูกย้ายไปแล้ว",
+    goHome: "กลับหน้าแรก",
+    browseCompanies: "ดูรายการบริษัท",
+    needHelp: "ต้องการความช่วยเหลือ?",
+    contactSupport: "ติดต่อฝ่ายสนับสนุน",
+  },
   
   // Common
   common: {
@@ -82,6 +92,14 @@ export const th = {
     noCompaniesFound: "ไม่พบบริษัทที่ตรงกับเงื่อนไข",
     activeFilters: "ตัวกรองที่เลือก",
     clearAllFilters: "ล้างตัวกรองทั้งหมด",
+    visitWebsite: "เยี่ยมชมเว็บไซต์",
+    statistics: "สถิติ",
+    totalReviews: "รีวิวทั้งหมด",
+    recentReviews: "รีวิวล่าสุด",
+    reviewsComingSoon: "รีวิวกำลังจะมาเร็วๆ นี้",
+    shareExperience: "แชร์ประสบการณ์ของคุณ",
+    shareExperienceDescription: "ช่วยผู้อื่นตัดสินใจได้ดีขึ้น ด้วยการแบ่งปันประสบการณ์ของคุณกับบริษัทนี้",
+    writeReview: "เขียนรีวิว",
     categories: {
       fintech: "Fintech",
       broker: "Broker", 
@@ -139,6 +157,8 @@ export const th = {
       clearFilters: "ล้างตัวกรอง",
       resetSearch: "ล้างการค้นหา",
       goBack: "กลับหน้าแรก",
+      companyNotFound: "ไม่พบบริษัท",
+      companyNotFoundMessage: "บริษัทที่คุณกำลังมองหาไม่มีอยู่ หรืออาจถูกลบออกไปแล้ว",
     },
     error: {
       title: "เกิดข้อผิดพลาด",
