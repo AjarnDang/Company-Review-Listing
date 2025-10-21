@@ -16,7 +16,7 @@ import type { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/get-dictionary";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Image from "next/image";
-import FinScopeLogo from "@/assets/logo/FinScopeLogo.png";
+import FinScopeLogo from "@/public/logo/FinScopeLogo.png";
 
 interface NavbarProps {
   lang: Locale;

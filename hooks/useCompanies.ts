@@ -55,7 +55,8 @@ export function useCompanies({
       filtered = filtered.filter(
         (company) =>
           company.name.toLowerCase().includes(lowerSearch) ||
-          company.description.toLowerCase().includes(lowerSearch)
+          company.description.en.toLowerCase().includes(lowerSearch) ||
+          company.description.th.toLowerCase().includes(lowerSearch)
       );
     }
 

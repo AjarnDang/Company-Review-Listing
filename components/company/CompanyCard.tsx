@@ -6,7 +6,7 @@ import type { Company } from "@/types/company";
 import type { TranslationKeys } from "@/locales/th";
 import type { Locale } from "@/i18n.config";
 import Link from "next/link";
-import Image from "next/image";
+import LazyImage from "../LazyImage";
 
 interface CompanyCardProps {
   company: Company;
@@ -80,13 +80,14 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
         <CardBody className="p-6 space-y-4">
           {/* Logo and Category */}
           <div className="flex items-start justify-between gap-4">
-            <div className="w-24 h-12 relative flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
-              <Image
+            <div className="w-full relative h-20 bg-gray-50 dark:bg-gray-900 rounded-lg flex items-center justify-center p-3">
+              <LazyImage
                 src={company.logo}
                 alt={`${company.name} logo`}
-                width={96}
-                height={48}
+                width={100}
+                height={80}
                 className="object-contain"
+                quality={85}
               />
             </div>
             <Chip 

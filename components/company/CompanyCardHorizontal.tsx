@@ -6,7 +6,7 @@ import type { Company } from "@/types/company";
 import type { TranslationKeys } from "@/locales/th";
 import type { Locale } from "@/i18n.config";
 import Link from "next/link";
-import Image from "next/image";
+import LazyImage from "../LazyImage";
 
 interface CompanyCardHorizontalProps {
   company: Company;
@@ -82,13 +82,14 @@ export default function CompanyCardHorizontal({ company, translations: t, lang }
           <div className="flex flex-col sm:flex-row gap-6">
             {/* Left Side - Logo */}
             <div className="shrink-0">
-              <div className="w-full sm:w-32 h-24 sm:h-32 relative flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
-                <Image
+              <div className="w-32 h-24 relative bg-gray-50 dark:bg-gray-900 rounded-lg flex items-center justify-center p-3">
+                <LazyImage
                   src={company.logo}
                   alt={`${company.name} logo`}
-                  width={128}
-                  height={128}
-                  className="object-contain p-4"
+                  width={100}
+                  height={80}
+                  className="object-contain"
+                  quality={85}
                 />
               </div>
             </div>

@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "Wells Fargo",
-    "logo": "https://via.placeholder.com/100x50?text=WellsFargo",
+    "logo": "/img/Wells_Fargo_Logo_(2020).svg.png",
     "category": "Bank",
     "averageScore": 4.1,
     "description": {
@@ -15,7 +15,7 @@
   {
     "id": "2",
     "name": "Goldman Sachs",
-    "logo": "https://via.placeholder.com/100x50?text=GoldmanSachs",
+    "logo": "/img/Goldman_Sachs.svg.png",
     "category": "Broker",
     "averageScore": 4.6,
     "description": {
@@ -28,7 +28,7 @@
   {
     "id": "3",
     "name": "U.S. Bancorp",
-    "logo": "https://via.placeholder.com/100x50?text=USBank",
+    "logo": "/img/us-bancorp--600.png",
     "category": "Bank",
     "averageScore": 4.3,
     "description": {
@@ -41,7 +41,7 @@
   {
     "id": "4",
     "name": "JPMorgan Chase",
-    "logo": "https://via.placeholder.com/100x50?text=JPMorgan",
+    "logo": "/img/jp-morgan-4.webp",
     "category": "Bank",
     "averageScore": 4.5,
     "description": {
@@ -54,7 +54,7 @@
   {
     "id": "5",
     "name": "Bank of America",
-    "logo": "https://via.placeholder.com/100x50?text=BofA",
+    "logo": "/img/new-bank-of-america-logo.jpg",
     "category": "Bank",
     "averageScore": 4.2,
     "description": {
@@ -67,7 +67,7 @@
   {
     "id": "6",
     "name": "Morgan Stanley",
-    "logo": "https://via.placeholder.com/100x50?text=MorganStanley",
+    "logo": "/img/Morgan-Stanley-Logo.jpg",
     "category": "Broker",
     "averageScore": 4.5,
     "description": {
@@ -80,7 +80,7 @@
   {
     "id": "7",
     "name": "Charles Schwab",
-    "logo": "https://via.placeholder.com/100x50?text=Schwab",
+    "logo": "/img/Charles_Schwab_Corporation_logo.svg.png",
     "category": "Broker",
     "averageScore": 4.7,
     "description": {
@@ -93,7 +93,7 @@
   {
     "id": "8",
     "name": "American Express",
-    "logo": "https://via.placeholder.com/100x50?text=Amex",
+    "logo": "/img/American_Express_logo_(2018).svg.png",
     "category": "Payment",
     "averageScore": 4.4,
     "description": {
@@ -106,7 +106,7 @@
   {
     "id": "9",
     "name": "Citigroup",
-    "logo": "https://via.placeholder.com/100x50?text=Citi",
+    "logo": "/img/citigroup--600.png",
     "category": "Bank",
     "averageScore": 4.0,
     "description": {
@@ -119,7 +119,7 @@
   {
     "id": "10",
     "name": "BlackRock",
-    "logo": "https://via.placeholder.com/100x50?text=BlackRock",
+    "logo": "/img/blackrock_logo.png",
     "category": "Fintech",
     "averageScore": 4.6,
     "description": {
@@ -132,7 +132,7 @@
   {
     "id": "11",
     "name": "Fidelity Investments",
-    "logo": "https://via.placeholder.com/100x50?text=Fidelity",
+    "logo": "/img/fidelity_logo.png",
     "category": "Fintech",
     "averageScore": 4.5,
     "description": {
@@ -145,7 +145,7 @@
   {
     "id": "12",
     "name": "State Street Corporation",
-    "logo": "https://via.placeholder.com/100x50?text=StateStreet",
+    "logo": "/img/State_street.png",
     "category": "Fintech",
     "averageScore": 4.3,
     "description": {
@@ -158,7 +158,7 @@
   {
     "id": "13",
     "name": "Capital One",
-    "logo": "https://via.placeholder.com/100x50?text=CapitalOne",
+    "logo": "/img/capital_one.png",
     "category": "Bank",
     "averageScore": 4.2,
     "description": {
@@ -171,7 +171,7 @@
   {
     "id": "14",
     "name": "PNC Financial Services",
-    "logo": "https://via.placeholder.com/100x50?text=PNC",
+    "logo": "/img/pnc-bank-logo-0.png",
     "category": "Bank",
     "averageScore": 4.1,
     "description": {
@@ -184,7 +184,7 @@
   {
     "id": "15",
     "name": "TD Bank",
-    "logo": "https://via.placeholder.com/100x50?text=TDBank",
+    "logo": "/img/Toronto-Dominion_Bank_logo.svg.png",
     "category": "Bank",
     "averageScore": 4.3,
     "description": {
@@ -197,7 +197,7 @@
   {
     "id": "16",
     "name": "SCB (Siam Commercial Bank)",
-    "logo": "https://via.placeholder.com/100x50?text=SCB",
+    "logo": "/img/scb.jpg",
     "category": "Bank",
     "averageScore": 4.3,
     "description": {
@@ -210,7 +210,7 @@
   {
     "id": "17",
     "name": "KBANK (Kasikornbank)",
-    "logo": "https://via.placeholder.com/100x50?text=KBANK",
+    "logo": "/img/kbank_logo.jpg",
     "category": "Bank",
     "averageScore": 4.4,
     "description": {
@@ -223,7 +223,7 @@
   {
     "id": "18",
     "name": "BBL (Bangkok Bank)",
-    "logo": "https://via.placeholder.com/100x50?text=BBL",
+    "logo": "/img/BBL-New-EN.jpg",
     "category": "Bank",
     "averageScore": 4.2,
     "description": {
@@ -236,7 +236,7 @@
   {
     "id": "19",
     "name": "KTB (Krung Thai Bank)",
-    "logo": "https://via.placeholder.com/100x50?text=KTB",
+    "logo": "/img/ktb.png",
     "category": "Bank",
     "averageScore": 3.9,
     "description": {
@@ -249,7 +249,7 @@
   {
     "id": "20",
     "name": "BAY (Bank of Ayudhya)",
-    "logo": "https://via.placeholder.com/100x50?text=BAY",
+    "logo": "/img/bank_of_ayudhya.jpg",
     "category": "Bank",
     "averageScore": 4.1,
     "description": {
@@ -262,7 +262,7 @@
   {
     "id": "21",
     "name": "TTB (TMBThanachart Bank)",
-    "logo": "https://via.placeholder.com/100x50?text=TTB",
+    "logo": "/img/ttb_primary-logo-RGB-01.png",
     "category": "Bank",
     "averageScore": 3.8,
     "description": {
@@ -275,7 +275,7 @@
   {
     "id": "22",
     "name": "TISCO (Tisco Financial Group)",
-    "logo": "https://via.placeholder.com/100x50?text=TISCO",
+    "logo": "/img/Tisco_logo.png",
     "category": "Fintech",
     "averageScore": 4.5,
     "description": {
@@ -288,7 +288,7 @@
   {
     "id": "23",
     "name": "TIDLOR (Tidlor Capital)",
-    "logo": "https://via.placeholder.com/100x50?text=TIDLOR",
+    "logo": "/img/TIDLOR_2024-08-09.jpg",
     "category": "Fintech",
     "averageScore": 4.0,
     "description": {
@@ -430,19 +430,6 @@
   },
   {
     "id": "34",
-    "name": "THANI (Srisawad Power 1988)",
-    "logo": "https://via.placeholder.com/100x50?text=THANI",
-    "category": "Fintech",
-    "averageScore": 3.6,
-    "description": {
-      "en": "Srisawad Power 1988 Public Company Limited, providing secured loan services.",
-      "th": "บริษัท ศรีสวัสดิ์ เพาเวอร์ 1988 จำกัด (มหาชน) ผู้ให้บริการสินเชื่อที่มีหลักประกัน"
-    },
-    "website": "https://www.thanigroup.co.th",
-    "reviewCount": 119
-  },
-  {
-    "id": "35",
     "name": "ASP (Asia Plus Securities)",
     "logo": "https://via.placeholder.com/100x50?text=ASP",
     "category": "Broker",
