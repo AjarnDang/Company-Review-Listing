@@ -14,7 +14,7 @@ interface CompanyFiltersProps {
   filteredResults: number;
 }
 
-const CATEGORIES: CompanyCategory[] = ["Fintech", "Broker", "Payment"];
+const CATEGORIES: CompanyCategory[] = ["Fintech", "Broker", "Payment", "Bank"];
 
 export default function CompanyFilters({
   translations: t,

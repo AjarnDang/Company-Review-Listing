@@ -68,7 +68,8 @@ export default function SearchModal({
     ? companies.filter(company => 
         company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         company.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        company.description.toLowerCase().includes(searchQuery.toLowerCase())
+        company.description.en.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        company.description.th.toLowerCase().includes(searchQuery.toLowerCase())
       ).slice(0, 5)
     : [];
 
@@ -304,14 +305,13 @@ export default function SearchModal({
                   <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
                     {t.companies.filterByCategory}
                   </h3>
-                  <div className="flex gap-2">
-                    {["Fintech", "Broker", "Payment"].map((category) => (
+                  <div className="grid grid-cols-2 gap-2">
+                    {["Fintech", "Broker", "Payment", "Bank"].map((category) => (
                       <Button
                         key={category}
                         size="sm"
                         variant="bordered"
                         onPress={() => handleSearch(category)}
-                        className="flex-1"
                       >
                         {category}
                       </Button>

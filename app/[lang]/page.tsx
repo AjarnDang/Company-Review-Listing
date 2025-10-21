@@ -44,7 +44,7 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
 
   // Handle category click - navigate to category page
   const handleCategoryClick = (category?: string) => {
-    if (category && (category === "Fintech" || category === "Broker" || category === "Payment")) {
+    if (category && (category === "Fintech" || category === "Broker" || category === "Payment" || category === "Bank")) {
       window.location.href = `/${lang}/category/${category.toLowerCase()}`;
     }
   };

@@ -85,6 +85,7 @@ export const en: TranslationKeys = {
       fintech: "Fintech",
       broker: "Broker",
       payment: "Payment",
+      bank: "Bank",
     },
   },
 

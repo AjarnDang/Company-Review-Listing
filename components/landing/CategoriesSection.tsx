@@ -35,6 +35,14 @@ const categories = [
     textColor: "text-success-600 dark:text-success-400",
     hoverBg: "hover:bg-success-200 dark:hover:bg-success-800/40"
   },
+  { 
+    id: "Bank", 
+    translationKey: "bank",
+    icon: "🏦", 
+    bgColor: "bg-warning-100 dark:bg-warning-900/30",
+    textColor: "text-warning-600 dark:text-warning-400",
+    hoverBg: "hover:bg-warning-200 dark:hover:bg-warning-800/40"
+  },
 ];
 
 export default function CategoriesSection({ translations: t, onCategoryClick }: CategoriesSectionProps) {

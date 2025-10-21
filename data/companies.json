@@ -1,152 +1,457 @@
 [
   {
     "id": "1",
-    "name": "Alpha Finance",
-    "logo": "https://via.placeholder.com/100x50?text=Alpha",
-    "category": "Fintech",
-    "averageScore": 4.5,
-    "description": "Alpha Finance is a global financial platform that offers digital banking and investment services.",
-    "website": "https://alphafin.com",
-    "reviewCount": 128
+    "name": "Wells Fargo",
+    "logo": "https://via.placeholder.com/100x50?text=WellsFargo",
+    "category": "Bank",
+    "averageScore": 4.1,
+    "description": {
+      "en": "One of the largest financial services firms in the U.S., providing retail banking, mortgages, credit cards, business banking, wealth management, and investment services.",
+      "th": "หนึ่งในสถาบันการเงินที่ใหญ่ที่สุดในสหรัฐฯ ให้บริการธนาคารค้าปลีก สินเชื่อที่อยู่อาศัย บัตรเครดิต ธนาคารธุรกิจ การจัดการความมั่งคั่ง และบริการการลงทุน"
+    },
+    "website": "https://www.wellsfargo.com",
+    "reviewCount": 452
   },
   {
     "id": "2",
-    "name": "Beta Brokers",
-    "logo": "https://via.placeholder.com/100x50?text=Beta",
+    "name": "Goldman Sachs",
+    "logo": "https://via.placeholder.com/100x50?text=GoldmanSachs",
     "category": "Broker",
-    "averageScore": 3.9,
-    "description": "Beta Brokers provides competitive forex trading platforms and analytics tools.",
-    "website": "https://betabrokers.com",
-    "reviewCount": 95
+    "averageScore": 4.6,
+    "description": {
+      "en": "A leading global investment bank providing investment banking, asset management, private equity, financial advisory services, and consumer banking through Marcus platform.",
+      "th": "ธนาคารเพื่อการลงทุนชั้นนำระดับโลก ให้บริการธนาคารเพื่อการลงทุน การจัดการสินทรัพย์ ไพรเวทอิควิตี้ บริการที่ปรึกษาทางการเงิน และธนาคารค้าปลีกผ่าน Marcus"
+    },
+    "website": "https://www.goldmansachs.com",
+    "reviewCount": 387
   },
   {
     "id": "3",
-    "name": "GammaPay",
-    "logo": "https://via.placeholder.com/100x50?text=Gamma",
-    "category": "Payment",
-    "averageScore": 4.7,
-    "description": "GammaPay is a trusted online payment solution in Southeast Asia.",
-    "website": "https://gammapay.co",
-    "reviewCount": 203
+    "name": "U.S. Bancorp",
+    "logo": "https://via.placeholder.com/100x50?text=USBank",
+    "category": "Bank",
+    "averageScore": 4.3,
+    "description": {
+      "en": "The fifth-largest banking institution in the United States, offering personal banking, small business banking, wealth management, treasury management, and commercial lending.",
+      "th": "สถาบันธนาคารที่ใหญ่เป็นอันดับห้าในสหรัฐอเมริกา ให้บริการธนาคารส่วนบุคคล ธนาคารธุรกิจขนาดเล็ก การจัดการความมั่งคั่ง การจัดการเงินคลัง และสินเชื่อเชิงพาณิชย์"
+    },
+    "website": "https://www.usbank.com",
+    "reviewCount": 398
   },
   {
     "id": "4",
-    "name": "ZetaFX",
-    "logo": "https://via.placeholder.com/100x50?text=Zeta",
-    "category": "Broker",
-    "averageScore": 2.8,
-    "description": "ZetaFX specializes in CFD and crypto trading platforms.",
-    "website": "https://zetafx.trade",
-    "reviewCount": 67
+    "name": "JPMorgan Chase",
+    "logo": "https://via.placeholder.com/100x50?text=JPMorgan",
+    "category": "Bank",
+    "averageScore": 4.5,
+    "description": {
+      "en": "The largest bank in the United States, offering comprehensive financial services including retail banking, investment banking, asset management, and private banking solutions.",
+      "th": "ธนาคารที่ใหญ่ที่สุดในสหรัฐอเมริกา ให้บริการทางการเงินที่ครอบคลุม รวมถึงธนาคารค้าปลีก ธนาคารเพื่อการลงทุน การจัดการสินทรัพย์ และบริการธนาคารส่วนตัว"
+    },
+    "website": "https://www.jpmorganchase.com",
+    "reviewCount": 521
   },
   {
     "id": "5",
-    "name": "ThetaBank",
-    "logo": "https://via.placeholder.com/100x50?text=Theta",
-    "category": "Fintech",
-    "averageScore": 4.0,
-    "description": "ThetaBank offers next-generation personal and business banking solutions.",
-    "website": "https://thetabank.io",
-    "reviewCount": 156
+    "name": "Bank of America",
+    "logo": "https://via.placeholder.com/100x50?text=BofA",
+    "category": "Bank",
+    "averageScore": 4.2,
+    "description": {
+      "en": "A multinational investment bank and financial services company providing consumer banking, wealth management, investment banking, and global markets services.",
+      "th": "ธนาคารเพื่อการลงทุนข้ามชาติและบริษัทบริการทางการเงิน ให้บริการธนาคารค้าปลีก การจัดการความมั่งคั่ง ธนาคารเพื่อการลงทุน และบริการตลาดโลก"
+    },
+    "website": "https://www.bankofamerica.com",
+    "reviewCount": 489
   },
   {
     "id": "6",
-    "name": "OmegaPay",
-    "logo": "https://via.placeholder.com/100x50?text=Omega",
-    "category": "Payment",
-    "averageScore": 3.5,
-    "description": "OmegaPay provides secure digital payments and remittance services globally.",
-    "website": "https://omegapay.app",
-    "reviewCount": 89
+    "name": "Morgan Stanley",
+    "logo": "https://via.placeholder.com/100x50?text=MorganStanley",
+    "category": "Broker",
+    "averageScore": 4.5,
+    "description": {
+      "en": "A leading global financial services firm specializing in investment banking, securities trading, wealth management, and investment management for institutions and individuals.",
+      "th": "บริษัทบริการทางการเงินชั้นนำระดับโลก เชี่ยวชาญด้านธนาคารเพื่อการลงทุน การซื้อขายหลักทรัพย์ การจัดการความมั่งคั่ง และการจัดการการลงทุนสำหรับสถาบันและบุคคล"
+    },
+    "website": "https://www.morganstanley.com",
+    "reviewCount": 356
   },
   {
     "id": "7",
-    "name": "DeltaCapital",
-    "logo": "https://via.placeholder.com/100x50?text=Delta",
-    "category": "Fintech",
-    "averageScore": 4.3,
-    "description": "DeltaCapital is a leading investment and wealth management platform.",
-    "website": "https://deltacapital.io",
-    "reviewCount": 142
+    "name": "Charles Schwab",
+    "logo": "https://via.placeholder.com/100x50?text=Schwab",
+    "category": "Broker",
+    "averageScore": 4.7,
+    "description": {
+      "en": "A leading brokerage and banking company offering investment services, retirement planning, wealth management, and innovative trading platforms for retail and institutional clients.",
+      "th": "บริษัทโบรกเกอร์และธนาคารชั้นนำ ให้บริการลงทุน การวางแผนเกษียณ การจัดการความมั่งคั่ง และแพลตฟอร์มการซื้อขายที่ทันสมัยสำหรับลูกค้ารายย่อยและสถาบัน"
+    },
+    "website": "https://www.schwab.com",
+    "reviewCount": 423
   },
   {
     "id": "8",
-    "name": "EpsilonTrade",
-    "logo": "https://via.placeholder.com/100x50?text=Epsilon",
-    "category": "Broker",
-    "averageScore": 4.1,
-    "description": "EpsilonTrade offers advanced trading tools and market analysis.",
-    "website": "https://epsilontrade.com",
-    "reviewCount": 178
+    "name": "American Express",
+    "logo": "https://via.placeholder.com/100x50?text=Amex",
+    "category": "Payment",
+    "averageScore": 4.4,
+    "description": {
+      "en": "A globally integrated payments company providing credit cards, charge cards, travel services, and merchant payment solutions with premium rewards and benefits.",
+      "th": "บริษัทการชำระเงินแบบบูรณาการระดับโลก ให้บริการบัตรเครดิต บัตรชาร์จ บริการท่องเที่ยว และโซลูชันการชำระเงินสำหรับผู้ค้าพร้อมรางวัลและสิทธิพิเศษระดับพรีเมียม"
+    },
+    "website": "https://www.americanexpress.com",
+    "reviewCount": 512
   },
   {
     "id": "9",
-    "name": "KappaPay",
-    "logo": "https://via.placeholder.com/100x50?text=Kappa",
-    "category": "Payment",
-    "averageScore": 4.6,
-    "description": "KappaPay delivers fast and secure international payment solutions.",
-    "website": "https://kappapay.com",
-    "reviewCount": 234
+    "name": "Citigroup",
+    "logo": "https://via.placeholder.com/100x50?text=Citi",
+    "category": "Bank",
+    "averageScore": 4.0,
+    "description": {
+      "en": "A global banking giant offering consumer banking, corporate banking, investment banking, and wealth management services across 160 countries worldwide.",
+      "th": "ธนาคารยักษ์ใหญ่ระดับโลก ให้บริการธนาคารค้าปลีก ธนาคารองค์กร ธนาคารเพื่อการลงทุน และบริการจัดการความมั่งคั่งใน 160 ประเทศทั่วโลก"
+    },
+    "website": "https://www.citigroup.com",
+    "reviewCount": 445
   },
   {
     "id": "10",
-    "name": "LambdaInvest",
-    "logo": "https://via.placeholder.com/100x50?text=Lambda",
+    "name": "BlackRock",
+    "logo": "https://via.placeholder.com/100x50?text=BlackRock",
     "category": "Fintech",
-    "averageScore": 3.8,
-    "description": "LambdaInvest provides automated investment and robo-advisory services.",
-    "website": "https://lambdainvest.co",
-    "reviewCount": 112
+    "averageScore": 4.6,
+    "description": {
+      "en": "The world's largest asset management firm, providing investment management, risk management, and advisory services for institutional and retail clients globally.",
+      "th": "บริษัทจัดการสินทรัพย์ที่ใหญ่ที่สุดในโลก ให้บริการจัดการการลงทุน การจัดการความเสี่ยง และบริการที่ปรึกษาสำหรับลูกค้าสถาบันและรายย่อยทั่วโลก"
+    },
+    "website": "https://www.blackrock.com",
+    "reviewCount": 378
   },
   {
     "id": "11",
-    "name": "SigmaFX",
-    "logo": "https://via.placeholder.com/100x50?text=Sigma",
-    "category": "Broker",
-    "averageScore": 3.2,
-    "description": "SigmaFX is a forex and commodities trading platform.",
-    "website": "https://sigmafx.net",
-    "reviewCount": 73
+    "name": "Fidelity Investments",
+    "logo": "https://via.placeholder.com/100x50?text=Fidelity",
+    "category": "Fintech",
+    "averageScore": 4.5,
+    "description": {
+      "en": "A multinational financial services corporation offering brokerage services, mutual funds, retirement planning, wealth management, and investment advisory solutions.",
+      "th": "บริษัทบริการทางการเงินข้ามชาติ ให้บริการโบรกเกอร์ กองทุนรวม การวางแผนเกษียณ การจัดการความมั่งคั่ง และบริการที่ปรึกษาการลงทุน"
+    },
+    "website": "https://www.fidelity.com",
+    "reviewCount": 467
   },
   {
     "id": "12",
-    "name": "PhiFinance",
-    "logo": "https://via.placeholder.com/100x50?text=Phi",
+    "name": "State Street Corporation",
+    "logo": "https://via.placeholder.com/100x50?text=StateStreet",
     "category": "Fintech",
-    "averageScore": 4.4,
-    "description": "PhiFinance offers comprehensive digital banking and lending services.",
-    "website": "https://phifinance.io",
-    "reviewCount": 167
+    "averageScore": 4.3,
+    "description": {
+      "en": "A leading financial services and asset management company specializing in custody services, investment management, and investment research for institutional investors.",
+      "th": "บริษัทบริการทางการเงินและการจัดการสินทรัพย์ชั้นนำ เชี่ยวชาญด้านบริการรักษาทรัพย์สิน การจัดการการลงทุน และการวิจัยการลงทุนสำหรับนักลงทุนสถาบัน"
+    },
+    "website": "https://www.statestreet.com",
+    "reviewCount": 289
   },
   {
     "id": "13",
-    "name": "PsiPayments",
-    "logo": "https://via.placeholder.com/100x50?text=Psi",
-    "category": "Payment",
+    "name": "Capital One",
+    "logo": "https://via.placeholder.com/100x50?text=CapitalOne",
+    "category": "Bank",
     "averageScore": 4.2,
-    "description": "PsiPayments specializes in merchant payment processing solutions.",
-    "website": "https://psipayments.com",
-    "reviewCount": 145
+    "description": {
+      "en": "A diversified banking company specializing in credit cards, auto loans, banking, and savings accounts with innovative digital banking solutions and customer-centric approach.",
+      "th": "บริษัทธนาคารที่หลากหลาย เชี่ยวชาญด้านบัตรเครดิต สินเชื่อรถยนต์ บัญชีธนาคารและเงินฝากออมทรัพย์ พร้อมโซลูชันธนาคารดิจิทัลที่ทันสมัยและเน้นลูกค้าเป็นศูนย์กลาง"
+    },
+    "website": "https://www.capitalone.com",
+    "reviewCount": 534
   },
   {
     "id": "14",
-    "name": "OmicronTrade",
-    "logo": "https://via.placeholder.com/100x50?text=Omicron",
-    "category": "Broker",
-    "averageScore": 3.6,
-    "description": "OmicronTrade provides stock and cryptocurrency trading services.",
-    "website": "https://omicrontrade.com",
-    "reviewCount": 98
+    "name": "PNC Financial Services",
+    "logo": "https://via.placeholder.com/100x50?text=PNC",
+    "category": "Bank",
+    "averageScore": 4.1,
+    "description": {
+      "en": "A diversified financial services institution offering retail banking, corporate banking, asset management, and residential mortgage banking across the United States.",
+      "th": "สถาบันการเงินที่หลากหลาย ให้บริการธนาคารค้าปลีก ธนาคารองค์กร การจัดการสินทรัพย์ และธนาคารสินเชื่อที่อยู่อาศัยทั่วสหรัฐอเมริกา"
+    },
+    "website": "https://www.pnc.com",
+    "reviewCount": 367
   },
   {
     "id": "15",
-    "name": "RhoBank",
-    "logo": "https://via.placeholder.com/100x50?text=Rho",
+    "name": "TD Bank",
+    "logo": "https://via.placeholder.com/100x50?text=TDBank",
+    "category": "Bank",
+    "averageScore": 4.3,
+    "description": {
+      "en": "A leading North American bank providing personal and commercial banking, wealth management, and business banking services with exceptional customer service and convenient hours.",
+      "th": "ธนาคารชั้นนำในอเมริกาเหนือ ให้บริการธนาคารส่วนบุคคลและเชิงพาณิชย์ การจัดการความมั่งคั่ง และบริการธนาคารธุรกิจพร้อมบริการลูกค้าชั้นเยี่ยมและเวลาทำการที่สะดวก"
+    },
+    "website": "https://www.td.com",
+    "reviewCount": 412
+  },
+  {
+    "id": "16",
+    "name": "SCB (Siam Commercial Bank)",
+    "logo": "https://via.placeholder.com/100x50?text=SCB",
+    "category": "Bank",
+    "averageScore": 4.3,
+    "description": {
+      "en": "Siam Commercial Bank Public Company Limited, a leading Thai bank providing comprehensive financial services.",
+      "th": "ธนาคารไทยพาณิชย์ จำกัด (มหาชน) ธนาคารชั้นนำของไทยที่ให้บริการทางการเงินครบวงจร"
+    },
+    "website": "https://www.scb.co.th",
+    "reviewCount": 342
+  },
+  {
+    "id": "17",
+    "name": "KBANK (Kasikornbank)",
+    "logo": "https://via.placeholder.com/100x50?text=KBANK",
+    "category": "Bank",
+    "averageScore": 4.4,
+    "description": {
+      "en": "Kasikornbank Public Company Limited, leader in financial innovation and digital banking services.",
+      "th": "ธนาคารกสิกรไทย จำกัด (มหาชน) ผู้นำด้านนวัตกรรมการเงินและบริการธนาคารดิจิทัล"
+    },
+    "website": "https://www.kasikornbank.com",
+    "reviewCount": 398
+  },
+  {
+    "id": "18",
+    "name": "BBL (Bangkok Bank)",
+    "logo": "https://via.placeholder.com/100x50?text=BBL",
+    "category": "Bank",
+    "averageScore": 4.2,
+    "description": {
+      "en": "Bangkok Bank Public Company Limited, the largest commercial bank in Thailand.",
+      "th": "ธนาคารกรุงเทพ จำกัด (มหาชน) ธนาคารพาณิชย์ที่ใหญ่ที่สุดในประเทศไทย"
+    },
+    "website": "https://www.bangkokbank.com",
+    "reviewCount": 425
+  },
+  {
+    "id": "19",
+    "name": "KTB (Krung Thai Bank)",
+    "logo": "https://via.placeholder.com/100x50?text=KTB",
+    "category": "Bank",
+    "averageScore": 3.9,
+    "description": {
+      "en": "Krung Thai Bank Public Company Limited, a state-owned commercial bank serving nationwide.",
+      "th": "ธนาคารกรุงไทย จำกัด (มหาชน) ธนาคารพาณิชย์ของรัฐที่ให้บริการทั่วประเทศ"
+    },
+    "website": "https://www.ktb.co.th",
+    "reviewCount": 287
+  },
+  {
+    "id": "20",
+    "name": "BAY (Bank of Ayudhya)",
+    "logo": "https://via.placeholder.com/100x50?text=BAY",
+    "category": "Bank",
+    "averageScore": 4.1,
+    "description": {
+      "en": "Bank of Ayudhya Public Company Limited (Krungsri), a leading commercial bank under MUFG Group.",
+      "th": "ธนาคารกรุงศรีอยุธยา จำกัด (มหาชน) ธนาคารพาณิชย์ชั้นนำในเครือ MUFG"
+    },
+    "website": "https://www.krungsri.com",
+    "reviewCount": 315
+  },
+  {
+    "id": "21",
+    "name": "TTB (TMBThanachart Bank)",
+    "logo": "https://via.placeholder.com/100x50?text=TTB",
+    "category": "Bank",
+    "averageScore": 3.8,
+    "description": {
+      "en": "TMBThanachart Bank Public Company Limited, formed from the merger of TMB and Thanachart banks.",
+      "th": "ธนาคารทหารไทยธนชาต จำกัด (มหาชน) ธนาคารที่เกิดจากการควรรวมกิจการ TMB และ ธนชาต"
+    },
+    "website": "https://www.ttbbank.com",
+    "reviewCount": 234
+  },
+  {
+    "id": "22",
+    "name": "TISCO (Tisco Financial Group)",
+    "logo": "https://via.placeholder.com/100x50?text=TISCO",
     "category": "Fintech",
-    "averageScore": 4.8,
-    "description": "RhoBank is an award-winning neobank with innovative financial products.",
-    "website": "https://rhobank.io",
-    "reviewCount": 289
+    "averageScore": 4.5,
+    "description": {
+      "en": "TISCO Financial Group Public Company Limited, providing comprehensive financial services including banking, securities, and life insurance.",
+      "th": "บริษัท ทิสโก้ไฟแนนเชียลกรุ๊ป จำกัด (มหาชน) ผู้ให้บริการทางการเงินครบวงจร ธนาคาร หลักทรัพย์ และประกันชีวิต"
+    },
+    "website": "https://www.tisco.co.th",
+    "reviewCount": 189
+  },
+  {
+    "id": "23",
+    "name": "TIDLOR (Tidlor Capital)",
+    "logo": "https://via.placeholder.com/100x50?text=TIDLOR",
+    "category": "Fintech",
+    "averageScore": 4.0,
+    "description": {
+      "en": "Tidlor Capital Public Company Limited, providing personal loans and auto financing services.",
+      "th": "บริษัท ทิดลอร์ แคปปิตอล จำกัด (มหาชน) ผู้ให้บริการสินเชื่อส่วนบุคคลและสินเชื่อรถยนต์"
+    },
+    "website": "https://www.tidlor.com",
+    "reviewCount": 156
+  },
+  {
+    "id": "24",
+    "name": "SAWAD (Srisawad Corporation)",
+    "logo": "https://via.placeholder.com/100x50?text=SAWAD",
+    "category": "Fintech",
+    "averageScore": 3.7,
+    "description": {
+      "en": "Srisawad Corporation Public Company Limited, providing credit services for SME entrepreneurs.",
+      "th": "บริษัท ศรีสวัสดิ์ คอร์ปอเรชั่น จำกัด (มหาชน) ผู้ให้บริการสินเชื่อเพื่อผู้ประกอบการ SME"
+    },
+    "website": "https://www.srisawadpower.com",
+    "reviewCount": 142
+  },
+  {
+    "id": "25",
+    "name": "MTC (Muangthai Capital)",
+    "logo": "https://via.placeholder.com/100x50?text=MTC",
+    "category": "Fintech",
+    "averageScore": 3.9,
+    "description": {
+      "en": "Muangthai Capital Public Company Limited, providing motorcycle financing and microfinance services.",
+      "th": "บริษัท เมืองไทย แคปปิตอล จำกัด (มหาชน) ผู้ให้บริการสินเชื่อรถจักรยานยนต์และไมโครไฟแนนซ์"
+    },
+    "website": "https://www.muangthaigroup.com",
+    "reviewCount": 178
+  },
+  {
+    "id": "26",
+    "name": "KTC (Krungthai Card)",
+    "logo": "https://via.placeholder.com/100x50?text=KTC",
+    "category": "Payment",
+    "averageScore": 4.2,
+    "description": {
+      "en": "Krungthai Card Public Company Limited, providing credit card and personal loan services.",
+      "th": "บริษัท บัตรกรุงไทย จำกัด (มหาชน) ผู้ให้บริการบัตรเครดิตและสินเชื่อส่วนบุคคล"
+    },
+    "website": "https://www.ktc.co.th",
+    "reviewCount": 267
+  },
+  {
+    "id": "27",
+    "name": "AEONTS (AEON Thana Sinsap)",
+    "logo": "https://via.placeholder.com/100x50?text=AEONTS",
+    "category": "Payment",
+    "averageScore": 4.0,
+    "description": {
+      "en": "AEON Thana Sinsap (Thailand) Public Company Limited, providing credit card and personal loan services.",
+      "th": "บริษัท อิออน ธนสินทรัพย์ (ไทยแลนด์) จำกัด (มหาชน) ผู้ให้บริการบัตรเครดิตและสินเชื่อส่วนบุคคล"
+    },
+    "website": "https://www.aeon.co.th",
+    "reviewCount": 201
+  },
+  {
+    "id": "28",
+    "name": "TCAP (Thanachart Capital)",
+    "logo": "https://via.placeholder.com/100x50?text=TCAP",
+    "category": "Fintech",
+    "averageScore": 3.8,
+    "description": {
+      "en": "Thanachart Capital Public Company Limited, a financial holding company covering insurance and securities businesses.",
+      "th": "บริษัท ธนชาต แคปปิตอล จำกัด (มหาชน) บริษัทโฮลดิ้งด้านการเงิน ครอบคลุมธุรกิจประกันภัยและหลักทรัพย์"
+    },
+    "website": "https://www.thanachartvital.co.th",
+    "reviewCount": 165
+  },
+  {
+    "id": "29",
+    "name": "SCBX (SCB X)",
+    "logo": "https://via.placeholder.com/100x50?text=SCBX",
+    "category": "Fintech",
+    "averageScore": 4.6,
+    "description": {
+      "en": "SCB X Public Company Limited, a financial technology and innovation holding company.",
+      "th": "บริษัท เอสซีบี เอ็กซ์ จำกัด (มหาชน) บริษัทโฮลดิ้งด้านเทคโนโลยีการเงินและนวัตกรรม"
+    },
+    "website": "https://www.scbx.com",
+    "reviewCount": 223
+  },
+  {
+    "id": "30",
+    "name": "KFLT (Kasikorn Leasing)",
+    "logo": "https://via.placeholder.com/100x50?text=KFLT",
+    "category": "Fintech",
+    "averageScore": 3.9,
+    "description": {
+      "en": "Kiat NM Asset Management Public Company Limited, providing hire-purchase financing and asset management services.",
+      "th": "บริษัท เกียรติ เอ็น เอ็ม แอสเสท แมเนจเมนท์ จำกัด (มหาชน) ผู้ให้บริการสินเชื่อเช่าซื้อและบริหารสินทรัพย์"
+    },
+    "website": "https://www.kfltasset.com",
+    "reviewCount": 128
+  },
+  {
+    "id": "31",
+    "name": "CIMBT (CIMB Thai Bank)",
+    "logo": "https://via.placeholder.com/100x50?text=CIMBT",
+    "category": "Bank",
+    "averageScore": 3.7,
+    "description": {
+      "en": "CIMB Thai Bank Public Company Limited, a commercial bank under CIMB Group.",
+      "th": "ธนาคารซีไอเอ็มบี ไทย จำกัด (มหาชน) ธนาคารพาณิชย์ในเครือ CIMB Group"
+    },
+    "website": "https://www.cimbthai.com",
+    "reviewCount": 145
+  },
+  {
+    "id": "32",
+    "name": "LHFG (Land and Houses Financial Group)",
+    "logo": "https://via.placeholder.com/100x50?text=LHFG",
+    "category": "Fintech",
+    "averageScore": 4.1,
+    "description": {
+      "en": "Land and Houses Financial Group Public Company Limited, a comprehensive financial services group.",
+      "th": "บริษัท แลนด์ แอนด์ เฮ้าส์ ไฟแนนเชียล กรุ๊ป จำกัด (มหาชน) กลุ่มธุรกิจทางการเงินครบวงจร"
+    },
+    "website": "https://www.lhfg.co.th",
+    "reviewCount": 134
+  },
+  {
+    "id": "33",
+    "name": "UOBKH (United Overseas Bank)",
+    "logo": "https://via.placeholder.com/100x50?text=UOBKH",
+    "category": "Bank",
+    "averageScore": 4.0,
+    "description": {
+      "en": "United Overseas Bank (Thai) Public Company Limited, a commercial bank under UOB Group from Singapore.",
+      "th": "ธนาคารยูโอบี จำกัด (มหาชน) ธนาคารพาณิชย์ในเครือ UOB Group จากสิงคโปร์"
+    },
+    "website": "https://www.uob.co.th",
+    "reviewCount": 167
+  },
+  {
+    "id": "34",
+    "name": "THANI (Srisawad Power 1988)",
+    "logo": "https://via.placeholder.com/100x50?text=THANI",
+    "category": "Fintech",
+    "averageScore": 3.6,
+    "description": {
+      "en": "Srisawad Power 1988 Public Company Limited, providing secured loan services.",
+      "th": "บริษัท ศรีสวัสดิ์ เพาเวอร์ 1988 จำกัด (มหาชน) ผู้ให้บริการสินเชื่อที่มีหลักประกัน"
+    },
+    "website": "https://www.thanigroup.co.th",
+    "reviewCount": 119
+  },
+  {
+    "id": "35",
+    "name": "ASP (Asia Plus Securities)",
+    "logo": "https://via.placeholder.com/100x50?text=ASP",
+    "category": "Broker",
+    "averageScore": 4.3,
+    "description": {
+      "en": "Asia Plus Securities Public Company Limited, providing securities trading and investment services.",
+      "th": "บริษัทหลักทรัพย์ เอเซีย พลัส จำกัด (มหาชน) ผู้ให้บริการซื้อขายหลักทรัพย์และการลงทุน"
+    },
+    "website": "https://www.asiaplus.co.th",
+    "reviewCount": 156
   }
 ]

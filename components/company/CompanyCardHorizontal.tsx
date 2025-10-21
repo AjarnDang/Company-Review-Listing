@@ -62,6 +62,8 @@ export default function CompanyCardHorizontal({ company, translations: t, lang }
         return "secondary";
       case "Payment":
         return "success";
+      case "Bank":
+        return "warning";
       default:
         return "default";
     }
@@ -111,7 +113,7 @@ export default function CompanyCardHorizontal({ company, translations: t, lang }
 
                 {/* Description */}
                 <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 line-clamp-2 mb-4">
-                  {company.description}
+                  {company.description[lang]}
                 </p>
               </div>
 

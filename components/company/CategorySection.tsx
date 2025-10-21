@@ -10,7 +10,7 @@ import type { TranslationKeys } from "@/locales/th";
 import type { Locale } from "@/i18n.config";
 
 interface CategorySectionProps {
-  category: "Fintech" | "Broker" | "Payment";
+  category: "Fintech" | "Broker" | "Payment" | "Bank";
   companies: Company[];
   translations: TranslationKeys;
   lang: Locale;

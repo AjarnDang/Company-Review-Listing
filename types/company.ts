@@ -4,14 +4,17 @@ export interface Company {
   logo: string;
   category: CompanyCategory;
   averageScore: number;
-  description: string;
+  description: {
+    en: string;
+    th: string;
+  };
   website: string;
   reviewCount: number;
 }
 
-export type CompanyCategory = "Fintech" | "Broker" | "Payment";
+export type CompanyCategory = "Fintech" | "Broker" | "Payment" | "Bank";
 
-export const COMPANY_CATEGORIES: CompanyCategory[] = ["Fintech", "Broker", "Payment"];
+export const COMPANY_CATEGORIES: CompanyCategory[] = ["Fintech", "Broker", "Payment", "Bank"];
 
 export interface CompanyFilters {
   search: string;

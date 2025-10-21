@@ -83,6 +83,7 @@ export const th = {
       fintech: "Fintech",
       broker: "Broker", 
       payment: "Payment",
+      bank: "ธนาคาร",
     },
   },
 

@@ -62,6 +62,8 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
         return "secondary";
       case "Payment":
         return "success";
+      case "Bank":
+        return "warning";
       default:
         return "default";
     }
@@ -70,7 +72,7 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
   return (
     <article>
       <Card 
-        className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+        className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full"
         isPressable
         role="article"
         aria-label={`${company.name} - ${t.companies.rating} ${company.averageScore.toFixed(1)}`}
@@ -125,7 +127,7 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
 
           {/* Description */}
           <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 min-h-[40px]">
-            {company.description}
+            {company.description[lang]}
           </p>
         </CardBody>
 

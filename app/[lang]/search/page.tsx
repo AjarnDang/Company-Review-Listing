@@ -68,7 +68,7 @@ export default function SearchPage({ params }: { params: Promise<{ lang: Locale 
     const lowerQuery = query.toLowerCase();
     
     // Check if it's a category
-    if (["fintech", "broker", "payment"].includes(lowerQuery)) {
+    if (["fintech", "broker", "payment", "bank"].includes(lowerQuery)) {
       return { type: 'category', value: query };
     }
     
