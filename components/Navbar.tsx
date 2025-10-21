@@ -36,16 +36,37 @@ export default function App({ lang }: NavbarProps) {
   };
 
   const menuItems = [
-    { key: "profile", label: t.menu.profile },
-    { key: "dashboard", label: t.menu.dashboard },
-    { key: "activity", label: t.menu.activity },
-    { key: "analytics", label: t.menu.analytics },
-    { key: "system", label: t.menu.system },
-    { key: "deployments", label: t.menu.deployments },
-    { key: "mySettings", label: t.menu.mySettings },
-    { key: "teamSettings", label: t.menu.teamSettings },
-    { key: "helpFeedback", label: t.menu.helpFeedback },
-    { key: "logout", label: t.menu.logout },
+    { 
+      key: "home", 
+      label: t.navbar.home, 
+      href: `/${lang}`, 
+      isNavLink: true,
+    },
+    {
+      key: "companies",
+      label: t.navbar.companies,
+      href: `/${lang}/companies`,
+      isNavLink: true,
+    },
+    {
+      key: "about",
+      label: t.navbar.about,
+      href: `/${lang}/about`,
+      isNavLink: true,
+    },
+    {
+      key: "signup",
+      label: t.navbar.signup,
+      href: `/${lang}/signup`,
+      isDivider: true,
+      isAuthLink: true,
+    },
+    { 
+      key: "login", 
+      label: t.navbar.login, 
+      href: `/${lang}`, 
+      isAuthLink: true,
+    },
   ];
 
   return (
@@ -53,18 +74,24 @@ export default function App({ lang }: NavbarProps) {
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? t.menu.closeMenu : t.menu.openMenu}
-          className="sm:hidden"
+          className="md:hidden"
         />
         <NavbarBrand className="flex items-center gap-2">
-          <Image src={FinScopeLogo} alt="FinScope" className="w-12 h-12 max-w-full max-h-full object-contain" />
-          <p className="font-bold text-xl text-inherit">{t.navbar.brand}</p>
+          <Image
+            src={FinScopeLogo}
+            alt="FinScope"
+            className="w-12 h-12 max-w-full max-h-full object-contain"
+          />
+          <p className="font-bold text-xl text-inherit hidden sm:block">
+            {t.navbar.brand}
+          </p>
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden md:flex gap-4" justify="center">
         <NavbarItem isActive={isActive(`/${lang}`)}>
-          <Link 
-            color={isActive(`/${lang}`) ? "primary" : "foreground"} 
+          <Link
+            color={isActive(`/${lang}`) ? "primary" : "foreground"}
             href={`/${lang}`}
             aria-current={isActive(`/${lang}`) ? "page" : undefined}
           >
@@ -72,8 +99,8 @@ export default function App({ lang }: NavbarProps) {
           </Link>
         </NavbarItem>
         <NavbarItem isActive={isActive(`/${lang}/companies`)}>
-          <Link 
-            color={isActive(`/${lang}/companies`) ? "primary" : "foreground"} 
+          <Link
+            color={isActive(`/${lang}/companies`) ? "primary" : "foreground"}
             href={`/${lang}/companies`}
             aria-current={isActive(`/${lang}/companies`) ? "page" : undefined}
           >
@@ -81,8 +108,8 @@ export default function App({ lang }: NavbarProps) {
           </Link>
         </NavbarItem>
         <NavbarItem isActive={isActive(`/${lang}/about`)}>
-          <Link 
-            color={isActive(`/${lang}/about`) ? "primary" : "foreground"} 
+          <Link
+            color={isActive(`/${lang}/about`) ? "primary" : "foreground"}
             href={`/${lang}/about`}
             aria-current={isActive(`/${lang}/about`) ? "page" : undefined}
           >
@@ -90,28 +117,45 @@ export default function App({ lang }: NavbarProps) {
           </Link>
         </NavbarItem>
       </NavbarContent>
+
       <NavbarContent justify="end">
+        {/* Show Language Switcher on desktop (>= sm) */}
         <NavbarItem className="hidden md:flex">
           <LanguageSwitcher currentLang={lang} />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">
+        {/* Show Login and Signup on desktop (>= sm) */}
+        <NavbarItem className="flex">
           <Link href={`/${lang}`}>{t.navbar.login}</Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem className="hidden sm:flex">
           <Button as={Link} color="primary" href={`/${lang}`} variant="flat">
             {t.navbar.signup}
           </Button>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
+
+      <NavbarMenu className="pt-8">
+        {/* Language Switcher in Mobile Menu */}
+        <NavbarMenuItem className="mb-4">
+          <LanguageSwitcher currentLang={lang} />
+        </NavbarMenuItem>
+
+        {/* Divider after Language Switcher */}
+        <div className="mb-4 border-t border-gray-200 dark:border-gray-700" />
+
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.key}-${index}`}>
+            {item.isDivider && index > 0 && (
+              <div className="my-3 border-t border-gray-200 dark:border-gray-700" />
+            )}
             <Link
-              className="w-full"
+              className="w-full py-3"
               color={
-                index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+                !item.isAuthLink && isActive(item.href)
+                  ? "primary"
+                  : "foreground"
               }
-              href={`/${lang}`}
+              href={item.href}
               size="lg"
             >
               {item.label}
