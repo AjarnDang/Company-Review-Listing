@@ -191,6 +191,27 @@ export const th = {
     topRated: "บริษัท {{category}} ที่ได้คะแนนสูงสุด",
     seeMore: "ดูเพิ่มเติม",
   },
+
+  // Business CTA Section
+  businessCta: {
+    headline: "ต้องการเติบโตธุรกิจของคุณ?",
+    description: "เสริมสร้างชื่อเสียงของคุณด้วยรีวิวบน FinScope",
+    ctaButton: "เริ่มต้นใช้งาน",
+    features: {
+      visibility: {
+        title: "เพิ่มการมองเห็น",
+        description: "เข้าถึงลูกค้าที่มีศักยภาพหลายพันคนที่กำลังค้นหาบริการการเงิน",
+      },
+      trust: {
+        title: "สร้างความไว้วางใจ",
+        description: "แสดงรีวิวลูกค้าที่แท้จริงและสร้างความน่าเชื่อถือ",
+      },
+      insights: {
+        title: "ได้รับข้อมูลเชิงลึก",
+        description: "เข้าใจลูกค้าของคุณได้ดีขึ้นด้วยการวิเคราะห์ข้อเสนอแนะโดยละเอียด",
+      },
+    },
+  },
 };
 
 export type TranslationKeys = typeof th;

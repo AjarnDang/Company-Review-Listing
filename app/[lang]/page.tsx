@@ -7,6 +7,7 @@ import { generateCompanyListSchema } from '@/lib/seo';
 import HeroSection from '@/components/landing/HeroSection';
 import CategoriesSection from '@/components/landing/CategoriesSection';
 import CTASection from '@/components/landing/CTASection';
+import BusinessCTASection from '@/components/landing/BusinessCTASection';
 import ReviewsSection from '@/components/landing/ReviewsSection';
 import SearchModal from '@/components/search/SearchModal';
 import CategorySection from '@/components/company/CategorySection';
@@ -101,6 +102,9 @@ export default function HomePage({ params }: { params: Promise<{ lang: Locale }>
         translations={t}
         onCategoryClick={handleCategoryClick}
       />
+
+      {/* Business CTA Section */}
+      <BusinessCTASection lang={lang} translations={t} />
 
       {/* Category Sections - Best in Each Category */}
       <div ref={companiesRef}>

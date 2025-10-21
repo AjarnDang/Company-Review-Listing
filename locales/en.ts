@@ -193,4 +193,25 @@ export const en: TranslationKeys = {
     topRated: "Top rated {{category}} companies",
     seeMore: "See More",
   },
+
+  // Business CTA Section
+  businessCta: {
+    headline: "Looking to grow your business?",
+    description: "Strengthen your reputation with reviews on FinScope.",
+    ctaButton: "Get Started",
+    features: {
+      visibility: {
+        title: "Increase Visibility",
+        description: "Reach thousands of potential customers searching for financial services",
+      },
+      trust: {
+        title: "Build Trust",
+        description: "Showcase authentic customer reviews and build credibility",
+      },
+      insights: {
+        title: "Get Insights",
+        description: "Understand your customers better with detailed feedback analytics",
+      },
+    },
+  },
 };
