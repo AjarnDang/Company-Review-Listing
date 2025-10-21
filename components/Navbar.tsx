@@ -55,16 +55,9 @@ export default function App({ lang }: NavbarProps) {
       isNavLink: true,
     },
     {
-      key: "signup",
-      label: t.navbar.signup,
-      href: `/${lang}/signup`,
-      isDivider: true,
-      isAuthLink: true,
-    },
-    { 
-      key: "login", 
-      label: t.navbar.login, 
-      href: `/${lang}`, 
+      key: "getStarted",
+      label: t.navbar.getStarted,
+      href: `/${lang}/get-started`,
       isAuthLink: true,
     },
   ];
@@ -119,35 +112,27 @@ export default function App({ lang }: NavbarProps) {
       </NavbarContent>
 
       <NavbarContent justify="end">
-        {/* Show Language Switcher on desktop (>= sm) */}
+        {/* Show Language Switcher on desktop (>= md) */}
         <NavbarItem className="hidden md:flex">
           <LanguageSwitcher currentLang={lang} />
         </NavbarItem>
-        {/* Show Login and Signup on desktop (>= sm) */}
-        <NavbarItem className="flex">
-          <Link href={`/${lang}`}>{t.navbar.login}</Link>
-        </NavbarItem>
-        <NavbarItem className="hidden sm:flex">
-          <Button as={Link} color="primary" href={`/${lang}`} variant="flat">
-            {t.navbar.signup}
+        {/* Show Get Started button */}
+        <NavbarItem>
+          <Button 
+            as={Link} 
+            color="primary" 
+            href={`/${lang}/get-started`} 
+            variant="flat"
+            className="font-semibold"
+          >
+            {t.navbar.getStarted}
           </Button>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarMenu className="pt-8">
-        {/* Language Switcher in Mobile Menu */}
-        <NavbarMenuItem className="mb-4">
-          <LanguageSwitcher currentLang={lang} />
-        </NavbarMenuItem>
-
-        {/* Divider after Language Switcher */}
-        <div className="mb-4 border-t border-gray-200 dark:border-gray-700" />
-
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item.key}-${index}`}>
-            {item.isDivider && index > 0 && (
-              <div className="my-3 border-t border-gray-200 dark:border-gray-700" />
-            )}
             <Link
               className="w-full py-3"
               color={
@@ -162,6 +147,10 @@ export default function App({ lang }: NavbarProps) {
             </Link>
           </NavbarMenuItem>
         ))}
+        <div className="my-3 border-t border-gray-200 dark:border-gray-700" />
+        <NavbarMenuItem className="mt-4">
+          <LanguageSwitcher currentLang={lang} />
+        </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );

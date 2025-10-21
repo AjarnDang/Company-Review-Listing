@@ -74,8 +74,8 @@ export default function LanguageSwitcher({ currentLang }: LanguageSwitcherProps)
             </svg>
           }
         >
-          <span className="hidden sm:inline">{currentLanguage?.label}</span>
-          <span className="sm:hidden">{currentLang.toUpperCase()}</span>
+          <span className="inline">{currentLanguage?.label}</span>
+          {/* <span className="sm:hidden">{currentLang.toUpperCase()}</span> */}
         </Button>
       </DropdownTrigger>
       <DropdownMenu

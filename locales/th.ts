@@ -11,6 +11,7 @@ export const th = {
     about: "เกี่ยวกับ",
     login: "เข้าสู่ระบบ",
     signup: "สมัครสมาชิก",
+    getStarted: "ใช้งานเลย",
   },
   
   // Menu Items

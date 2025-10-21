@@ -13,6 +13,7 @@ export const en: TranslationKeys = {
     about: "About",
     login: "Login",
     signup: "Sign Up",
+    getStarted: "Get Started",
   },
   
   // Menu Items

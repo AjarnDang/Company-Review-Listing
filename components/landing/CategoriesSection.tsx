@@ -13,41 +13,44 @@ interface CategoriesSectionProps {
 
 // Categories data
 const categories = [
-  { 
-    id: "Fintech", 
+  {
+    id: "Fintech",
     translationKey: "fintech",
-    icon: "💳", 
+    icon: "💳",
     bgColor: "bg-primary-100 dark:bg-primary-900/30",
     textColor: "text-primary-600 dark:text-primary-400",
-    hoverBg: "hover:bg-primary-200 dark:hover:bg-primary-800/40"
+    hoverBg: "hover:bg-primary-200 dark:hover:bg-primary-800/40",
   },
-  { 
-    id: "Broker", 
+  {
+    id: "Broker",
     translationKey: "broker",
-    icon: "📈", 
+    icon: "📈",
     bgColor: "bg-secondary-100 dark:bg-secondary-900/30",
     textColor: "text-secondary-600 dark:text-secondary-400",
-    hoverBg: "hover:bg-secondary-200 dark:hover:bg-secondary-800/40"
+    hoverBg: "hover:bg-secondary-200 dark:hover:bg-secondary-800/40",
   },
-  { 
-    id: "Payment", 
+  {
+    id: "Payment",
     translationKey: "payment",
-    icon: "💰", 
+    icon: "💰",
     bgColor: "bg-success-100 dark:bg-success-900/30",
     textColor: "text-success-600 dark:text-success-400",
-    hoverBg: "hover:bg-success-200 dark:hover:bg-success-800/40"
+    hoverBg: "hover:bg-success-200 dark:hover:bg-success-800/40",
   },
-  { 
-    id: "Bank", 
+  {
+    id: "Bank",
     translationKey: "bank",
-    icon: "🏦", 
+    icon: "🏦",
     bgColor: "bg-warning-100 dark:bg-warning-900/30",
     textColor: "text-warning-600 dark:text-warning-400",
-    hoverBg: "hover:bg-warning-200 dark:hover:bg-warning-800/40"
+    hoverBg: "hover:bg-warning-200 dark:hover:bg-warning-800/40",
   },
 ];
 
-export default function CategoriesSection({ translations: t, lang }: CategoriesSectionProps) {
+export default function CategoriesSection({
+  translations: t,
+  lang,
+}: CategoriesSectionProps) {
   const router = useRouter();
 
   const handleCategoryClick = (category: string) => {
@@ -66,7 +69,7 @@ export default function CategoriesSection({ translations: t, lang }: CategoriesS
           </p>
         </div> */}
 
-        <motion.div 
+        <motion.div
           className="flex gap-4 justify-center items-center flex-wrap max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -78,25 +81,27 @@ export default function CategoriesSection({ translations: t, lang }: CategoriesS
               onClick={() => handleCategoryClick(category.id)}
               className={`px-6 py-4 rounded-2xl ${category.bgColor} ${category.hoverBg}
                 border-2 border-transparent ${category.textColor}
-                shadow-md hover:shadow-xl transition-all`}
+                shadow-md hover:shadow-xl transition-all cursor-pointer`}
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + index * 0.1 }}
-              aria-label={`Filter ${t.companies.categories[category.translationKey as keyof typeof t.companies.categories]} companies`}
+              transition={{ delay: 0 }}
+              aria-label={`Filter ${
+                t.companies.categories[
+                  category.translationKey as keyof typeof t.companies.categories
+                ]
+              } companies`}
             >
               <div className="flex items-center gap-3">
-                <motion.span 
-                  className="text-3xl"
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-                >
-                  {category.icon}
-                </motion.span>
+                <motion.span className="text-3xl">{category.icon}</motion.span>
                 <div className="text-left">
                   <div className="text-lg font-bold">
-                    {t.companies.categories[category.translationKey as keyof typeof t.companies.categories]}
+                    {
+                      t.companies.categories[
+                        category.translationKey as keyof typeof t.companies.categories
+                      ]
+                    }
                   </div>
                 </div>
               </div>
@@ -107,4 +112,3 @@ export default function CategoriesSection({ translations: t, lang }: CategoriesS
     </section>
   );
 }
-
