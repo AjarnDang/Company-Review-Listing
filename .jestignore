@@ -1,0 +1,17 @@
+# Ignore VS Code and Cursor extensions
+.vscode/
+.cursor/
+AppData/
+
+# Ignore E2E tests (Playwright)
+tests/
+
+# Ignore build and output directories
+.next/
+node_modules/
+playwright-report/
+test-results/
+
+# Ignore public assets
+public/
+
