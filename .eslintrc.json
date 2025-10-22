@@ -1,0 +1,30 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    // Warnings
+    "no-console": "warn",
+    "no-debugger": "warn",
+    
+    // Errors
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    
+    // Best practices
+    "prefer-const": "error",
+    "no-var": "error",
+    
+    // React
+    "react/no-unescaped-entities": "off",
+    "react/jsx-key": "error",
+    
+    // Next.js
+    "@next/next/no-html-link-for-pages": "error"
+  }
+}
+

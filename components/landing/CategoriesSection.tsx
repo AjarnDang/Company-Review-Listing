@@ -75,7 +75,7 @@ export default function CategoriesSection({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          {categories.map((category, index) => (
+          {categories.map((category, _index) => (
             <motion.button
               key={category.id}
               onClick={() => handleCategoryClick(category.id)}

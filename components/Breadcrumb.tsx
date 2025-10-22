@@ -16,7 +16,7 @@ interface BreadcrumbProps {
   translations: TranslationKeys;
 }
 
-export default function Breadcrumb({ items, lang, translations: t }: BreadcrumbProps) {
+export default function Breadcrumb({ items, lang: _lang, translations: _t }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb">
       <ol className="flex items-center flex-wrap gap-2 text-sm">

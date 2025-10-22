@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button, Pagination } from "@heroui/react";
+import { Pagination } from "@heroui/react";
 import type { TranslationKeys } from "@/locales/th";
 
 interface CompanyPaginationProps {
@@ -20,7 +20,7 @@ export default function CompanyPagination({
   currentPage,
   totalPages,
   onPageChange,
-  itemsPerPage,
+  itemsPerPage: _itemsPerPage,
   totalItems,
   startIndex,
   endIndex,

@@ -25,7 +25,7 @@ const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(({
   value,
   autoFocus = false,
   readOnly = true,
-  showKeyboardHint = true,
+  showKeyboardHint: _showKeyboardHint = true,
   className = ""
 }, ref) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

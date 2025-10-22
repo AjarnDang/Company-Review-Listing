@@ -7,7 +7,7 @@ import { SearchProvider } from '@/contexts/SearchContext'
 
 export function Providers({
   children,
-  lang
+  lang: _lang
 }: { 
   children: React.ReactNode;
   lang: Locale;

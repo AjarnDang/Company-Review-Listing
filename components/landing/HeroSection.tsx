@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Button, Input } from "@heroui/react";
+import { Input } from "@heroui/react";
 import { motion, useInView } from "framer-motion";
 import type { TranslationKeys } from "@/locales/th";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -11,16 +11,6 @@ interface HeroSectionProps {
   onScrollToCompanies: () => void;
   onSearchClick: () => void;
 }
-
-// Light rays for animated background
-const lightRays = [
-  { angle: 0, gradient: "from-blue-400/30 via-cyan-400/20 to-transparent", delay: 0, duration: 20 },
-  { angle: 45, gradient: "from-purple-400/30 via-pink-400/20 to-transparent", delay: 2, duration: 25 },
-  { angle: 90, gradient: "from-green-400/30 via-emerald-400/20 to-transparent", delay: 4, duration: 22 },
-  { angle: 135, gradient: "from-yellow-400/30 via-orange-400/20 to-transparent", delay: 6, duration: 28 },
-  { angle: 180, gradient: "from-pink-400/30 via-rose-400/20 to-transparent", delay: 8, duration: 24 },
-  { angle: 225, gradient: "from-indigo-400/30 via-violet-400/20 to-transparent", delay: 10, duration: 26 },
-];
 
 export default function HeroSection({ translations: t, onScrollToCompanies, onSearchClick }: HeroSectionProps) {
   const statsRef = useRef<HTMLDivElement>(null);

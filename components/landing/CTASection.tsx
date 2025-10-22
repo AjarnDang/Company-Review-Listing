@@ -73,7 +73,7 @@ export default function CTASection({ lang, translations: t }: CTASectionProps) {
           className="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden lg:w-4xl mx-auto"
         >
           {/* Features Table */}
-          <div className="px-8 py-12 md:px-12 md:py-16">
+          <div className="px-8 py-8 md:px-12 md:py-12">
             <div className="space-y-8">
               {features.map((feature, index) => (
                 <motion.div
