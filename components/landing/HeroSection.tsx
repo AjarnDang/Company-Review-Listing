@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { Button, Input } from "@heroui/react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import type { TranslationKeys } from "@/locales/th";
+import { useCountUp } from "@/hooks/useCountUp";
 
 interface HeroSectionProps {
   translations: TranslationKeys;
@@ -22,6 +23,38 @@ const lightRays = [
 ];
 
 export default function HeroSection({ translations: t, onScrollToCompanies, onSearchClick }: HeroSectionProps) {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(statsRef, { once: true, margin: "-100px" });
+
+  // Count up animations for stats
+  const companiesCount = useCountUp({
+    end: 15,
+    duration: 2000,
+    suffix: '+',
+  });
+
+  const reviewsCount = useCountUp({
+    end: 2000,
+    duration: 2500,
+    separator: ',',
+    suffix: '+',
+  });
+
+  const ratingCount = useCountUp({
+    end: 4.2,
+    duration: 2000,
+    decimals: 1,
+  });
+
+  // Start animations when stats come into view
+  React.useEffect(() => {
+    if (isInView) {
+      companiesCount.startAnimation();
+      reviewsCount.startAnimation();
+      ratingCount.startAnimation();
+    }
+  }, [isInView]);
+
   return (
     <section 
       className="relative py-20 px-4 md:py-32 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
@@ -143,43 +176,58 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
 
           {/* Stats */}
           <div 
+            ref={statsRef}
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-12 max-w-3xl mx-auto"
-            role="list"
             aria-label="Platform statistics"
           >
-            <div className="p-4" role="listitem">
+            <motion.div 
+              className="p-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
               <div 
-                className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400"
+                className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400 tabular-nums"
                 aria-label="15 plus companies"
               >
-                15+
+                {companiesCount.formattedCount}
               </div>
               <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
                 {t.navbar.companies}
               </div>
-            </div>
-            <div className="p-4" role="listitem">
+            </motion.div>
+            <motion.div 
+              className="p-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <div 
-                className="text-3xl md:text-4xl font-bold text-secondary-600 dark:text-secondary-400"
+                className="text-3xl md:text-4xl font-bold text-secondary-600 dark:text-secondary-400 tabular-nums"
                 aria-label="2000 plus reviews"
               >
-                2,000+
+                {reviewsCount.formattedCount}
               </div>
               <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
                 {t.companies.reviews}
               </div>
-            </div>
-            <div className="p-4" role="listitem">
+            </motion.div>
+            <motion.div 
+              className="p-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <div 
-                className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400"
+                className="text-3xl md:text-4xl font-bold text-primary-600 dark:text-primary-400 tabular-nums"
                 aria-label="Average rating 4.2 out of 5"
               >
-                4.2
+                {ratingCount.formattedCount}
               </div>
               <div className="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-1">
                 {t.companies.rating}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -212,4 +260,3 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
     </section>
   );
 }
-
