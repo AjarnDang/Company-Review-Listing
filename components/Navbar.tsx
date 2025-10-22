@@ -51,13 +51,13 @@ export default function App({ lang }: NavbarProps) {
     {
       key: "about",
       label: t.navbar.about,
-      href: `/${lang}/about`,
+      href: `/${lang}`,
       isNavLink: true,
     },
     {
       key: "getStarted",
       label: t.navbar.getStarted,
-      href: `/${lang}/get-started`,
+      href: `/${lang}`,
       isAuthLink: true,
     },
   ];
@@ -106,11 +106,11 @@ export default function App({ lang }: NavbarProps) {
             {t.navbar.companies}
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={isActive(`/${lang}/about`)}>
+        <NavbarItem isActive={isActive(`/${lang}`)}>
           <Link
-            color={isActive(`/${lang}/about`) ? "primary" : "foreground"}
-            href={`/${lang}/about`}
-            aria-current={isActive(`/${lang}/about`) ? "page" : undefined}
+            color={isActive(`/${lang}`) ? "primary" : "foreground"}
+            href={`/${lang}`}
+            aria-current={isActive(`/${lang}`) ? "page" : undefined}
           >
             {t.navbar.about}
           </Link>
@@ -127,7 +127,7 @@ export default function App({ lang }: NavbarProps) {
           <Button 
             as={Link} 
             color="primary" 
-            href={`/${lang}/get-started`} 
+            href={`/${lang}`} 
             variant="flat"
             className="font-semibold"
           >
