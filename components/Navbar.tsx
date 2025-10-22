@@ -14,7 +14,7 @@ import {
 } from "@heroui/react";
 import type { Locale } from "@/i18n.config";
 import { getDictionary } from "@/lib/get-dictionary";
-import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcherWrapper from "./lang/LanguageSwitcherWrapper";
 import Image from "next/image";
 import FinScopeLogo from "@/public/logo/FinScopeLogo.png";
 import { usePathname } from "next/navigation";
@@ -70,6 +70,11 @@ export default function App({ lang }: NavbarProps) {
           className="md:hidden"
         />
         <NavbarBrand className="flex items-center gap-2">
+          <Link
+            color={isActive(`/${lang}`) ? "primary" : "foreground"}
+            href={`/${lang}`}
+            aria-current={isActive(`/${lang}`) ? "page" : undefined}
+          >
           <Image
             src={FinScopeLogo}
             alt="FinScope"
@@ -78,6 +83,7 @@ export default function App({ lang }: NavbarProps) {
           <p className="font-bold text-xl text-inherit hidden sm:block">
             {t.navbar.brand}
           </p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
@@ -114,7 +120,7 @@ export default function App({ lang }: NavbarProps) {
       <NavbarContent justify="end">
         {/* Show Language Switcher on desktop (>= md) */}
         <NavbarItem className="hidden md:flex">
-          <LanguageSwitcher currentLang={lang} />
+          <LanguageSwitcherWrapper currentLang={lang} />
         </NavbarItem>
         {/* Show Get Started button */}
         <NavbarItem>
@@ -149,7 +155,7 @@ export default function App({ lang }: NavbarProps) {
         ))}
         <div className="my-3 border-t border-gray-200 dark:border-gray-700" />
         <NavbarMenuItem className="mt-4">
-          <LanguageSwitcher currentLang={lang} />
+          <LanguageSwitcherWrapper currentLang={lang} />
         </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>

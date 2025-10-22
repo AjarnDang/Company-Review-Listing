@@ -81,6 +81,8 @@ export const en: TranslationKeys = {
   companies: {
     title: "All Companies",
     subtitle: "Browse and read reviews of companies you're interested in",
+    description: "Explore all financial companies and find the best one for you",
+    results: "Showing {{count}} of {{total}} companies",
     exploreAll: "Explore all financial companies and find the best one for you",
     readMore: "Read Reviews",
     viewDetails: "View Details",

@@ -17,13 +17,13 @@ const notoSansThai = Noto_Sans_Thai({
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }): Promise<Metadata> {
   const { lang } = await params;
-  return generateSEOMetadata({ lang });
+  return generateSEOMetadata({ lang: lang as Locale });
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ lang: Locale }[]> {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
@@ -32,9 +32,9 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: string }>;
 }>) {
-  const { lang } = await params;
+  const { lang } = await params as { lang: Locale };
   const organizationSchema = generateOrganizationSchema(lang);
   
   return (
