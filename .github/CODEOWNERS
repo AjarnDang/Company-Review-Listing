@@ -1,0 +1,22 @@
+# Code Owners
+# ผู้ที่ต้อง review โค้ดในแต่ละส่วน
+
+# Default owners สำหรับทุกอย่าง
+* @AjarnDang
+
+# Components
+/components/ @AjarnDang
+
+# Hooks
+/hooks/ @AjarnDang
+
+# Localization
+/locales/ @AjarnDang
+
+# Configuration files
+*.config.* @AjarnDang
+.github/ @AjarnDang
+
+# Data files
+/data/ @AjarnDang
+

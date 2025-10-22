@@ -1,0 +1,117 @@
+name: PR Checks
+
+# รันเฉพาะเมื่อมี Pull Request
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  # ตรวจสอบ PR title ตาม conventional commits
+  pr-title-check:
+    name: 🏷️ Check PR Title
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📝 Validate PR title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # ต้องเป็น format: type(scope): description
+          # เช่น: feat(search): add search modal
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            chore
+            ci
+          requireScope: false  # ไม่บังคับ scope
+
+  # ตรวจสอบขนาด bundle
+  bundle-size:
+    name: 📦 Bundle Size Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci
+      
+      - name: 🏗️ Build project
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+      
+      # แสดงขนาด bundle และเปรียบเทียบกับ base branch
+      - name: 📊 Analyze bundle
+        uses: nextjs/bundle-analyzer@v1
+        if: github.event_name == 'pull_request'
+
+  # ตรวจสอบ code quality
+  code-quality:
+    name: 📊 Code Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          # ต้อง fetch history ทั้งหมดเพื่อเปรียบเทียบ
+          fetch-depth: 0
+      
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci
+      
+      # ตรวจสอบเฉพาะไฟล์ที่เปลี่ยน
+      - name: 🔍 Lint changed files
+        run: |
+          # Get changed files
+          CHANGED_FILES=$(git diff --name-only --diff-filter=ACM origin/${{ github.base_ref }}...HEAD | grep -E '\.(ts|tsx|js|jsx)$' || true)
+          
+          if [ -n "$CHANGED_FILES" ]; then
+            echo "Linting changed files:"
+            echo "$CHANGED_FILES"
+            npx eslint $CHANGED_FILES
+          else
+            echo "No TypeScript/JavaScript files changed"
+          fi
+      
+      # Comment ผลลัพธ์ใน PR
+      - name: 💬 Comment PR
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const status = '${{ job.status }}';
+            const emoji = status === 'success' ? '✅' : '❌';
+            const body = `## ${emoji} Code Quality Check ${status === 'success' ? 'Passed' : 'Failed'}
+            
+            **Workflow:** ${{ github.workflow }}
+            **Status:** ${status}
+            **Commit:** ${{ github.sha }}`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+

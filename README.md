@@ -556,6 +556,130 @@ export async function generateMetadata({ params }) {
 
 ---
 
+## 🔄 CI/CD Pipeline
+
+โปรเจคนี้ใช้ **GitHub Actions** สำหรับ CI/CD อัตโนมัติ
+
+### Workflows
+
+#### 1. **CI Pipeline** (`.github/workflows/ci.yml`)
+รันเมื่อ: Push หรือ Pull Request ไปที่ `main`/`develop`
+
+**Jobs:**
+- 🔍 **Lint & Type Check** - รัน ESLint และ TypeScript type checking
+- 🏗️ **Build** - Build Next.js project
+- 📤 **Upload Artifacts** - เก็บ build output สำหรับ debug
+
+**การทำงาน:**
+```
+Push/PR → Checkout → Setup Node.js → Install deps (cached)
+  ↓
+Lint → Type Check
+  ↓
+Build → Upload artifacts
+```
+
+#### 2. **PR Checks** (`.github/workflows/pr-checks.yml`)
+รันเมื่อ: สร้าง Pull Request
+
+**Jobs:**
+- 🏷️ **PR Title Check** - ตรวจสอบ PR title ตาม Conventional Commits
+- 📦 **Bundle Size Check** - วิเคราะห์ขนาด bundle
+- 📊 **Code Quality** - Lint เฉพาะไฟล์ที่เปลี่ยน + Comment ผลใน PR
+
+#### 3. **Deploy** (`.github/workflows/deploy.yml`)
+รันเมื่อ: Push ไปที่ `main` branch
+
+**Jobs:**
+- 🚀 **Deploy to Vercel** - Deploy production
+
+**ต้องตั้งค่า GitHub Secrets:**
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
+
+#### 4. **Dependency Review** (`.github/workflows/dependency-review.yml`)
+รันเมื่อ: มีการเปลี่ยน `package.json` หรือ `package-lock.json`
+
+**Jobs:**
+- 🔒 **Security Check** - ตรวจหา vulnerabilities
+- 📋 **License Check** - ตรวจสอบ licenses
+
+### การใช้งาน
+
+```bash
+# Local testing (ก่อน push)
+npm run lint              # Lint โค้ด
+npx tsc --noEmit         # Type check
+npm run build            # Build project
+
+# สร้าง PR
+git checkout -b feat/new-feature
+git commit -m "feat: add new feature"
+git push origin feat/new-feature
+# → CI จะรันอัตโนมัติ
+
+# Merge PR → Deploy อัตโนมัติ
+```
+
+### Badge Status (เพิ่มใน README)
+
+```markdown
+![CI](https://github.com/USERNAME/REPO/workflows/CI%20Pipeline/badge.svg)
+![Deploy](https://github.com/USERNAME/REPO/workflows/Deploy%20to%20Production/badge.svg)
+```
+
+---
+
+## 🤝 Contributing
+
+เรายินดีรับ contributions! 🎉
+
+### Quick Start
+
+```bash
+# 1. Fork & Clone
+git clone https://github.com/YOUR_USERNAME/Company-Review-Listing.git
+
+# 2. Install
+npm install
+
+# 3. Create branch
+git checkout -b feat/your-feature
+
+# 4. Make changes & commit
+git commit -m "feat: your changes"
+
+# 5. Push & Create PR
+git push origin feat/your-feature
+```
+
+### Guidelines
+
+อ่าน **[CONTRIBUTING.md](CONTRIBUTING.md)** สำหรับ:
+- 📝 Commit conventions
+- 🔀 PR process
+- 💻 Coding standards
+- 🧪 Testing guidelines
+- ✅ Checklist
+
+### Commit Convention
+
+ใช้ **Conventional Commits**:
+
+```bash
+feat: add search modal
+fix: correct pagination calculation
+docs: update README
+style: format code
+refactor: extract useCountUp hook
+perf: optimize bundle size
+test: add component tests
+chore: update dependencies
+```
+
+---
+
 ## 📚 เอกสารเพิ่มเติม
 
 ### Official Docs

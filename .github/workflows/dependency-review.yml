@@ -1,0 +1,42 @@
+name: Dependency Review
+
+# ตรวจสอบ dependencies ที่เปลี่ยนแปลงใน PR
+on:
+  pull_request:
+    paths:
+      - 'package.json'
+      - 'package-lock.json'
+
+# ต้องมี read permission สำหรับ contents
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dependency-review:
+    name: 🔒 Review Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      # ตรวจสอบ security vulnerabilities และ license issues
+      - name: 🔍 Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          # ระดับ severity ที่จะ fail: critical, high, moderate, low
+          fail-on-severity: high
+          
+          # อนุญาต licenses เหล่านี้
+          allow-licenses: MIT, Apache-2.0, BSD-3-Clause, BSD-2-Clause, ISC
+          
+          # ห้าม licenses เหล่านี้
+          deny-licenses: GPL-2.0, GPL-3.0
+      
+      # แสดงรายการ dependencies ที่เปลี่ยน
+      - name: 📊 List changed dependencies
+        run: |
+          echo "## 📦 Changed Dependencies" >> $GITHUB_STEP_SUMMARY
+          npm outdated >> $GITHUB_STEP_SUMMARY || true
+

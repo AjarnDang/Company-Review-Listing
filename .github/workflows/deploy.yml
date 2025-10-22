@@ -1,0 +1,64 @@
+name: Deploy to Production
+
+# รันเมื่อมี push ไปที่ main branch เท่านั้น
+on:
+  push:
+    branches:
+      - main
+  
+  # อนุญาตให้รันด้วยตัวเองใน GitHub UI
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: 🚀 Deploy to Vercel
+    runs-on: ubuntu-latest
+    
+    # ใช้ environment สำหรับ production (ตั้งค่าใน GitHub Settings)
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+      
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 📦 Install dependencies
+        run: npm ci
+      
+      # รัน lint และ type check อีกรอบก่อน deploy
+      - name: 🔍 Pre-deploy checks
+        run: |
+          npm run lint
+          npx tsc --noEmit
+      
+      - name: 🏗️ Build project
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+      
+      # Deploy ไปยัง Vercel (ถ้าใช้ Vercel)
+      # ต้องตั้ง VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID ใน GitHub Secrets
+      - name: 🚀 Deploy to Vercel
+        id: deploy
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+      
+      # แจ้งเตือนผ่าน Slack หรือ Discord (optional)
+      # - name: 📢 Notify deployment
+      #   uses: 8398a7/action-slack@v3
+      #   if: always()
+      #   with:
+      #     status: ${{ job.status }}
+      #     webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+

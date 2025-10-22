@@ -18,7 +18,7 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ items, lang, translations: t }: BreadcrumbProps) {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6">
+    <nav aria-label="Breadcrumb">
       <ol className="flex items-center flex-wrap gap-2 text-sm">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
