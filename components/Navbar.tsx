@@ -106,11 +106,10 @@ export default function App({ lang }: NavbarProps) {
             {t.navbar.companies}
           </Link>
         </NavbarItem>
-        <NavbarItem isActive={isActive(`/${lang}`)}>
+        <NavbarItem>
           <Link
-            color={isActive(`/${lang}`) ? "primary" : "foreground"}
+            color="foreground"
             href={`/${lang}`}
-            aria-current={isActive(`/${lang}`) ? "page" : undefined}
           >
             {t.navbar.about}
           </Link>
@@ -142,7 +141,7 @@ export default function App({ lang }: NavbarProps) {
             <Link
               className="w-full py-3"
               color={
-                !item.isAuthLink && isActive(item.href)
+                !item.isAuthLink && item.key !== "about" && isActive(item.href)
                   ? "primary"
                   : "foreground"
               }
