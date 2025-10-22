@@ -1,178 +1,26 @@
-# 🏢 Company Review Listing Platform
+# 🏢 FinScope - Financial Company Review Platform
 
-แพลตฟอร์มรีวิวบริษัทการเงิน รองรับภาษาไทยและอังกฤษ พร้อม SEO และ Accessibility ระดับมาตรฐานสากล
-
-## 📋 สารบัญ
-
-- [ภาพรวมโปรเจค](#ภาพรวมโปรเจค)
-- [เทคโนโลยี](#เทคโนโลยี)
-- [คุณสมบัติหลัก](#คุณสมบัติหลัก)
-- [โครงสร้างโปรเจค](#โครงสร้างโปรเจค)
-- [การติดตั้งและรัน](#การติดตั้งและรัน)
-- [React Hooks ที่ใช้](#react-hooks-ที่ใช้)
-- [ระบบ i18n](#ระบบ-i18n)
-- [State Management](#state-management)
-- [Accessibility & SEO](#accessibility--seo)
-- [Development Guide](#development-guide)
+แพลตฟอร์มรีวิวบริษัทการเงินที่เชื่อถือได้ รองรับภาษาไทยและอังกฤษ พร้อม SEO และ Accessibility มาตรฐานสากล
 
 ---
 
-## 🎯 ภาพรวมโปรเจค
+## 🚀 เริ่มต้นใช้งาน
 
-เว็บไซต์สำหรับรีวิวและค้นหาบริษัทการเงิน (Fintech, Broker, Payment) ที่ผู้ใช้สามารถ:
-- **ค้นหา** บริษัทด้วยชื่อหรือคำอธิบาย
-- **กรอง** ตามหมวดหมู่ (multi-select)
-- **ดูคะแนนและรีวิว** จากผู้ใช้งานจริง
-- **เปลี่ยนภาษา** ระหว่างไทย/อังกฤษแบบ real-time
-
----
-
-## 🛠️ เทคโนโลยี
-
-### Frontend Framework
-- **Next.js 15.5.6** (App Router) - React framework พร้อม SSR/SSG
-- **React 19.1.0** - UI library
-- **TypeScript 5** - Type safety
-
-### UI & Styling
-- **HeroUI 2.8.5** - React component library
-- **Tailwind CSS 4** - Utility-first CSS
-- **Framer Motion 12** - Animation library
-
-### อื่นๆ
-- **i18n** - URL-based internationalization
-- **JSON** - Mock data storage
-
----
-
-## ✨ คุณสมบัติหลัก
-
-### 1. Landing Page
-- Hero Section พร้อม CTA buttons
-- Smooth scroll to company list
-- แสดงสถิติ (15+ companies, 2,000+ reviews)
-- Responsive design (Desktop/Tablet/Mobile)
-
-### 2. Company Listing
-- แสดง 15 บริษัท พร้อมข้อมูล:
-  - Logo, ชื่อ, หมวดหมู่
-  - คะแนนดาว (1-5) พร้อม half-star
-  - จำนวนรีวิว
-  - คำอธิบายย่อ
-- Grid layout (3/2/1 columns)
-- Pagination (9 items/page)
-
-### 3. Search & Filter
-- **Real-time Search** - ค้นหาชื่อและคำอธิบาย
-- **Multi-select Category** - เลือกได้หลายหมวดหมู่
-- **Clear Filters** - ล้างตัวกรองทั้งหมด
-- ทำงานร่วมกับ Pagination
-
-### 4. State Management
-- **Loading State** - Skeleton UI (4 types)
-- **Empty State** - แสดงเมื่อไม่พบข้อมูล
-- **Error State** - แสดงข้อผิดพลาด + Retry button
-- Auto state management
-
-### 5. Internationalization (i18n)
-- **URL-based Routing** - `/th` และ `/en`
-- **Dynamic Switching** - เปลี่ยนภาษาทันที
-- **SEO-friendly** - แต่ละภาษามี URL แยก
-- **Type-safe** - TypeScript validation
-
-### 6. SEO Optimization
-- **Meta Tags** - Dynamic title, description, OG tags
-- **Structured Data** - JSON-LD (Organization, ItemList)
-- **Social Sharing** - Facebook, Twitter preview
-- **Multi-language** - hreflang tags
-
-### 7. Accessibility (WCAG AA)
-- **Semantic HTML** - main, section, article
-- **ARIA Attributes** - labels, roles, live regions
-- **Keyboard Navigation** - Tab, Enter, Space
-- **Screen Reader** - ทุก element อ่านได้
-- **Focus Visible** - outline styles ชัดเจน
-- **Skip Navigation** - "Skip to main content"
-- **Color Contrast** - 4.5:1 minimum (WCAG AA)
-
----
-
-## 📁 โครงสร้างโปรเจค
-
-```
-├── app/
-│   ├── [lang]/              # Dynamic locale routes
-│   │   ├── layout.tsx       # Root layout (Server Component)
-│   │   └── page.tsx         # Home page (Client Component)
-│   ├── globals.css          # Global styles + a11y utilities
-│   └── provider.tsx         # Client providers wrapper
-│
-├── components/
-│   ├── landing/
-│   │   └── HeroSection.tsx  # Hero section component
-│   ├── company/
-│   │   ├── CompanyCard.tsx       # Company card with rating
-│   │   ├── CompanyFilters.tsx    # Search + category filters
-│   │   └── CompanyPagination.tsx # Pagination controls
-│   ├── states/
-│   │   ├── LoadingSkeleton.tsx   # Loading UI
-│   │   ├── EmptyState.tsx        # Empty state UI
-│   │   ├── ErrorState.tsx        # Error state UI
-│   │   └── StateWrapper.tsx      # All-in-one wrapper
-│   ├── Navbar.tsx           # Navigation bar
-│   ├── Footer.tsx           # Footer
-│   └── LanguageSwitcher.tsx # Language toggle button
-│
-├── hooks/
-│   ├── useAsyncData.ts      # Async data fetching + states
-│   ├── useCompanies.ts      # Company filter + pagination
-│   └── useSearchFilter.ts   # Client-side search
-│
-├── contexts/
-│   └── AppStateContext.tsx  # Global state context
-│
-├── lib/
-│   ├── get-dictionary.ts    # Get translations
-│   └── seo.ts              # SEO utilities + schemas
-│
-├── locales/
-│   ├── th.ts               # Thai translations
-│   ├── en.ts               # English translations
-│   └── index.ts            # Export all
-│
-├── types/
-│   └── company.ts          # TypeScript interfaces
-│
-├── data/
-│   └── companies.json      # Mock company data (15 items)
-│
-├── i18n.config.ts          # i18n configuration
-├── middleware.ts           # Locale detection & redirect
-└── next.config.ts          # Next.js config + image domains
-```
-
----
-
-## 🚀 การติดตั้งและรัน
-
-### 1. ติดตั้ง Dependencies
+### ติดตั้งและรัน
 
 ```bash
+# 1. ติดตั้ง dependencies
 npm install
-```
 
-### 2. รัน Development Server
-
-```bash
+# 2. รัน development server
 npm run dev
+
+# 3. เปิดเบราว์เซอร์
+# ภาษาไทย: http://localhost:3000/th
+# English: http://localhost:3000/en
 ```
 
-เปิดเบราว์เซอร์ที่ http://localhost:3000
-
-- ภาษาไทย: http://localhost:3000/th
-- English: http://localhost:3000/en
-
-### 3. Build สำหรับ Production
+### Build Production
 
 ```bash
 npm run build
@@ -181,482 +29,415 @@ npm run start
 
 ---
 
-## 🎣 React Hooks ที่ใช้
+## 🎯 คุณสมบัติหลัก
 
-### 1. `use()` - React 19 (Unwrap Promises)
+### 1. **หน้าหลัก (Landing Page)**
+- **Hero Section** - แสดงชื่อเว็บไซต์และ CTA buttons พร้อม search bar
+- **Counting Animation** - สถิตินับขึ้นอัตโนมัติเมื่อ scroll มาเห็น (15+ companies, 2,000+ reviews, 4.2 rating)
+- **Categories Carousel** - เลือกดูบริษัทแยกตามหมวดหมู่ (Fintech, Broker, Payment)
+- **Best In Category** - แสดงบริษัทยอดนิยมแต่ละหมวด 2 รายการ พร้อมปุ่ม "See More"
+- **CTA Section** - ข้อมูลเกี่ยวกับ FinScope พร้อม features และ CTA buttons
+- **Business CTA** - เชิญชวนบริษัทมาลงทะเบียน
+- **Reviews Section** - แสดง testimonials จากผู้ใช้งานจริง
 
-**ใช้ใน:** Client Components เพื่อ unwrap params Promise
+### 2. **ค้นหาและกรองข้อมูล**
+- **Search Modal** - Modal ค้นหาแบบ full-featured พร้อม:
+  - Real-time search results
+  - Recent searches (เก็บใน localStorage)
+  - Popular suggestions
+  - Quick category access
+- **Category Filter** - เลือกหมวดหมู่ได้หลายอันพร้อมกัน (Multi-select)
+- **Active Filters Display** - แสดงตัวกรองที่เลือก พร้อมปุ่มลบแต่ละตัว
+- **Clear All Filters** - ล้างตัวกรองทั้งหมดในคลิกเดียว
+
+### 3. **หน้ารายชื่อบริษัททั้งหมด** (`/[lang]/companies`)
+- แสดงบริษัททั้งหมดในรูปแบบ **Horizontal Card**
+- กรองตามหมวดหมู่ได้
+- Search bar สำหรับค้นหา
+- Pagination (12 รายการ/หน้า)
+- Breadcrumb navigation
+
+### 4. **หน้ารายละเอียดบริษัท** (`/[lang]/companies/[id]`)
+- ข้อมูลบริษัทครบถ้วน (Logo, Category, Website, Description)
+- **TrustScore** - คะแนนความน่าเชื่อถือพร้อมดาวขนาดใหญ่
+- **Tabs Navigation**:
+  - **Overview** - ภาพรวม, Rating Distribution, Quick Stats, Similar Companies
+  - **Reviews** - รีวิวทั้งหมดพร้อม Filter & Sort
+- **Rating Distribution** - แสดง bar chart การกระจายของคะแนน 1-5 ดาว
+- **Similar Companies** - แนะนำบริษัทที่เกี่ยวข้อง 4 รายการ
+- Breadcrumb navigation (Home > Companies > Company Name)
+
+### 5. **ระบบ State Management**
+- **Loading State** - แสดง Skeleton UI ขณะโหลดข้อมูล
+- **Empty State** - แสดงเมื่อไม่มีข้อมูล พร้อมปุ่ม "Clear Filters"
+- **Error State** - แสดงข้อผิดพลาด พร้อมปุ่ม "Retry"
+- **StateWrapper Component** - จัดการ states อัตโนมัติ
+
+### 6. **ภาษาหลายภาษา (i18n)**
+- รองรับ **ไทย** และ **English**
+- **URL-based Routing** - `/th` และ `/en` (SEO-friendly)
+- สลับภาษาได้ทันทีผ่าน LanguageSwitcher
+- แปลครบทุก UI element
+
+### 7. **Responsive Design**
+- **Desktop** - Layout แบบ 3-4 columns
+- **Tablet** - ปรับเป็น 2 columns
+- **Mobile** - Single column พร้อม hamburger menu
+- ทำงานได้ลื่นไหลทุกขนาดหน้าจอ
+
+---
+
+## 🛠️ เทคโนโลยีที่ใช้
+
+### Core Framework
+- **Next.js 15.5.6** - React framework พร้อม App Router และ Server Components
+- **React 19.1.0** - UI library เวอร์ชันล่าสุด
+- **TypeScript 5** - เพิ่ม type safety ให้โค้ด
+
+### UI & Styling
+- **HeroUI 2.8.5** - React component library (Buttons, Inputs, Cards, etc.)
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **Framer Motion 12** - Animation library สำหรับ smooth animations
+- **Noto Sans Thai** - Google Font รองรับภาษาไทยและอังกฤษ
+
+### อื่นๆ
+- **JSON** - Mock data สำหรับ companies และ reviews
+- **Local Storage** - เก็บ recent searches
+
+---
+
+## 📁 โครงสร้างโปรเจค
+
+```
+├── app/
+│   ├── [lang]/                    # Dynamic locale routes
+│   │   ├── layout.tsx             # Root layout (Server Component)
+│   │   ├── page.tsx               # Landing page
+│   │   ├── companies/
+│   │   │   ├── page.tsx           # All companies page
+│   │   │   └── [id]/page.tsx      # Company detail page
+│   │   └── provider.tsx           # Client providers wrapper
+│   └── globals.css                # Global styles + theme colors
+│
+├── components/
+│   ├── landing/
+│   │   ├── HeroSection.tsx        # Hero พร้อม search + stats
+│   │   ├── CategoriesSection.tsx  # Categories carousel
+│   │   ├── CategorySection.tsx    # Best in category section
+│   │   ├── CTASection.tsx         # Call-to-action สำหรับผู้ใช้
+│   │   ├── BusinessCTASection.tsx # CTA สำหรับบริษัท
+│   │   ├── ReviewsSection.tsx     # Testimonials
+│   │   └── ReviewCard.tsx         # Individual review card
+│   ├── company/
+│   │   ├── CompanyCard.tsx        # Vertical card (landing)
+│   │   ├── CompanyCardHorizontal.tsx # Horizontal card (list)
+│   │   ├── CompanyFilters.tsx     # Category filters + sort
+│   │   └── CompanyPagination.tsx  # Pagination controls
+│   ├── review/
+│   │   └── ReviewCard.tsx         # Review card พร้อม rating
+│   ├── search/
+│   │   └── SearchModal.tsx        # Search modal พร้อม suggestions
+│   ├── states/
+│   │   ├── LoadingSkeleton.tsx    # Skeleton UI
+│   │   ├── EmptyState.tsx         # Empty state
+│   │   ├── ErrorState.tsx         # Error state
+│   │   └── StateWrapper.tsx       # All-in-one wrapper
+│   ├── Navbar.tsx                 # Navigation bar
+│   ├── Footer.tsx                 # Footer
+│   ├── LanguageSwitcher.tsx       # ปุ่มสลับภาษา
+│   └── Breadcrumb.tsx             # Breadcrumb navigation
+│
+├── hooks/
+│   ├── useAsyncData.ts            # Fetch data + auto state management
+│   ├── useCompanies.ts            # Filter + pagination logic
+│   ├── useSearchFilter.ts         # Client-side search
+│   └── useCountUp.ts              # Counting animation
+│
+├── contexts/
+│   ├── AppStateContext.tsx        # Global state (loading, error)
+│   └── SearchContext.tsx          # Recent searches management
+│
+├── lib/
+│   ├── get-dictionary.ts          # Get translations
+│   └── seo.ts                     # SEO utilities + structured data
+│
+├── locales/
+│   ├── th.ts                      # คำแปลภาษาไทย
+│   ├── en.ts                      # English translations
+│   └── index.ts                   # Export all
+│
+├── types/
+│   ├── company.ts                 # Company & Category types
+│   └── review.ts                  # Review types
+│
+├── data/
+│   ├── companies.json             # Mock company data (15 items)
+│   └── reviews.json               # Mock review data
+│
+├── i18n.config.ts                 # i18n configuration
+├── middleware.ts                  # Locale detection & redirect
+└── next.config.ts                 # Next.js config
+```
+
+---
+
+## 🎨 Theme & Design System
+
+### สีหลัก (Color Palette)
+```css
+/* Primary Colors */
+--color-primary: #455ac9      /* สีหลัก (ม่วงเข้ม) */
+--color-secondary: #6f84fb    /* สีรอง (ม่วงอ่อน) */
+--color-text: #222222         /* สีข้อความ */
+--color-white: #fefefe        /* สีพื้นหลัง */
+
+/* Semantic Colors */
+--color-success: สีเขียว (based on primary)
+--color-warning: สีเหลือง (based on primary)
+--color-danger: สีแดง (based on primary)
+```
+
+### การใช้งาน
+- **Primary** - Buttons, Links, Headings หลัก
+- **Secondary** - Accent colors, Icons
+- **Text** - เนื้อหาทั้งหมด
+- ไม่ใช้ gradient background (ใช้สีพื้นแทน)
+
+---
+
+## 🎣 React Hooks ที่สำคัญ
+
+### 1. `use()` - Unwrap Promises (React 19)
+
+**เหตุผล:** Next.js 15 ทำให้ `params` เป็น Promise แทน object ตรงๆ
 
 ```tsx
-// app/[lang]/page.tsx
-import { use } from 'react';
+// ❌ แบบเก่า (ใช้ไม่ได้)
+export default function Page({ params }: { params: { lang: Locale } }) {
+  const { lang } = params; // Error!
+}
 
-export default function HomePage({ 
-  params 
-}: { 
-  params: Promise<{ lang: Locale }> 
-}) {
-  // Next.js 15 ทำให้ params เป็น Promise
-  // ใช้ use() เพื่อ unwrap Promise ออกมา
-  const { lang } = use(params);
-  
-  // ตอนนี้ lang พร้อมใช้งาน
+// ✅ แบบใหม่
+export default function Page({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = use(params); // ใช้ได้!
   const t = getDictionary(lang);
 }
 ```
 
-**เหตุผล:** Next.js 15 เปลี่ยน params เป็น Promise เพื่อรองรับ async routing
+### 2. `useCountUp()` - Custom Hook สำหรับ Counting Animation
 
----
-
-### 2. `useRef()` - Reference DOM Elements
-
-**ใช้ใน:** Smooth scroll to section
+**เหตุผล:** สร้าง smooth counting animation สำหรับตัวเลขสถิติ
 
 ```tsx
-// app/[lang]/page.tsx
-const companiesRef = useRef<HTMLDivElement>(null);
+const companiesCount = useCountUp({
+  end: 15,           // เลขเป้าหมาย
+  duration: 2000,    // ระยะเวลา (ms)
+  suffix: '+',       // ต่อท้ายด้วย +
+});
 
-// Scroll to companies section
-const scrollToCompanies = () => {
-  companiesRef.current?.scrollIntoView({ 
-    behavior: 'smooth',
-    block: 'start',
-  });
-};
-
-return (
-  <section ref={companiesRef}>
-    {/* Companies grid */}
-  </section>
-);
+// ใช้งาน
+<div>{companiesCount.formattedCount}</div> // แสดง "15+"
 ```
 
-**เหตุผล:** 
-- เก็บ reference ไปยัง DOM element
-- ไม่ทำให้ component re-render
-- ใช้สำหรับ imperative actions (scroll, focus)
+**Features:**
+- Easing function (ease-out) - นับช้าลงเมื่อใกล้เป้าหมาย
+- Number formatting - รองรับทศนิยม, คอมมา, prefix/suffix
+- RequestAnimationFrame - performance ดีกว่า setInterval
+- Auto cleanup - ยกเลิก animation เมื่อ unmount
 
----
+### 3. `useAsyncData()` - Custom Hook สำหรับ Fetch Data
 
-### 3. `useEffect()` - Side Effects
+**เหตุผล:** จัดการ loading, error, success states อัตโนมัติ
 
-**ใช้ใน:** เพิ่ม structured data (JSON-LD) ใน head
-
-```tsx
-// app/[lang]/page.tsx
-useEffect(() => {
-  if (companies && companies.length > 0) {
-    // สร้าง script tag
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(generateCompanyListSchema(lang, companies));
-    script.id = 'company-list-schema';
-    
-    // เพิ่มเข้า head
-    document.head.appendChild(script);
-
-    // Cleanup: ลบออกเมื่อ component unmount
-    return () => {
-      const existingScript = document.getElementById('company-list-schema');
-      if (existingScript) {
-        document.head.removeChild(existingScript);
-      }
-    };
-  }
-}, [companies, lang]); // Re-run เมื่อ companies หรือ lang เปลี่ยน
-```
-
-**เหตุผล:**
-- จัดการ side effects (DOM manipulation)
-- รันหลัง component render
-- Cleanup function ทำงานเมื่อ unmount หรือ dependencies เปลี่ยน
-
----
-
-### 4. `useState()` - Component State
-
-**ใช้ใน:** หลายที่ เช่น filters, pagination, menu
-
-```tsx
-// hooks/useCompanies.ts
-const [searchTerm, setSearchTerm] = useState("");
-const [selectedCategories, setSelectedCategories] = useState<CompanyCategory[]>([]);
-const [currentPage, setCurrentPage] = useState(1);
-```
-
-**เหตุผล:**
-- เก็บ state ที่เปลี่ยนแปลงได้
-- เมื่อ state เปลี่ยน → component re-render
-- ใช้สำหรับ interactive UI
-
----
-
-### 5. `useMemo()` - Memoize Calculations
-
-**ใช้ใน:** Filter companies โดยไม่ re-calculate ทุก render
-
-```tsx
-// hooks/useCompanies.ts
-const filteredCompanies = useMemo(() => {
-  let filtered = companies;
-
-  // Filter by search
-  if (searchTerm.trim()) {
-    const lowerSearch = searchTerm.toLowerCase();
-    filtered = filtered.filter(company =>
-      company.name.toLowerCase().includes(lowerSearch) ||
-      company.description.toLowerCase().includes(lowerSearch)
-    );
-  }
-
-  // Filter by categories
-  if (selectedCategories.length > 0) {
-    filtered = filtered.filter(company =>
-      selectedCategories.includes(company.category)
-    );
-  }
-
-  return filtered;
-}, [companies, searchTerm, selectedCategories]);
-```
-
-**เหตุผล:**
-- Cache ผลลัพธ์ของการคำนวณ
-- Re-calculate เฉพาะเมื่อ dependencies เปลี่ยน
-- ประหยัด performance (ไม่ filter ซ้ำทุก render)
-
----
-
-### 6. `useCallback()` - Memoize Functions
-
-**ใช้ใน:** ป้องกัน re-create functions ทุก render
-
-```tsx
-// contexts/AppStateContext.tsx
-const setError = useCallback((error: ErrorState) => {
-  setState((prev) => ({ 
-    ...prev, 
-    error, 
-    isLoading: false,
-    isEmpty: false 
-  }));
-}, []); // ไม่มี dependencies = สร้างครั้งเดียว
-
-const clearError = useCallback(() => {
-  setState((prev) => ({ ...prev, error: null }));
-}, []);
-```
-
-**เหตุผล:**
-- Cache function reference
-- ป้องกัน re-render ของ child components
-- ใช้คู่กับ React.memo() เพื่อ optimize
-
----
-
-### 7. Custom Hooks
-
-#### `useAsyncData()` - Fetch Data + Auto State
-
-```tsx
-// hooks/useAsyncData.ts
-export function useAsyncData<T>({
-  fetchFn,
-  dependencies = [],
-  onSuccess,
-  onError,
-}) {
-  const [data, setData] = useState<T>(null as T);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  const fetchData = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const result = await fetchFn();
-      setData(result);
-      onSuccess?.(result);
-    } catch (err) {
-      setError(err instanceof Error ? err : new Error(String(err)));
-      onError?.(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [fetchFn, onSuccess, onError]);
-
-  useEffect(() => {
-    fetchData();
-  }, dependencies);
-
-  return { data, isLoading, error, refetch: fetchData };
-}
-```
-
-**วิธีใช้:**
 ```tsx
 const { data, isLoading, error, refetch } = useAsyncData({
   fetchFn: async () => {
-    const res = await fetch('/api/companies');
-    return res.json();
+    const res = await import('@/data/companies.json');
+    return res.default;
   },
-  dependencies: [filters],
+  dependencies: [],
+});
+
+// Auto handle:
+// - isLoading = true ขณะโหลด
+// - error = Error object ถ้าเกิด error
+// - data = ข้อมูลที่ได้ ถ้าสำเร็จ
+```
+
+### 4. `useCompanies()` - Custom Hook สำหรับ Filter + Pagination
+
+**เหตุผล:** แยก business logic ออกจาก UI
+
+```tsx
+const {
+  displayedCompanies,    // บริษัทที่แสดงในหน้าปัจจุบัน
+  searchTerm,            // คำค้นหา
+  setSearchTerm,         // เปลี่ยนคำค้นหา (auto reset page)
+  selectedCategories,    // หมวดหมู่ที่เลือก
+  currentPage,           // หน้าปัจจุบัน
+  totalPages,            // จำนวนหน้าทั้งหมด
+  filteredCount,         // จำนวนหลังกรอง
+  totalCount,            // จำนวนทั้งหมด
+} = useCompanies({
+  companies: allCompanies,
+  itemsPerPage: 12,
 });
 ```
 
-**เหตุผล:**
-- รวม logic การ fetch data และ state management
-- Reusable ใช้ได้หลายที่
-- Auto handle loading, error, success
+**Features:**
+- Auto reset page เมื่อ filter เปลี่ยน
+- Memoized filtering (ไม่ filter ซ้ำทุก render)
+- รองรับ multi-category filter
+
+### 5. `useInView()` - Framer Motion Hook
+
+**เหตุผล:** ตรวจจับว่า element เข้ามาใน viewport หรือยัง
+
+```tsx
+const statsRef = useRef<HTMLDivElement>(null);
+const isInView = useInView(statsRef, { 
+  once: true,        // trigger ครั้งเดียว
+  margin: "-100px"   // trigger ก่อนถึง viewport จริง
+});
+
+// เมื่อ isInView = true → เริ่ม animation
+React.useEffect(() => {
+  if (isInView) {
+    companiesCount.startAnimation();
+  }
+}, [isInView]);
+```
 
 ---
 
-#### `useCompanies()` - Filter + Pagination Logic
+## 🌐 ระบบหลายภาษา (i18n)
 
-```tsx
-// hooks/useCompanies.ts
-export function useCompanies({ companies, itemsPerPage = 9 }) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-
-  // Filter companies (memoized)
-  const filteredCompanies = useMemo(() => {
-    // ... filtering logic
-  }, [companies, searchTerm, selectedCategories]);
-
-  // Pagination
-  const totalPages = Math.ceil(filteredCompanies.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const displayedCompanies = filteredCompanies.slice(startIndex, startIndex + itemsPerPage);
-
-  // Reset to page 1 when filters change
-  const handleSearchChange = (term) => {
-    setSearchTerm(term);
-    setCurrentPage(1);
-  };
-
-  return {
-    displayedCompanies,
-    searchTerm,
-    setSearchTerm: handleSearchChange,
-    selectedCategories,
-    setSelectedCategories,
-    currentPage,
-    setCurrentPage,
-    totalPages,
-    filteredCount: filteredCompanies.length,
-    totalCount: companies.length,
-  };
-}
-```
-
-**เหตุผล:**
-- แยก business logic ออกจาก UI
-- Reusable และ testable
-- Auto reset pagination เมื่อ filter เปลี่ยน
-
----
-
-## 🌐 ระบบ i18n
-
-### URL-based Routing Pattern
+### URL Pattern
 
 ```
-/          → redirect to /th (default)
-/th        → Thai version
-/en        → English version
-/th/about  → Thai about page
-/en/about  → English about page
+/          → redirect ไป /th (default)
+/th        → ภาษาไทย
+/en        → English
+/th/companies      → หน้าบริษัททั้งหมด (ไทย)
+/en/companies      → All companies page (English)
+/th/companies/abc  → รายละเอียดบริษัท ABC (ไทย)
 ```
 
-### Architecture
+### วิธีการทำงาน
 
 ```
-1. middleware.ts
-   ↓ ตรวจจับภาษา (cookie, browser, default)
-   ↓ redirect ไป /[lang]
-
-2. app/[lang]/layout.tsx
-   ↓ รับ params.lang (Promise)
-   ↓ await params
-   ↓ pass lang to components
-
-3. Components
-   ↓ รับ lang เป็น props
-   ↓ getDictionary(lang)
-   ↓ แสดงข้อความตามภาษา
-```
-
-### การสลับภาษา
-
-```tsx
-// components/LanguageSwitcher.tsx
-const pathname = usePathname(); // /th/about
-const newLang = currentLang === 'th' ? 'en' : 'th';
-const newPath = pathname.replace('/th/', '/en/'); // /en/about
-
-<Link href={newPath}>
-  {currentLang === 'th' ? 'EN' : 'TH'}
-</Link>
+1. User เข้า "/" (root)
+   ↓
+2. middleware.ts ตรวจจับภาษา
+   - ดูจาก cookie (ถ้ามี)
+   - ดูจาก browser language (Accept-Language)
+   - ใช้ default "th"
+   ↓
+3. Redirect ไป "/th" หรือ "/en"
+   ↓
+4. app/[lang]/layout.tsx รับ lang
+   ↓
+5. ส่ง lang ไปยัง components
+   ↓
+6. getDictionary(lang) → แสดงข้อความ
 ```
 
 ### เพิ่มคำแปลใหม่
 
-1. เพิ่มใน `locales/th.ts`:
-```ts
+```tsx
+// 1. เพิ่มใน locales/th.ts
 export const th = {
   products: {
     title: "ผลิตภัณฑ์",
-    description: "รายการผลิตภัณฑ์"
+    description: "รายการผลิตภัณฑ์ทั้งหมด"
   }
 }
-```
 
-2. เพิ่มใน `locales/en.ts`:
-```ts
+// 2. เพิ่มใน locales/en.ts
 export const en: TranslationKeys = {
   products: {
     title: "Products",
-    description: "Product list"
+    description: "All products"
   }
 }
-```
 
-3. ใช้งาน:
-```tsx
+// 3. ใช้งาน
 const t = getDictionary(lang);
 <h1>{t.products.title}</h1>
 ```
 
 ---
 
-## 🗄️ State Management
+## ♿ Accessibility (a11y)
 
-### Global State (AppStateContext)
+### Semantic HTML
+ใช้ HTML tags ที่มีความหมาย (ไม่ใช่แค่ `<div>` ทั้งหมด)
 
-```tsx
-// contexts/AppStateContext.tsx
-const { state, startLoading, stopLoading, setError } = useAppState();
-
-// ตัวอย่างการใช้
-const fetchData = async () => {
-  try {
-    startLoading();           // Set loading = true
-    const data = await fetch(...);
-    setSuccess();             // Clear all states
-  } catch (error) {
-    setError(error);          // Set error state
-  }
-};
-```
-
-### Local State (Custom Hooks)
-
-แต่ละ hook จัดการ state ของตัวเอง:
-- `useAsyncData` → data, loading, error
-- `useCompanies` → filters, pagination
-- `useSearchFilter` → search term, filtered data
-
-### State Priority
-
-```
-Loading > Error > Empty > Success
-```
-
-**StateWrapper** จัดการ states อัตโนมัติ:
-```tsx
-<StateWrapper
-  isLoading={isLoading}
-  error={error}
-  isEmpty={!data?.length}
-  loadingType="card"
-  onRetry={refetch}
->
-  <YourContent data={data} />
-</StateWrapper>
-```
-
----
-
-## ♿ Accessibility & SEO
-
-### Accessibility Features
-
-**1. Semantic HTML**
 ```html
-<main id="main-content">
-  <section aria-labelledby="companies-heading">
-    <h2 id="companies-heading">รายชื่อบริษัททั้งหมด</h2>
-    <article><!-- Company card --></article>
-  </section>
-</main>
+<main>           <!-- เนื้อหาหลัก -->
+<nav>            <!-- Navigation bar -->
+<section>        <!-- แต่ละ section -->
+<article>        <!-- Company card -->
+<button>         <!-- ปุ่มที่กดได้ (ไม่ใช่ div) -->
 ```
 
-**2. ARIA Attributes**
-```tsx
-// Search region
-<div role="search" aria-label="ค้นหาบริษัท">
-  <Input aria-label="ค้นหาชื่อบริษัท" />
-</div>
+### ARIA Attributes
+เพิ่มข้อมูลสำหรับ screen readers
 
-// Star rating
-<div role="img" aria-label="คะแนน: 4.5 จาก 5">
+```tsx
+// ภาพที่เป็นข้อมูล
+<div role="img" aria-label="Rating: 4.5 out of 5">
   {renderStars(4.5)}
 </div>
 
 // Live announcements
 <p role="status" aria-live="polite">
-  แสดง 6 จาก 15 บริษัท
+  แสดง 12 จาก 50 บริษัท
 </p>
+
+// Navigation
+<nav aria-label="Main navigation">...</nav>
+<nav aria-label="Breadcrumb">...</nav>
 ```
 
-**3. Keyboard Navigation**
-```tsx
-// Category filters
-onKeyDown={(e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    toggleCategory(category);
-  }
-}}
-```
+### Keyboard Navigation
+ทุก interactive element ใช้งานได้ด้วยคีย์บอร์ด
 
-**4. Skip Navigation**
-```html
-<!-- Tab แรก → แสดงลิงก์นี้ -->
-<a href="#main-content" class="sr-only focus:not-sr-only">
-  Skip to main content
-</a>
-```
+- **Tab** - เลื่อนไปข้างหน้า
+- **Shift + Tab** - เลื่อนกลับ
+- **Enter / Space** - กดปุ่ม
+- **Esc** - ปิด Modal
 
-**5. Focus Styles**
+### Focus Styles
+แสดง outline ชัดเจนเมื่อ focus (สำหรับผู้ใช้คีย์บอร์ด)
+
 ```css
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-button:focus-visible {
-  outline: 3px solid #3b82f6;
 }
 ```
 
-### SEO Features
+---
 
-**1. Meta Tags**
+## 🔍 SEO Optimization
+
+### Meta Tags (Dynamic)
+
 ```tsx
 // app/[lang]/layout.tsx
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   return {
-    title: "บริษัทรีวิว - แพลตฟอร์มรีวิวบริษัทการเงิน",
+    title: "FinScope - แพลตฟอร์มรีวิวบริษัทการเงิน",
     description: "...",
-    openGraph: { ... },
-    twitter: { ... },
+    openGraph: {
+      title: "...",
+      description: "...",
+      images: ["/og-image.jpg"],
+    },
     alternates: {
-      canonical: "/th",
+      canonical: `/${lang}`,
       languages: {
         'th': '/th',
         'en': '/en',
@@ -666,220 +447,157 @@ export async function generateMetadata({ params }) {
 }
 ```
 
-**2. Structured Data (JSON-LD)**
-```tsx
+### Structured Data (JSON-LD)
+
+**เหตุผล:** ช่วยให้ search engines เข้าใจเนื้อหา
+
+```json
 // Organization Schema
 {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "บริษัทรีวิว",
-  "url": "http://localhost:3000/th",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "http://localhost:3000/th?search={search_term_string}"
-  }
+  "@type": "Organization",
+  "name": "FinScope",
+  "url": "http://localhost:3000/th"
 }
 
-// ItemList Schema
+// ItemList Schema (Company Listing)
 {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "numberOfItems": 15,
-  "itemListElement": [...]
+  "itemListElement": [
+    {
+      "@type": "Organization",
+      "name": "Company Name",
+      "url": "...",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.5,
+        "reviewCount": 120
+      }
+    }
+  ]
 }
 ```
 
 ---
 
-## 💻 Development Guide
+## 💡 Best Practices ในโปรเจค
 
-### เพิ่ม Component ใหม่
+### 1. Component Organization
 
-```tsx
-// components/YourComponent.tsx
-"use client";
-
-import { getDictionary } from '@/lib/get-dictionary';
-import type { Locale } from '@/i18n.config';
-
-interface Props {
-  lang: Locale;
-}
-
-export default function YourComponent({ lang }: Props) {
-  const t = getDictionary(lang);
-  
-  return (
-    <div>
-      <h2>{t.yourSection.title}</h2>
-    </div>
-  );
-}
+```
+✅ ใช้ "use client" เฉพาะ component ที่มี interactivity
+✅ แยก Server Components และ Client Components
+✅ ส่ง lang เป็น props (ไม่ดึงจาก global)
+✅ ใช้ TypeScript interfaces สำหรับทุก props
 ```
 
-### เพิ่มหน้าใหม่
+### 2. State Management
 
-```tsx
-// app/[lang]/about/page.tsx
-import type { Locale } from '@/i18n.config';
-import { getDictionary } from '@/lib/get-dictionary';
-
-export default function AboutPage({ 
-  params 
-}: { 
-  params: Promise<{ lang: Locale }> 
-}) {
-  const { lang } = await params; // Server Component
-  const t = getDictionary(lang);
-  
-  return (
-    <div>
-      <h1>{t.about.title}</h1>
-    </div>
-  );
-}
+```
+✅ Local state สำหรับ UI (useState)
+✅ Custom hooks สำหรับ business logic
+✅ Context API สำหรับ global state (น้อยที่สุด)
+✅ Memoize ด้วย useMemo, useCallback
 ```
 
-### เพิ่ม Custom Hook
+### 3. Performance
 
-```tsx
-// hooks/useYourHook.ts
-import { useState, useCallback } from 'react';
-
-export function useYourHook() {
-  const [state, setState] = useState(initialValue);
-  
-  const action = useCallback(() => {
-    // Your logic
-  }, [dependencies]);
-  
-  return { state, action };
-}
+```
+✅ ใช้ Next.js Image component (automatic optimization)
+✅ Lazy load images (loading="lazy")
+✅ Memoize expensive calculations
+✅ Use requestAnimationFrame สำหรับ animations
 ```
 
-### Code Style
+### 4. Accessibility
 
-```tsx
-// Good
-const { lang } = use(params);          // Client component
-const { lang } = await params;         // Server component
-const t = getDictionary(lang);         // Get translations
-<Button aria-label={t.button.label}>  // Accessibility
-
-// ❌ Bad
-const lang = params.lang;              // Error in Next.js 15
-<div onClick={...}>Text</div>          // Use <button>
-<img src="..." />                      // Use <Image> from next/image
+```
+✅ ใช้ semantic HTML
+✅ เพิ่ม ARIA attributes
+✅ รองรับ keyboard navigation
+✅ แสดง focus styles ชัดเจน
 ```
 
 ---
 
-## 🧪 Testing
+## 🧪 Testing Checklist
 
-### Manual Testing Checklist
-
-**Functionality:**
-- [ ] Search ทำงาน (real-time)
-- [ ] Category filter ทำงาน (multi-select)
+### Functionality
+- [ ] ค้นหาบริษัทได้ (real-time)
+- [ ] กรองตามหมวดหมู่ได้ (multi-select)
 - [ ] Pagination เปลี่ยนหน้าได้
 - [ ] Clear filters ลบตัวกรองทั้งหมด
-- [ ] Language switch เปลี่ยนภาษาทันที
+- [ ] สลับภาษาได้ทันที (TH ↔ EN)
+- [ ] Search modal เปิด-ปิดได้
+- [ ] Recent searches ทำงาน
+- [ ] Breadcrumb navigation ทำงาน
+- [ ] Counting animation เริ่มเมื่อ scroll มาเห็น
 
-**Responsive:**
-- [ ] Desktop (>1024px) - 3 columns
-- [ ] Tablet (640-1024px) - 2 columns
-- [ ] Mobile (<640px) - 1 column
+### Responsive
+- [ ] Desktop (>1024px) - Layout ถูกต้อง
+- [ ] Tablet (768-1024px) - ปรับ columns
+- [ ] Mobile (<768px) - Single column, hamburger menu
+- [ ] Touch interactions ทำงานลื่นไหล
 
-**Accessibility:**
-- [ ] Tab ผ่านทุก element
+### Accessibility
+- [ ] Tab ผ่านทุก element ได้
 - [ ] Focus visible ชัดเจน
 - [ ] Enter/Space activate elements
-- [ ] Skip navigation ทำงาน
+- [ ] Esc ปิด modals
+- [ ] Screen reader อ่านได้ถูกต้อง
 
-**SEO:**
-- [ ] View source → เห็น meta tags
-- [ ] Structured data valid (Google Rich Results Test)
-- [ ] Social preview ถูกต้อง (Facebook Debugger)
-
-### Automated Testing
-
-```bash
-# Lighthouse audit
-npx lighthouse http://localhost:3000/th --view
-
-# Expected scores:
-# - Performance: 90+
-# - Accessibility: 95+
-# - Best Practices: 95+
-# - SEO: 95+
-```
+### Performance
+- [ ] Page load < 3 วินาที
+- [ ] Animations ลื่นไหล (60fps)
+- [ ] Images โหลดเร็ว (optimized)
+- [ ] No layout shift
 
 ---
 
-## 📚 Resources
+## 📚 เอกสารเพิ่มเติม
 
-### Documentation
-- [Next.js 15](https://nextjs.org/docs)
-- [React 19](https://react.dev/)
-- [HeroUI](https://heroui.com/)
+### Official Docs
+- [Next.js 15 Documentation](https://nextjs.org/docs)
+- [React 19 Documentation](https://react.dev/)
+- [HeroUI Components](https://heroui.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/)
 
-### Accessibility
+### Accessibility Resources
 - [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
 - [WebAIM](https://webaim.org/)
-- [axe DevTools](https://www.deque.com/axe/devtools/)
+- [A11y Project](https://www.a11yproject.com/)
 
-### SEO
-- [Schema.org](https://schema.org/)
+### SEO Tools
 - [Google Rich Results Test](https://search.google.com/test/rich-results)
+- [Schema.org Documentation](https://schema.org/)
 - [Open Graph Protocol](https://ogp.me/)
 
 ---
 
 ## 🎯 Summary
 
-โปรเจคนี้ประกอบด้วย:
+**FinScope** เป็นแพลตฟอร์มรีวิวบริษัทการเงินที่:
 
-**Architecture:**
-- Next.js 15 App Router
-- TypeScript ทั้งหมด
-- URL-based i18n
-- Component-based architecture
-
-**React Hooks:**
-- `use()` - unwrap params Promise
-- `useRef()` - DOM references
-- `useEffect()` - side effects
-- `useState()` - component state
-- `useMemo()` - memoize calculations
-- `useCallback()` - memoize functions
-- Custom hooks - reusable logic
-
-**Features:**
-- Search & Multi-select Filter
-- Pagination
-- State Management (Loading/Empty/Error)
-- i18n (TH/EN)
-- SEO (Meta tags, Structured data)
-- Accessibility (WCAG AA)
-
-**Production Ready:**
-- No linter errors
-- Type-safe
-- Performance optimized
-- SEO optimized
-- Accessible
+✅ **Modern Stack** - Next.js 15, React 19, TypeScript
+✅ **Beautiful UI** - HeroUI + Tailwind CSS + Custom animations
+✅ **Fully Responsive** - Desktop, Tablet, Mobile
+✅ **Multilingual** - Thai & English (URL-based i18n)
+✅ **SEO Optimized** - Meta tags + Structured data
+✅ **Accessible** - WCAG AA compliant
+✅ **Type-Safe** - TypeScript ทั้งหมด
+✅ **Production Ready** - No linter errors, Optimized performance
 
 ---
 
 ## 📄 License
 
-MIT
+MIT License - Free to use and modify
 
 ---
 
-## 👥 Contributors
-
-Built with ❤️ using Next.js 15, React 19, and TypeScript
+**Built with ❤️ using Next.js 15, React 19, and TypeScript**
 
 **Happy Coding! 🚀**
