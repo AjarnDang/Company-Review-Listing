@@ -1,0 +1,16 @@
+# Robots.txt for FinScope
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private pages (if any)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Sitemap
+Sitemap: https://example.com/sitemap.xml
+
+# Crawl-delay (optional, for slow servers)
+# Crawl-delay: 1
+

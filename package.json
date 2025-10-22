@@ -1,6 +1,23 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name" : "fin-scope",
+  "version" : "1.0.0",
+  "description" : "FinScope - Financial Company Review Platform",
+  "keywords" : [
+    "finance",
+    "financial",
+    "company",
+    "review",
+    "platform"
+  ],
+  "author" : {
+    "name" : "Thornthan J.",
+    "email" : "torntan.j@gmail.com"
+  },
+  "license" : "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/AjarnDang/Company-Review-Listing"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
