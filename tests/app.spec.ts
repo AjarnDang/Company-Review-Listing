@@ -98,9 +98,6 @@ test.describe('FinScope Application', () => {
       await searchInput.fill('XYZ123NonExistentCompany456');
       await page.waitForTimeout(500); // Wait for debounce
       
-      // Should show empty state or no results
-      const emptyState = page.locator('text=/ไม่พบ|No results|ไม่มี/i');
-      
       // Wait a bit for the empty state to appear
       await page.waitForTimeout(1000);
     });
@@ -129,9 +126,6 @@ test.describe('FinScope Application', () => {
     });
 
     test('should display category filters', async ({ page }) => {
-      // Look for category buttons or filters
-      const categorySection = page.locator('section, div').filter({ hasText: /หมวดหมู่|Category|ธนาคาร|Bank/i }).first();
-      
       // Wait for categories to load
       await page.waitForTimeout(1000);
       
@@ -356,10 +350,6 @@ test.describe('FinScope Application', () => {
     test('should display loading states', async ({ page }) => {
       await page.goto('/th/companies');
       
-      // Look for skeleton loaders or loading indicators
-      const loader = page.locator('[data-testid="skeleton"], .skeleton, [aria-label*="Loading"], [aria-label*="กำลังโหลด"]');
-      
-      // Loader might be visible briefly during load
       // This test just checks that the page eventually loads
       await page.waitForLoadState('networkidle');
     });
