@@ -43,6 +43,7 @@ export default function HeroSection({ translations: t, onScrollToCompanies, onSe
       reviewsCount.startAnimation();
       ratingCount.startAnimation();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 
   return (

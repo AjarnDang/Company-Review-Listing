@@ -24,8 +24,8 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
       if (stored) {
         setRecentSearches(JSON.parse(stored));
       }
-    } catch (error) {
-      console.error("Failed to load recent searches:", error);
+    } catch {
+      // Silently fail if localStorage is not available
     }
   }, []);
 
@@ -33,8 +33,8 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
   const saveToStorage = useCallback((searches: string[]) => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(searches));
-    } catch (error) {
-      console.error("Failed to save recent searches:", error);
+    } catch {
+      // Silently fail if localStorage is not available
     }
   }, []);
 
@@ -58,8 +58,8 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
     setRecentSearches([]);
     try {
       localStorage.removeItem(STORAGE_KEY);
-    } catch (error) {
-      console.error("Failed to clear recent searches:", error);
+    } catch {
+      // Silently fail if localStorage is not available
     }
   }, []);
 
