@@ -9,6 +9,7 @@ import type { Company } from "@/types/company";
 import type { TranslationKeys } from "@/locales/th";
 import type { Locale } from "@/i18n.config";
 import { StateWrapper } from "@/components/states";
+import { getCategoryName } from "@/utils/category";
 
 interface CategorySectionProps {
   category: "Fintech" | "Broker" | "Payment" | "Bank";
@@ -26,6 +27,7 @@ export default function CategorySection({
   maxItems = 4,
 }: CategorySectionProps) {
   const router = useRouter();
+  const categoryName = getCategoryName(category, t);
   
   // Filter and limit companies by category
   const categoryCompanies = companies
@@ -50,10 +52,10 @@ export default function CategorySection({
             viewport={{ once: true }}
           >
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">
-              {t.category.bestIn.replace('{{category}}', category)}
+              {t.category.bestIn.replace('{{category}}', categoryName)}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 mt-1">
-              {t.category.topRated.replace('{{category}}', category.toLowerCase())}
+              {t.category.topRated.replace('{{category}}', categoryName.toLowerCase())}
             </p>
           </motion.div>
 
@@ -87,7 +89,7 @@ export default function CategorySection({
           loadingType="card"
           loadingCount={4}
           loadingMessage={t.states.loading.companies}
-          emptyTitle={`${t.states.empty.companies} in ${category}`}
+          emptyTitle={`${t.states.empty.companies} in ${categoryName}`}
           emptyMessage={t.category.noCategoriesFound}
           showClearButton={false}
         >

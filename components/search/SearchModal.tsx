@@ -18,6 +18,7 @@ import { useSearch } from "@/contexts/SearchContext";
 import type { Company } from "@/types/company";
 import { useAsyncData } from "@/hooks/useAsyncData";
 import { StateWrapper } from "@/components/states";
+import { getCategoryName } from "@/utils/category";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -141,7 +142,12 @@ export default function SearchModal({
     return companies
       .map((company) => {
         const nameMatch = company.name.toLowerCase().includes(query);
-        const categoryMatch = company.category.toLowerCase().includes(query);
+        // Check both original category and translated category for search
+        const categoryNameEn = company.category.toLowerCase();
+        const categoryNameTh = getCategoryName(company.category, t).toLowerCase();
+        const categoryMatch = 
+          categoryNameEn.includes(query) || 
+          categoryNameTh.includes(query);
         const descEnMatch = company.description.en
           .toLowerCase()
           .includes(query);
@@ -157,7 +163,7 @@ export default function SearchModal({
           matchedSnippet = company.name;
           matchSource = "name";
         } else if (categoryMatch) {
-          matchedSnippet = company.category;
+          matchedSnippet = getCategoryName(company.category, t);
           matchSource = "category";
         } else if (descEnMatch || descThMatch) {
           const description =
@@ -184,7 +190,7 @@ export default function SearchModal({
       })
       .filter((item) => item.hasMatch)
       .slice(0, 5);
-  }, [searchQuery, companies, lang]);
+  }, [searchQuery, companies, lang, t]);
 
   const handleSearch = (query: string) => {
     const trimmedQuery = query.trim();
@@ -307,10 +313,10 @@ export default function SearchModal({
                                 <p className="text-sm text-gray-500 dark:text-gray-400">
                                   {item.matchSource === "category"
                                     ? highlightText(
-                                        item.company.category,
+                                        getCategoryName(item.company.category, t),
                                         searchQuery
                                       )
-                                    : item.company.category}{" "}
+                                    : getCategoryName(item.company.category, t)}{" "}
                                   • ⭐ {item.company.averageScore}
                                 </p>
                                 {item.matchSource === "description" && (
@@ -462,7 +468,7 @@ export default function SearchModal({
                       {t.companies.filterByCategory}
                     </h3>
                     <div className="grid grid-cols-2 gap-2">
-                      {["Fintech", "Broker", "Payment", "Bank"].map(
+                      {(["Fintech", "Broker", "Payment", "Bank"] as const).map(
                         (category) => (
                           <Button
                             key={category}
@@ -470,7 +476,7 @@ export default function SearchModal({
                             variant="bordered"
                             onPress={() => handleSearch(category)}
                           >
-                            {category}
+                            {getCategoryName(category, t)}
                           </Button>
                         )
                       )}

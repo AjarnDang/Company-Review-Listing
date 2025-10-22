@@ -115,6 +115,12 @@ export const en: TranslationKeys = {
       payment: "Payment",
       bank: "Bank",
     },
+    filter: "filter",
+    filters: "filters",
+    active: "active",
+    searchLabel: "Search",
+    hiddenByFilters: "hidden by filters",
+    noResultsFound: "No results found",
   },
 
   // Search

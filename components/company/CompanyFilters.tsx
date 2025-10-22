@@ -4,6 +4,7 @@ import React from "react";
 import { Button, Chip, Select, SelectItem } from "@heroui/react";
 import type { CompanyCategory } from "@/types/company";
 import type { TranslationKeys } from "@/locales/th";
+import { getCategoryName } from "@/utils/category";
 
 export type SortOption =
   | "highestRated"
@@ -76,6 +77,7 @@ export default function CompanyFilters({
           >
             {CATEGORIES.map((category) => {
               const isSelected = selectedCategories.includes(category);
+              const categoryLabel = getCategoryName(category, t);
               return (
                 <Chip
                   key={category}
@@ -87,7 +89,7 @@ export default function CompanyFilters({
                   aria-checked={isSelected}
                   aria-label={`${
                     isSelected ? "Deselect" : "Select"
-                  } ${category}`}
+                  } ${categoryLabel}`}
                   tabIndex={0}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
@@ -96,7 +98,7 @@ export default function CompanyFilters({
                     }
                   }}
                 >
-                  {category}
+                  {categoryLabel}
                 </Chip>
               );
             })}

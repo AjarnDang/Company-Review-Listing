@@ -108,11 +108,17 @@ export const th = {
     mostReviews: "รีวิวมากที่สุด",
     alphabetical: "ตามตัวอักษร (ก-ฮ)",
     categories: {
-      fintech: "Fintech",
-      broker: "Broker", 
-      payment: "Payment",
+      fintech: "ฟินเทค",
+      broker: "โบรกเกอร์", 
+      payment: "เพย์เมนต์",
       bank: "ธนาคาร",
     },
+    filter: "ตัวกรอง",
+    filters: "ตัวกรอง",
+    active: "ที่เลือก",
+    searchLabel: "คำค้นหา",
+    hiddenByFilters: "ถูกซ่อนโดยตัวกรอง",
+    noResultsFound: "ไม่พบผลลัพธ์",
   },
 
   // Search

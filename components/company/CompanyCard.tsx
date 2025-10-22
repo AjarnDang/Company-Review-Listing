@@ -7,6 +7,7 @@ import type { TranslationKeys } from "@/locales/th";
 import type { Locale } from "@/i18n.config";
 import Link from "next/link";
 import LazyImage from "../LazyImage";
+import { getCategoryName } from "@/utils/category";
 
 interface CompanyCardProps {
   company: Company;
@@ -96,7 +97,7 @@ export default function CompanyCard({ company, translations: t, lang }: CompanyC
               variant="flat"
               size="sm"
             >
-              {company.category}
+              {getCategoryName(company.category, t)}
             </Chip>
           </div>
 
