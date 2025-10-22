@@ -133,7 +133,7 @@ export default function CompaniesClient({ lang, initialQuery = '', initialCatego
         {/* Main Content */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Search Bar */}
-          <div className="mb-6">
+          <div className="mb-3">
             <div className="relative">
               <Input
                 type="text"
@@ -170,6 +170,7 @@ export default function CompaniesClient({ lang, initialQuery = '', initialCatego
             onClear={handleClearFilters}
             totalResults={totalCount}
             filteredResults={filteredCount}
+            searchTerm={searchTerm}
           />
 
           {/* Companies List */}
@@ -182,11 +183,7 @@ export default function CompaniesClient({ lang, initialQuery = '', initialCatego
             onRetry={refetch}
             loadingType="list"
             loadingCount={6}
-            emptyMessage={
-              searchTerm || selectedCategories.length > 0
-                ? t.states.empty.tryAdjusting
-                : t.companies.subtitle
-            }
+            emptyMessage={t.states.empty.noResults}
           >
             <div className="space-y-6">
               {displayedCompanies.map((company) => (

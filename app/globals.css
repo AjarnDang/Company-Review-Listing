@@ -99,11 +99,10 @@
   --color-danger-900: #7f1d1d;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #fefefe;
-  }
+/* Dark Mode Variables - Controlled by .dark class only */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #fefefe;
 }
 
 body {
