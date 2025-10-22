@@ -278,6 +278,14 @@ export const th = {
       },
     },
   },
+
+  // Breadcrumb
+  breadcrumb: {
+    home: "หน้าแรก",
+    companies: "บริษัททั้งหมด",
+    search: "ค้นหา",
+    category: "หมวดหมู่",
+  },
 };
 
 export type TranslationKeys = typeof th;

@@ -280,4 +280,12 @@ export const en: TranslationKeys = {
       },
     },
   },
+
+  // Breadcrumb
+  breadcrumb: {
+    home: "Home",
+    companies: "Companies",
+    search: "Search",
+    category: "Category",
+  },
 };

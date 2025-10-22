@@ -22,6 +22,7 @@ import { ReviewCard } from "@/components/review";
 import { StateWrapper } from "@/components/states";
 import CompanyPagination from "@/components/company/CompanyPagination";
 import CompanyCard from "@/components/company/CompanyCard";
+import Breadcrumb from "@/components/Breadcrumb";
 import Image from "next/image";
 
 // Fetch companies data
@@ -253,30 +254,18 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
 
   return (
     <div className="min-h-fit bg-gray-50 dark:bg-gray-900">
-      {/* Back Button */}
+      {/* Header with Breadcrumb */}
       <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <Button
-            variant="light"
-            onPress={() => router.push(`/${lang}/companies`)}
-            startContent={
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            }
-          >
-            {t.states.empty.goBack}
-          </Button>
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <Breadcrumb
+            items={[
+              { label: t.breadcrumb.home, href: `/${lang}` },
+              { label: t.breadcrumb.companies, href: `/${lang}/companies` },
+              { label: company.name },
+            ]}
+            lang={lang}
+            translations={t}
+          />
         </div>
       </div>
 
